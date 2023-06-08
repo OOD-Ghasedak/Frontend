@@ -201,3 +201,6 @@ dist
 .pnp.*
 
 static/sw.js
+
+# Cypress part
+cypress/integration/*.spec.js

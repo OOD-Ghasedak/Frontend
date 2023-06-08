@@ -91,3 +91,7 @@ sw.*
 *.swp
 /package-lock.json
 pnpm-lock.yaml
+
+# Cypress videos and screenshots
+/cypress/screenshots
+/cypress/videos
