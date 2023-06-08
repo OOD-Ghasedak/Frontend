@@ -1,0 +1,13 @@
+{
+    "testRegex": "(/__tests__/.*)(\\.|/)(test|spec)\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+        "js",
+        "ts",
+        "json",
+        "vue"
+    ],
+    "transform": {
+        ".*\\.(vue)$": "vue-jest",
+        "^.+\\.tsx?$": "ts-jest"
+    }
+}
