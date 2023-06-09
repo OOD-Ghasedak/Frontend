@@ -5,9 +5,10 @@
         "ts",
         "json",
         "vue"
-    ],
-    "transform": {
+      ],
+      "transform": {
         ".*\\.(vue)$": "vue-jest",
         "^.+\\.tsx?$": "ts-jest"
-    }
+      },
+      "testURL": "http://localhost/"
 }

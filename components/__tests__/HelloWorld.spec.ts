@@ -1,4 +1,4 @@
-import { describe, test, expect } from '@jest/globals'
+import 'jest'
 import { shallowMount } from '@vue/test-utils'
 import HelloWorld from '../HelloWorld.vue'
 
