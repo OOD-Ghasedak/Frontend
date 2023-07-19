@@ -1,9 +1,14 @@
 import { AxiosRequestConfig } from 'axios'
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { Url } from '~/api/urls'
 
 export type AXIOS_REQUESTS = '$get' | '$post' | '$delete' | '$put' | '$patch'
+
+export type Url = {
+  app: string;
+  methodName?: AXIOS_REQUESTS[];
+  parent?: Url;
+}
 
 export interface RequestParams {
   url: string | Url,
