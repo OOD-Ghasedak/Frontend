@@ -1,6 +1,5 @@
 import {
   Mutation,
-  Action,
   VuexModule,
   getModule,
   Module
@@ -12,30 +11,16 @@ interface CoreState {
 }
 
 @Module({ dynamic: true, name: 'VisitingUser', store, namespaced: true })
-class VisitingUser extends VuexModule implements CoreState {
+class VisitingUserStore extends VuexModule implements CoreState {
   // state
   name: string = ''
 
   // mutations
   @Mutation
-  private SET_NAME (name: string) {
+  public SET_NAME (name: string) {
     this.name = name
-  }
-
-  @Action({})
-  public create_user ({ email, username, password }: { email: string, username: string, password: string }) {
-    console.log(email, username, password)
-    console.log(this.store.$axios.defaults.baseURL)
-
-    // todo
-  }
-
-  @Action({})
-  public login ({ email, password }: { email: string, password: string }) {
-    console.log(email, password)
-
-    // todo
+    console.log(`set name ${this.name}`)
   }
 }
 
-export default getModule(VisitingUser)
+export default getModule(VisitingUserStore)

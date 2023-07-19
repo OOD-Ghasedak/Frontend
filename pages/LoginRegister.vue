@@ -8,12 +8,13 @@
 import Component from 'vue-class-component'
 
 import Vue from 'vue'
-import VisitingUser from '~/store/visitingUser'
-
+import VisitingUserStore from '~/store/visitingUser'
+import { concreteFacades } from '~/facades'
 @Component
 export default class LoginRegister extends Vue {
   ajab () {
-    VisitingUser.create_user({ username: 'what?', password: 'zart', email: 'zart' })
+    VisitingUserStore.SET_NAME('jj')
+    concreteFacades.visitingUser.create_user('jesus', 'what?', 'zart')
   }
 }
 </script>
