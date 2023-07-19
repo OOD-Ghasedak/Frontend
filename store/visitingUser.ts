@@ -25,6 +25,8 @@ class VisitingUser extends VuexModule implements CoreState {
   @Action({})
   public create_user ({ email, username, password }: { email: string, username: string, password: string }) {
     console.log(email, username, password)
+    console.log(this.store.$axios.defaults.baseURL)
+
     // todo
   }
 
