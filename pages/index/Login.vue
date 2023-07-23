@@ -40,13 +40,4 @@ export default class Login extends Vue {
     height: 200px;
 }
 
-.account-div > .back-button {
-    position: absolute;
-    left: 30px;
-}
-
-.back-button {
-    font-size: 28px;
-    color: var(--top-color-4);
-}
 </style>
