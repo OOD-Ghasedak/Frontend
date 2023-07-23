@@ -14,6 +14,9 @@
         ورود >
       </button>
     </div>
+    <button class="back-button">
+      بازگشت >
+    </button>
   </div>
 </template>
 
@@ -35,5 +38,15 @@ export default class Login extends Vue {
 <style>
 .login > .inputs {
     height: 200px;
+}
+
+.account-div > .back-button {
+    position: absolute;
+    left: 30px;
+}
+
+.back-button {
+    font-size: 28px;
+    color: var(--top-color-4);
 }
 </style>
