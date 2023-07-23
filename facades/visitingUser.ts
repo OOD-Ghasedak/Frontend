@@ -6,7 +6,7 @@ import { SIGNUP_URL } from '~/urls/account'
 export default interface VisitingUser {
   create_user(email: string, username: string, phone_number: string, password: string);
 
-  login(email: string, password: string);
+  login(emailOrUsername: string, password: string);
 }
 
 class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
@@ -26,8 +26,8 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
     })
   }
 
-  login (email: string, password: string) {
-    console.log(email, password)
+  login (emailOrUsername: string, password: string) {
+    console.log(emailOrUsername, password)
   }
 }
 
