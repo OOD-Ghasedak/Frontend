@@ -31,6 +31,7 @@ export default class Login extends Vue {
   password: string = ''
   login () {
     concreteFacades.visitingUser.login(this.emailOrUsername, this.password)
+    this.$nuxt.showError('what?')
   }
 }
 </script>

@@ -1,7 +1,9 @@
 @import "./utils.css";
 @import "./account.css";
 
-
+* {
+  direction: rtl;
+}
 div {
     display: flex;
   }

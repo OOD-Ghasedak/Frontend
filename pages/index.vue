@@ -1,6 +1,16 @@
 <template>
   <div class="main">
     <NuxtChild />
+    <b-modal id="error" hide-footer title="خطا">
+      <template #modal-title>
+        <div>
+          خطا
+        </div>
+      </template>
+      <div>
+        {{ error }}
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -10,7 +20,14 @@ import Vue from 'vue'
 
 @Component
 export default class IndexPage extends Vue {
+  error: string = ''
+  showError (error: string) {
+    this.error = error
+    this.$bvModal.show('error')
+  }
+
   mounted () {
+    this.$nuxt.showError = this.showError
   }
 }
 </script>
