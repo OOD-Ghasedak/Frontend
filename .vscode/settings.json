@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
-        "core"
+        "core",
+        "account"
     ],
     "cSpell.words": [
         "nuxt",

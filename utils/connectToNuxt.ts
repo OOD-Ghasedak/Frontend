@@ -1,5 +1,5 @@
 export class OutsideVueComponent {
-  get $CurrentNuxtInstance () {
+  protected get $CurrentNuxtInstance () {
     return window.$nuxt
   }
 }

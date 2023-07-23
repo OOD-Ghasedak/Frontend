@@ -1,5 +1,3 @@
 import { Url } from '../apis/axiosRequest'
 
-export const rootUrl: Url = {
-  app: 'api'
-}
+export const ROOT_URL = new Url('api')

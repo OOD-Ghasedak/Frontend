@@ -4,10 +4,10 @@ if (debugMode) {
   console.log(process.env)
 }
 
-const API_BASE = 'http://api.gym-time.ir'
+const API_BASE = 'http://localhost:8000'
 const options = {
   server: {
-    host: '0.0.0.0',
+    // host: '0.0.0.0',
     port: 3000
   },
   axios: {

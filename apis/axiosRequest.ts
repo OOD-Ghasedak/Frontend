@@ -1,33 +1,13 @@
 import { AxiosRequestConfig } from 'axios'
-import Vue from 'vue'
-import Component from 'vue-class-component'
+import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
-export type AXIOS_REQUESTS = '$get' | '$post' | '$delete' | '$put' | '$patch'
+export type AXIOS_REQUEST = '$get' | '$post' | '$delete' | '$put' | '$patch'
 
-export type Url = {
-  app: string;
-  methodName?: AXIOS_REQUESTS[];
-  parent?: Url;
-}
+export class Url {
+  constructor (private app: string, private parent?: Url) { }
 
-export interface RequestParams {
-  url: string | Url,
-  data?: any | undefined,
-  thenFunc?: (response: any) => void,
-  catchFunc?: (error: any) => void,
-  withAuth?: boolean,
-  retrieveAuth?: boolean,
-  config?: AxiosRequestConfig
-}
-
-export interface AxiosRequestParams extends RequestParams {
-  requestName: AXIOS_REQUESTS
-}
-
-@Component
-export default class AxiosRequest extends Vue {
-  prepareUrl (urlObject: Url): string {
-    let currObj: Url = urlObject
+  get address (): string {
+    let currObj: Url = this
     const url: string[] = [currObj.app]
     while (currObj.parent) {
       currObj = currObj.parent
@@ -36,7 +16,24 @@ export default class AxiosRequest extends Vue {
     const urlString = url.reverse().join('/')
     return `${urlString}/`
   }
+}
 
+export class RequestParams {
+  constructor (private url: Url,
+    public readonly requestName: AXIOS_REQUEST,
+    public readonly params: {
+      withAuth?: boolean,
+      retrieveAuth?: boolean,
+      config?: AxiosRequestConfig,
+      data?: any
+    } = {}) { }
+
+  get address (): string {
+    return this.url.address
+  }
+}
+
+export class AxiosRequest extends OutsideVueComponent {
   defaultCatchFunction (error: any): void {
     if (error?.response?.data) {
       // this.$showError(error.response.data[Object.keys(error.response.data)[0]])
@@ -51,7 +48,7 @@ export default class AxiosRequest extends Vue {
       // put access token into config
       // const accessToken = this.$store.state
       config.headers = config.headers || {}
-      config.headers.Authorization = `JWT ${this.$store.state.accessToken}`
+      config.headers.Authorization = `JWT ${this.$CurrentNuxtInstance.$store.state.accessToken}`
     }
     // todo use jwt-token here
     // const auth = this.$cookie.getCookie('auth')
@@ -64,23 +61,24 @@ export default class AxiosRequest extends Vue {
     return config
   }
 
-  axiosRequest (params: AxiosRequestParams): Promise<any> {
-    const url: string = typeof params.url === 'string' ? params.url : this.prepareUrl(params.url)
-    const config = this.getConfig(params.config, params.withAuth)
-    const otherArgs = ('data' in params) ? [params.data, config] : [config]
-    return this.$axios[params.requestName](url, ...otherArgs)
-      .then((response: any) => {
-        params.thenFunc?.(response)
-        if (params.retrieveAuth && response.data && response.data.token) {
-          // todo retrieve jwt-token
-          // this.$cookie.setCookie('auth', response.data.token)
-        }
-        return response
-      })
-      .catch((error) => {
-        const catchFunc = params.catchFunc || this.defaultCatchFunction
-        catchFunc(error)
-        return error
-      })
+  axiosRequest (request: RequestParams): Promise<any> {
+    const url: string = request.address
+    const config = this.getConfig(request.params.config, request.params.withAuth)
+    const otherArgs = ('data' in request) ? [request.data, config] : [config]
+    return new Promise((resolve, reject) => {
+      this.$CurrentNuxtInstance.$axios[request.requestName](url, ...otherArgs)
+        .then((response: any) => {
+          if (request.params.retrieveAuth && response.data && response.data.token) {
+            // todo retrieve jwt-token
+            // this.$cookie.setCookie('auth', response.data.token)
+          }
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   }
 }
+
+export default new AxiosRequest()

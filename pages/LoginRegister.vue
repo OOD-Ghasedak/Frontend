@@ -14,7 +14,7 @@ import { concreteFacades } from '~/facades'
 export default class LoginRegister extends Vue {
   ajab () {
     VisitingUserStore.SET_NAME('jj')
-    concreteFacades.visitingUser.create_user('jesus', 'what?', 'zart')
+    concreteFacades.visitingUser.create_user('jesus', 'what?', '', 'zart')
   }
 }
 </script>
