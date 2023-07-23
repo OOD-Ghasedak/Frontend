@@ -7,9 +7,11 @@
           خطا
         </div>
       </template>
-      <div>
-        {{ error }}
-      </div>
+      <template #default>
+        <div style="margin: auto;">
+          {{ error }}
+        </div>
+      </template>
     </b-modal>
   </div>
 </template>

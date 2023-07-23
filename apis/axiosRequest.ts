@@ -28,6 +28,11 @@ export class RequestParams {
       data?: any
     } = {}) { }
 
+  axiosCallArgs (config): Array<any> {
+    const otherArgs = ('data' in this.params) ? [this.params.data, config] : [config]
+    return otherArgs
+  }
+
   get address (): string {
     return this.url.address
   }
@@ -64,7 +69,8 @@ export class AxiosRequest extends OutsideVueComponent {
   axiosRequest (request: RequestParams): Promise<any> {
     const url: string = request.address
     const config = this.getConfig(request.params.config, request.params.withAuth)
-    const otherArgs = ('data' in request) ? [request.data, config] : [config]
+    const otherArgs = request.axiosCallArgs(config)
+
     return new Promise((resolve, reject) => {
       this.$CurrentNuxtInstance.$axios[request.requestName](url, ...otherArgs)
         .then((response: any) => {
@@ -75,7 +81,7 @@ export class AxiosRequest extends OutsideVueComponent {
           resolve(response)
         })
         .catch((error) => {
-          reject(error)
+          reject(error.message)
         })
     })
   }

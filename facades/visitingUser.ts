@@ -21,8 +21,10 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
       }
     )).then(() => {
       console.log('success')
-    }).catch(() => {
+    }).catch((response) => {
       console.log('failure')
+      console.log(response)
+      throw response
     })
   }
 
@@ -37,8 +39,9 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
       }
     )).then(() => {
       console.log('success')
-    }).catch(() => {
+    }).catch((response) => {
       console.log('failure')
+      throw response
     })
   }
 }
