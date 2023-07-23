@@ -1,5 +1,5 @@
 <template>
-  <div class="signup">
+  <div class="account-div signup">
     <div class="title">
       <h1>ثبت نام</h1>
       <h6>.لطفا اطلاعات زیر را وارد کنید</h6>
@@ -37,29 +37,5 @@ export default class SignUp extends Vue {
 </script>
 
 <style>
-.signup {
-  flex-direction: column;
-    width: 100%;
-    height: 100%;
-    padding: 50px max(30px, 5%);
-    justify-content: space-between;
-
-}
-.signup > .inputs {
-  flex-direction: column;
-  margin-top: 100px;
-}
-.signup > .title {
-  flex-direction: column;
-  text-align: center;
-  color: var(--top-color-1);
-}
-.signup > .action {
-  justify-content: center;
-}
-
-.inputs > input {
-  margin-top: 40px;
-}
 
 </style>

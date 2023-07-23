@@ -1,0 +1,57 @@
+@import "./account.css";
+
+
+div {
+    display: flex;
+  }
+  
+  button {
+    border-radius: 15px;
+    /*font-size: 5vw;*/
+    /*font-weight: 600;*/
+    min-height: 48px;
+    height: 48px;
+    border-width: 0;
+    background: transparent;
+    color: var(--primary-color-1);
+    font-size: 41px;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p {
+    direction: ltr;
+    width: 100%;
+    align-self: center;
+    margin-bottom: 0;
+  }
+  
+  h1 {
+    font-size: 49px;
+  }
+  
+  h6 {
+    font-size: 29px;
+  }
+  
+  input, p {
+    font-size: 20px;
+  }
+  input {
+    border: none;
+      height: 56px;
+      padding: 5px 10px;
+      border-bottom: 1px solid;
+      outline: none;
+      border-color: var(--top-color-1);
+      color: var(--top-color-5);
+  }
+  
+  /* hide number input arrow */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
