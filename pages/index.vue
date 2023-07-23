@@ -41,13 +41,6 @@ export default class IndexPage extends Vue {
   --top-color-5: #a682d9;
   --top-color-6: #c0a6e4;
   --top-color-7: #f0e9f9;
-  --secondary-color-rgb: 246, 117, 56;
-  --tertiary-color: #ffffff;
-  --primary-text-color: #113f70;
-  --primary-text-color-rgb: 17, 63, 112;
-  --secondary-text-color: #88a4c2;
-  --secondary-text-color-rgb: 136, 164, 194;
-  --disable-button-color: #faebd7;
 }
 
 html,
@@ -72,6 +65,10 @@ body {
   position: relative;
 }
 
+div {
+  display: flex;
+}
+
 button {
   border-radius: 15px;
   /*font-size: 5vw;*/
@@ -80,10 +77,15 @@ button {
   height: 48px;
   border-width: 0;
   background: transparent;
+  color: var(--primary-color-1);
+  font-size: 41px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
   direction: ltr;
+  width: 100%;
+  align-self: center;
+  margin-bottom: 0;
 }
 
 h1 {
@@ -94,40 +96,17 @@ h6 {
   font-size: 29px;
 }
 
-@media (min-aspect-ratio: 14/10) {
-
-  p {
-    margin-bottom: 0;
-    align-self: center;
-    width: 100%;
-    /*font-size: 2.78vw; !* 10px *!*/
-    font-size: min(16px, calc(2.78 * 6px + 1.25vh) / 2);
-  }
-
-  h2 {
-    /*font-size: 5.55vw; !* 20px *!*/
-    font-size: min(27px, calc((5.55 * 6px + 2.5vh) / 2));
-  }
-
-  h3 {
-    /*font-size: 5vw; !* 18px *!*/
-    font-size: min(24px, calc(5 * 6px + 2.25vh) / 2);
-  }
-
-  h4 {
-    /*font-size: 4.44vw; !* 16px *!*/
-    font-size: min(21px, calc(4.44 * 6px + 2vh) / 2);
-  }
-
-  h5 {
-    /*font-size: 3.89vw; !* 14px *!*/
-    font-size: min(18px, calc(3.89 * 6px + 1.75vh) / 2);
-  }
-
-  h6 {
-    /*font-size: 3.33vw; !* 12px *!*/
-    font-size: min(16px, calc(3.33 * 6px + 1.5vh) / 2);
-  }
+input, p {
+  font-size: 20px;
+}
+input {
+  border: none;
+    height: 56px;
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+    outline: none;
+    border-color: var(--top-color-1);
+    color: var(--top-color-5);
 }
 
 /* hide number input arrow */
@@ -136,63 +115,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
-@media (max-aspect-ratio: 14/10) {
-  p {
-    margin-bottom: 0;
-    align-self: center;
-    width: 100%;
-    /*font-size: 2.78vw; !* 10px *!*/
-    font-size: min(14px, calc(2.78vw + 1.25vh) / 2);
-  }
-
-  h2 {
-    /*font-size: 5.55vw; !* 20px *!*/
-    font-size: min(27px, calc((5.55vw + 2.5vh) / 2));
-  }
-
-  h3 {
-    /*font-size: 5vw; !* 18px *!*/
-    font-size: min(24px, calc(5vw + 2.25vh) / 2);
-  }
-
-  h4 {
-    /*font-size: 4.44vw; !* 16px *!*/
-    font-size: min(21px, calc(4.44vw + 2vh) / 2);
-  }
-
-  h5 {
-    /*font-size: 3.89vw; !* 14px *!*/
-    font-size: min(18px, calc(3.89vw + 1.75vh) / 2);
-  }
-
-  h6 {
-    /*font-size: 3.33vw; !* 12px *!*/
-    font-size: min(16px, calc(3.33vw + 1.5vh) / 2);
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  width: 100%;
-  align-self: center;
-  margin-bottom: 0;
-}
-
-.colored {
-  color: var(--secondary-color);
-}
-
-div {
-  display: flex;
-}
 </style>

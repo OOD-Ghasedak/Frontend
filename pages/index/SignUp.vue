@@ -37,10 +37,6 @@ export default class SignUp extends Vue {
 </script>
 
 <style>
-input, p {
-  font-size: 20px;
-}
-
 .signup {
   flex-direction: column;
     width: 100%;
@@ -58,27 +54,12 @@ input, p {
   text-align: center;
   color: var(--top-color-1);
 }
+.signup > .action {
+  justify-content: center;
+}
 
 .inputs > input {
   margin-top: 40px;
 }
 
-input {
-  border: none;
-    height: 56px;
-    padding: 5px 10px;
-    border-bottom: 1px solid;
-    outline: none;
-    border-color: var(--top-color-1);
-    color: var(--top-color-5);
-}
-
-.signup > .action {
-  justify-content: center;
-}
-
-button {
-  color: var(--primary-color-1);
-  font-size: 41px;
-}
 </style>
