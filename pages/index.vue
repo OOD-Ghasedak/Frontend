@@ -6,20 +6,11 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { Mixins } from 'vue-property-decorator'
-import PwaHandler from '~/mixins/pwaHandler'
+import Vue from 'vue'
 
 @Component
-export default class IndexPage extends Mixins(PwaHandler) {
+export default class IndexPage extends Vue {
   mounted () {
-    console.log('entered')
-    console.log('axios')
-    console.log(this.$axios.defaults)
-    console.log(this.$router.options.routes)
-    // // eslint-disable-next-line
-    // window["router"] = this.$router
-    // console.log('store')
-    // console.log(this.$store)
   }
 }
 </script>
@@ -28,8 +19,28 @@ export default class IndexPage extends Mixins(PwaHandler) {
 @import "~/font/css/style.css";
 
 :root {
-  --primary-color: #edf7ff;
-  --secondary-color: #f67538;
+  --white: white;
+  --primary-color-1: #5c4f8f;
+  --primary-color-2: #695aa5;
+  --primary-color-3: #9681eb;
+  --primary-color-4: #a896ee;
+  --primary-color-5: #c2b6f3;
+  --primary-color-6: #d4cbf7;
+  --primary-color-7: #f5f2fd;
+  --secondary-color-1: #2a7e87;
+  --secondary-color-2: #30919b;
+  --secondary-color-3: #45cfdd;
+  --secondary-color-4: #65d7e3;
+  --secondary-color-5: #93e3eb;
+  --secondary-color-6: #b3ebf1;
+  --secondary-color-7: #ecfafc;
+  --top-color-1: #3e1874;
+  --top-color-2: #471b85;
+  --top-color-3: #6527be;
+  --top-color-4: #7f4cc9;
+  --top-color-5: #a682d9;
+  --top-color-6: #c0a6e4;
+  --top-color-7: #f0e9f9;
   --secondary-color-rgb: 246, 117, 56;
   --tertiary-color: #ffffff;
   --primary-text-color: #113f70;
@@ -44,7 +55,7 @@ body,
 #__nuxt,
 #__layout,
 .main {
-  background-color: var(--primary-color);
+  background-color: var(--white);
   color: var(--primary-text-color);
   display: flex;
   height: 100%;
@@ -56,37 +67,34 @@ body,
 }
 
 body {
-  /*max-width: 920px;*/
+  max-width: 1440px;
+  max-height: 1024px;
   position: relative;
 }
 
 button {
-  background-color: var(--secondary-color);
   border-radius: 15px;
-  color: white;
   /*font-size: 5vw;*/
   /*font-weight: 600;*/
   min-height: 48px;
   height: 48px;
   border-width: 0;
-  box-shadow: 0 7px 15px rgba(var(--secondary-color-rgb), 0.35);
+  background: transparent;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  direction: ltr;
+}
+
+h1 {
+  font-size: 49px;
+}
+
+h6 {
+  font-size: 29px;
 }
 
 @media (min-aspect-ratio: 14/10) {
-  /* landscape mode */
-  /*html {*/
-  /*  background-color: darkcyan;*/
-  /*}*/
-
-  /*body {*/
-  /*  align-self: center;*/
-  /*  max-width: 500px;*/
-  /*  position: relative;*/
-  /*}*/
-
-  /*body, #__nuxt, #__layout, .main {*/
-  /*  border-radius: 10px;*/
-  /*}*/
 
   p {
     margin-bottom: 0;
@@ -121,22 +129,6 @@ button {
     font-size: min(16px, calc(3.33 * 6px + 1.5vh) / 2);
   }
 }
-
-/*@media (orientation: landscape) {*/
-/*  html:after{*/
-/*    position: absolute;*/
-/*    z-index: 9999;*/
-/*    width: 100%;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    content: "";*/
-/*    background: #212121 url(~/static/rotate-warning.png) 0 0 no-repeat; !* replace with an image that tells the visitor to rotate the device to landscape mode *!*/
-/*    background-size: 100% auto;*/
-/*    background-position-y: center;*/
-/*    background-position-x: center;*/
-/*    opacity: 0.95;*/
-/*  }*/
-/*}*/
 
 /* hide number input arrow */
 input::-webkit-outer-spin-button,
@@ -198,5 +190,9 @@ h6 {
 
 .colored {
   color: var(--secondary-color);
+}
+
+div {
+  display: flex;
 }
 </style>

@@ -11,6 +11,8 @@ export default interface VisitingUser {
 
 class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
   create_user (email: string, username: string, phoneNumber: string, password: string) {
+    console.log('props: ', email, username)
+
     axiosRequest.axiosRequest(new RequestParams(
       SIGNUP_URL,
       '$post',
