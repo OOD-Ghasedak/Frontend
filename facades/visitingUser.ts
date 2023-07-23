@@ -1,21 +1,16 @@
-import Component from 'vue-class-component'
-
-import Vue from 'vue'
-
-import { store } from '~/store'
-
 import VisitingUserStore from '~/store/visitingUser'
+import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface VisitingUser {
-    create_user(email: string, username: string, password: string);
+  create_user(email: string, username: string, password: string);
 
-    login(email: string, password: string);
+  login(email: string, password: string);
 }
 
-@Component
-class ConcreteVisitingUser extends Vue implements VisitingUser {
+class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
   create_user (email: string, username: string, password: string) {
     console.log(email, username, password)
+    console.log(this.$CurrentNuxtInstance.$axios.defaults.baseURL)
     VisitingUserStore.SET_NAME('kk')
   }
 
@@ -24,4 +19,4 @@ class ConcreteVisitingUser extends Vue implements VisitingUser {
   }
 }
 
-export const concreteVisitingUser = new ConcreteVisitingUser({ store })
+export const concreteVisitingUser = new ConcreteVisitingUser()
