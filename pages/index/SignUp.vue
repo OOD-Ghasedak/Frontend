@@ -16,6 +16,9 @@
         ثبت نام >
       </button>
     </div>
+    <button class="back-button">
+      بازگشت >
+    </button>
   </div>
 </template>
 
@@ -31,7 +34,9 @@ export default class SignUp extends Vue {
   phoneNumber: string = ''
   password: string = ''
   signup () {
-    concreteFacades.visitingUser.create_user(this.email, this.username, this.phoneNumber, this.password)
+    concreteFacades.visitingUser.create_user(this.email, this.username, this.phoneNumber, this.password).catch(() => {
+      this.$nuxt.showError('error')
+    })
   }
 }
 </script>
