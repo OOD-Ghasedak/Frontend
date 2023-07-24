@@ -1,6 +1,6 @@
 <template>
   <button class="back-button" @click="back">
-    بازگشت >
+    <h3>{{ 'بازگشت >' }}</h3>
   </button>
 </template>
 

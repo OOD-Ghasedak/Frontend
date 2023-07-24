@@ -11,7 +11,7 @@
 
     <div class="action">
       <button @click="login">
-        ورود >
+        <h2>{{ 'ورود >' }}</h2>
       </button>
     </div>
     <BackButton />
