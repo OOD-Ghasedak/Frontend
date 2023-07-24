@@ -23,12 +23,12 @@ import Vue from 'vue'
 @Component
 export default class IndexPage extends Vue {
   error: string = ''
-  showError(error: string) {
+  showError (error: string) {
     this.error = error
     this.$bvModal.show('error')
   }
 
-  mounted() {
+  mounted () {
     this.$nuxt.showError = this.showError
   }
 }
@@ -61,6 +61,11 @@ export default class IndexPage extends Vue {
   --top-color-5: #a682d9;
   --top-color-6: #c0a6e4;
   --top-color-7: #f0e9f9;
+}
+
+:root {
+  --medium-font-size: 600;
+  --regular-font-size: 400;
 }
 
 html,

@@ -6,6 +6,7 @@
 }
 div {
     display: flex;
+    flex-direction: column;
   }
   
   button {
@@ -25,18 +26,38 @@ div {
     width: 100%;
     align-self: center;
     margin-bottom: 0;
+    color: var(--top-color-1);
   }
   
   h1 {
     font-size: 49px;
+    font-weight: bolder;
   }
-  
-  h6 {
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  h3 {
     font-size: 29px;
+    font-weight: var(--medium-font-size);
   }
-  
-  input, p {
+
+  h4 {
+    font-size: 26px;
+    font-weight: normal;
+  }
+
+  h5 {
     font-size: 20px;
+    font-weight: normal;
+  }
+
+  input, p {
+    font-size: 29px;
+    font-weight: var(--medium-font-size);
+    color: var(--top-color-1);
   }
   input {
     border: none;

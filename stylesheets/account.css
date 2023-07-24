@@ -18,7 +18,6 @@
   .account-div > .title {
     flex-direction: column;
     text-align: center;
-    color: var(--top-color-1);
   }
   .account-div > .action {
     justify-content: center;
