@@ -1,9 +1,12 @@
+import Ghased, { concreteGhased } from './ghased'
 import VisitingUser, { concreteVisitingUser } from './visitingUser'
 
 export interface Facades {
-    visitingUser: VisitingUser
+    visitingUser: VisitingUser,
+    ghased: Ghased
 }
 
 export const concreteFacades: Facades = {
-  visitingUser: concreteVisitingUser
+  visitingUser: concreteVisitingUser,
+  ghased: concreteGhased
 }
