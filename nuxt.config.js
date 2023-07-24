@@ -1,5 +1,5 @@
 const debugMode = false
-function is_production () {
+function isProduction () {
   return process.env.NODE_ENV === 'production'
 }
 
@@ -8,7 +8,7 @@ if (debugMode) {
   console.log(process.env)
 }
 
-const API_BASE = is_production() ? 'http://ood.ablimootorsh.info:8000' : 'http://localhost:8000'
+const API_BASE = isProduction() ? 'http://ood.ablimootorsh.info:8000' : 'http://localhost:8000'
 const options = {
   server: {
     host: '0.0.0.0',
