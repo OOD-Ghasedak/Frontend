@@ -23,12 +23,12 @@ import Vue from 'vue'
 @Component
 export default class IndexPage extends Vue {
   error: string = ''
-  showError (error: string) {
+  showError(error: string) {
     this.error = error
     this.$bvModal.show('error')
   }
 
-  mounted () {
+  mounted() {
     this.$nuxt.showError = this.showError
   }
 }
@@ -84,5 +84,4 @@ body {
   max-height: 1024px;
   position: relative;
 }
-
 </style>
