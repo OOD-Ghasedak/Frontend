@@ -2,7 +2,7 @@
   <div class="account-div login">
     <div class="title">
       <h1>ورود</h1>
-      <h6>.لطفا اطلاعات زیر را وارد کنید</h6>
+      <p>.لطفا اطلاعات زیر را وارد کنید</p>
     </div>
     <div class="inputs">
       <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری">

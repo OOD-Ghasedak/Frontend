@@ -63,6 +63,11 @@ export default class IndexPage extends Vue {
   --top-color-7: #f0e9f9;
 }
 
+:root {
+  --medium-font-size: 600;
+  --regular-font-size: 400;
+}
+
 html,
 body,
 #__nuxt,
@@ -84,5 +89,4 @@ body {
   max-height: 1024px;
   position: relative;
 }
-
 </style>

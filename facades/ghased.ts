@@ -1,6 +1,8 @@
 
 interface UserProfile {
-
+    phone_number: string;
+    user_name: string;
+    email: string;
 }
 
 export default interface Ghased {

@@ -1,12 +1,13 @@
 @import "./fontiran.css"; /* لینک فایلی که وظیفه بارگذاری فونت ها را برعهده دارد */
+@import "../YekanBakh/stylesheet.css";
 body {
-  font-family: dana, serif;
+  font-family: 'Yekan Bakh', serif;
 	direction: rtl;
 	background-color: #cdcdcd;
 	margin: 0;
 }
 h1, h2, h3, h4, h5, h6,input, textarea {
-	font-family: dana, serif;
+	font-family: 'Yekan Bakh', serif;
 }
 h1 {
 	font-weight: bold;
