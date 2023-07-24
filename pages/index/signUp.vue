@@ -37,7 +37,7 @@ export default class SignUp extends Vue {
   signup () {
     concreteFacades.visitingUser.create_user(this.email, this.username, this.phoneNumber, this.password)
       .then(() => {
-        this.$router.push('Login')
+        this.$router.push({path: '/login'})
       })
       .catch((error: string) => {
         this.$nuxt.showError(error)
