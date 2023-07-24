@@ -1,8 +1,12 @@
 <template>
   <div class="account-div login">
     <div class="title">
-      <h1>ورود</h1>
-      <p>.لطفا اطلاعات زیر را وارد کنید</p>
+      <h1 class="text-centered">
+        ورود
+      </h1>
+      <p class="text-centered">
+        .لطفا اطلاعات زیر را وارد کنید
+      </p>
     </div>
     <div class="inputs">
       <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری">
@@ -10,7 +14,7 @@
     </div>
 
     <div class="action">
-      <button @click="login">
+      <button class="horizontally-centered" @click="login">
         <h2>{{ 'ورود >' }}</h2>
       </button>
     </div>

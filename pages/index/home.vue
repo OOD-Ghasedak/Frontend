@@ -129,29 +129,6 @@ export default class Page extends Vue {
 </script>
 
 <style>
-.image-sized-1 {
-  width: 50px;
-  height: 50px;
-}
-
-.image-sized-2 {
-  width: 98px;
-  height: 98px;
-}
-
-.image-sized-3 {
-  width: 119px;
-  height: 119px;
-}
-
-.text-centered {
-  text-align: center;
-}
-
-.circular {
-  border-radius: 50%;
-}
-
 .home-page {
   height: 100%;
 }
