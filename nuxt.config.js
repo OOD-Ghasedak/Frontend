@@ -7,7 +7,7 @@ if (debugMode) {
 const API_BASE = 'http://localhost:8000'
 const options = {
   server: {
-    // host: '0.0.0.0',
+    host: 'localhost',
     port: 3000
   },
   axios: {
