@@ -16,9 +16,7 @@
         ثبت نام >
       </button>
     </div>
-    <button class="back-button">
-      بازگشت >
-    </button>
+    <BackButton />
   </div>
 </template>
 
@@ -27,7 +25,10 @@ import Component from 'vue-class-component'
 
 import Vue from 'vue'
 import { concreteFacades } from '~/facades'
-@Component
+import BackButton from '~/components/BackButton.vue'
+@Component({
+  components: { BackButton }
+})
 export default class SignUp extends Vue {
   email: string = ''
   username: string = ''

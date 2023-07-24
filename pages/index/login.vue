@@ -14,18 +14,21 @@
         ورود >
       </button>
     </div>
-    <button class="back-button">
-      بازگشت >
-    </button>
+    <BackButton />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
-
 import Vue from 'vue'
+import BackButton from '~/components/BackButton.vue'
 import { concreteFacades } from '~/facades'
-  @Component
+
+@Component({
+  components: {
+    BackButton
+  }
+})
 export default class Login extends Vue {
   emailOrUsername: string = ''
   password: string = ''

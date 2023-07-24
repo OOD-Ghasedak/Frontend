@@ -23,8 +23,3 @@
   .account-div > .action {
     justify-content: center;
   }
-  
-  .account-div > .back-button {
-    position: absolute;
-    left: 30px;
-}
