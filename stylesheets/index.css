@@ -85,6 +85,9 @@ div {
   }
 
 
+.row {
+  flex-direction: row;
+}
 
   .image-sized-1 {
     width: 50px;

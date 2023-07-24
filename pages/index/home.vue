@@ -1,8 +1,8 @@
 <template>
   <div class="home-page">
     <div class="header">
-      <div class="row-1">
-        <div class="user">
+      <div class="row-1 row">
+        <div class="user row">
           <img class="image-sized-2 circular">
           <div class="user-name">
             <h3>{{ 'قاصد' }} </h3>
@@ -15,14 +15,14 @@
           </h2>
         </div>
         <div class="create-channel">
-          <button class="circular-button">
+          <button class="horizontally-centered circular image-sized-1">
             {{ '+' }}
           </button>
           <h6>{{ 'ساخت کانال' }}</h6>
         </div>
       </div>
       <div class="search-channel">
-        <input placeholder="جستجوی کانال">
+        <input class="horizontally-centered text-centered" placeholder="جستجوی کانال">
       </div>
     </div>
     <div class="see-channels">
@@ -39,46 +39,10 @@
         </button>
       </div>
       <div v-if="joinedChannelsAreVisible" class="see-joined-channels">
-        <div v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" class="channel ">
-          <div class="content">
-            <img class="image-sized-3 circular">
-            <div class="text">
-              <h3 class="name">
-                {{ channel.name }}
-              </h3>
-              <p class="description">
-                {{ channel.description }}
-              </p>
-            </div>
-          </div>
-          <h5 class="role">
-            {{ channel.subscription_status }}
-          </h5>
-          <button class="visit-button">
-            <h5>{{ 'مشاهده کانال >' }}</h5>
-          </button>
-        </div>
+        <joined-channel-row v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" :channel="channel" />
       </div>
       <div v-else class="see-owned-or-managed-channels">
-        <div v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" class="channel">
-          <div class="content">
-            <img class="image-sized-3 circular">
-            <div class="text">
-              <h3 class="name">
-                {{ channel.name }}
-              </h3>
-              <p class="description">
-                {{ channel.description }}
-              </p>
-            </div>
-          </div>
-          <h5 class="role">
-            {{ channel.role }}
-          </h5>
-          <button class="visit-button">
-            <h5>{{ 'مشاهده کانال >' }}</h5>
-          </button>
-        </div>
+        <owned-or-managed-channel-row v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" :channel="channel" />
       </div>
     </div>
   </div>
@@ -87,20 +51,7 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import Vue from 'vue'
-
-interface Channel {
-  id: string;
-  name: string;
-  description: string;
-}
-
-interface JoinedChannel extends Channel {
-  subscription_status;
-}
-
-interface OwnedOrManagedChannel extends Channel {
-  role;
-}
+import { JoinedChannel, OwnedOrManagedChannel } from '~/models'
 
 @Component
 export default class Page extends Vue {
@@ -143,27 +94,20 @@ export default class Page extends Vue {
 }
 
 .home-page > .header > .row-1 {
-  flex-direction: row;
     justify-content: space-around;
     height: fit-content;
 }
 
-.row-1 > .user {
-  flex-direction: row;
-}
 .row-1 > .user > img {
     background-color: blue;
 }
 .user > .user-name {
   margin-right: 10px;
-    text-align: right;
-    justify-content: center;
+  justify-content: center;
 }
 
 .search-channel > input {
   width: min(90%, 400px);
-    align-self: center;
-    text-align: center;
 }
 
 .create-channel {
@@ -171,19 +115,11 @@ export default class Page extends Vue {
 }
 
 .create-channel > button {
-  align-self: center;
   justify-content: center;
-    display: flex;
-    margin-bottom: 5px
-}
-
-.circular-button {
-  width: 50px;
-    height: 50px;
-    background-color: var(--top-color-3);
-    color: var(--white);
-    border-radius: 50%;
-    padding: 0;
+  margin-bottom: 5px;
+  background-color: var(--top-color-3);
+  color: var(--white);
+  padding: 0;
 }
 
 .see-channels > .header {
@@ -210,25 +146,6 @@ export default class Page extends Vue {
 }
 .see-owned-or-managed-channels-button > h4 {
   color: var(--top-color-1);
-}
-
-.channel {
-  flex-direction: row;
-    height: 170px;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.channel > .content > img {
-  background-color: blue;
-}
-.channel > .content {
-  flex-direction: row;
-}
-
-.channel > .content > .text {
-  justify-content: center;
-  margin-right: 10px;
 }
 
 </style>
