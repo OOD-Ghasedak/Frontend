@@ -27,19 +27,18 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 
-import Vue from 'vue'
-import { concreteFacades } from '~/facades'
 import BackButton from '~/components/BackButton.vue'
+import RootComponent from '~/utils/rootComponent'
 @Component({
   components: { BackButton }
 })
-export default class SignUp extends Vue {
+export default class SignUp extends RootComponent {
   email: string = ''
   username: string = ''
   phoneNumber: string = ''
   password: string = ''
   signup () {
-    concreteFacades.visitingUser.create_user(this.email, this.username, this.phoneNumber, this.password)
+    this.mainConfig.$facades.visitingUser.create_user(this.email, this.username, this.phoneNumber, this.password)
       .then(() => {
         this.$router.push({ path: '/login' })
       })

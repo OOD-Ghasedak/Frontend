@@ -24,20 +24,19 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import Vue from 'vue'
 import BackButton from '~/components/BackButton.vue'
-import { concreteFacades } from '~/facades'
+import RootComponent from '~/utils/rootComponent'
 
 @Component({
   components: {
     BackButton
   }
 })
-export default class Login extends Vue {
+export default class Login extends RootComponent {
   emailOrUsername: string = ''
   password: string = ''
   login () {
-    concreteFacades.visitingUser.login(this.emailOrUsername, this.password).catch(() => {
+    this.mainConfig.$facades.visitingUser.login(this.emailOrUsername, this.password).catch(() => {
       this.$nuxt.showError('error')
     })
   }

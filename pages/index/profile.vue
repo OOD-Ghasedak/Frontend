@@ -2,7 +2,9 @@
   <div class="wrapper">
     <button type="button" class="back-btn">
       <img src="public/images/back.svg" alt="back arrow">
-      <h5 class="back" style="color: #3e1874">بازگشت</h5>
+      <h5 class="back" style="color: #3e1874">
+        بازگشت
+      </h5>
     </button>
     <div class="profile-intro">
       <img src="public/images/profile-pic.svg" alt="Profile picture">
@@ -10,7 +12,9 @@
         <h5>قاصد</h5>
         <div class="profile-username">
           <a href="#"><img src="public/images/edit.svg" alt="verified" class="edit-btn"></a>
-          <h5 class>@mammad</h5>
+          <h5 class>
+            @mammad
+          </h5>
         </div>
       </div>
     </div>

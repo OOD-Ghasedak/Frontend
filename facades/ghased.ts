@@ -1,3 +1,4 @@
+/* eslint-disable */
 
 interface UserProfile {
     phone_number: string;

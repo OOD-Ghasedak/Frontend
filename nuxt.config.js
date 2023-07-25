@@ -8,7 +8,9 @@ if (debugMode) {
   console.log(process.env)
 }
 
-const API_BASE = isProduction() ? 'http://ood.ablimootorsh.info:8000' : 'http://localhost:8000'
+const PRODUCTION_API_BASE = 'http://ood.ablimootorsh.info:8000'
+const DEVELOPMENT_API_BASE = 'http://localhost:8000'
+const API_BASE = isProduction() ? PRODUCTION_API_BASE : DEVELOPMENT_API_BASE
 const options = {
   server: {
     host: '0.0.0.0',
@@ -71,7 +73,8 @@ export default {
     // { src: '~/plugins/vuex-persist', ssr: false },
     // filters
     '~/filters/filters.js',
-    '~/plugins/vue-jalali-date.js'
+    '~/plugins/vue-jalali-date.js',
+    '~/facades/index.ts'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
