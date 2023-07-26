@@ -53,7 +53,7 @@ export class AxiosRequest extends OutsideVueComponent {
       // put access token into config
       // const accessToken = this.$store.state
       config.headers = config.headers || {}
-      config.headers.Authorization = `JWT ${this.$CurrentNuxtInstance.$store.state.accessToken}`
+      config.headers.Authorization = `JWT ${this.mainConfig.$stores.visitingUser.accessToken}`
     }
     // todo use jwt-token here
     // const auth = this.$cookie.getCookie('auth')
@@ -74,9 +74,13 @@ export class AxiosRequest extends OutsideVueComponent {
     return new Promise((resolve, reject) => {
       this.$CurrentNuxtInstance.$axios[request.requestName](url, ...otherArgs)
         .then((response: any) => {
-          if (request.params.retrieveAuth && response.data && response.data.token) {
+          if (request.params.retrieveAuth && response) {
             // todo retrieve jwt-token
             // this.$cookie.setCookie('auth', response.data.token)
+            console.log('token response')
+            console.log(response)
+            this.mainConfig.$stores.visitingUser.setAccessToken(response.access_token)
+            this.mainConfig.$stores.visitingUser.setRefreshToken(response.refresh_token)
           }
           resolve(response)
         })

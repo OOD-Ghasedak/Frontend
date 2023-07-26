@@ -36,9 +36,11 @@ export default class Login extends RootComponent {
   emailOrUsername: string = ''
   password: string = ''
   login () {
-    this.mainConfig.$facades.visitingUser.login(this.emailOrUsername, this.password).catch(() => {
-      this.$nuxt.showError('error')
-    })
+    this.mainConfig.$facades.visitingUser.login(this.emailOrUsername, this.password)
+      .then(() => { this.$router.push({ path: '/home/' }) })
+      .catch(() => {
+        this.$nuxt.showError('error')
+      })
   }
 }
 </script>
