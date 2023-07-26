@@ -1,5 +1,5 @@
 import { ROOT_URL } from '.'
-import { Url } from '~/apis/axiosRequest'
+import { Url } from '~/apis/backend'
 
 export const ACCOUNT_URL = new Url('accounts', ROOT_URL)
 

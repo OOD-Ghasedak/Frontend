@@ -1,5 +1,5 @@
 import { ROOT_URL } from '.'
-import { Url } from '~/apis/axiosRequest'
+import { Url } from '~/apis/backend'
 
 export const JOINED_CHANNELS_URL = new Url('subscribe/joined-channels', ROOT_URL)
 

@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { RequestParams } from "~/apis/axiosRequest";
+import { REQUEST_METHODS, RequestParams } from "~/apis/backend";
 import { JoinedChannel, OwnedOrManagedChannel } from "~/models";
 import { JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from "~/urls/channel";
 import { OutsideVueComponent } from "~/utils/connectToNuxt";
@@ -37,13 +37,13 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
   }
 
   getJoinedChannels(): Promise<JoinedChannel[]> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(JOINED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
+    return this.mainConfig.$apis.backend.send(new RequestParams(JOINED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true, retrieveAuth: true })).then((response) => {
       return response
     })
   }
 
   async getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
+    return this.mainConfig.$apis.backend.send(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true, retrieveAuth: true })).then((response) => {
       return response
     })
   }

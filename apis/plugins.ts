@@ -1,5 +1,6 @@
 import { Plugin } from '@nuxt/types'
-import concreteBackendAPI, { BackendAPI } from './axiosRequest'
+import concreteBackendAPI from './backend/axiosRequest'
+import { BackendAPI } from './backend'
 
 interface APIs {
     backend: BackendAPI

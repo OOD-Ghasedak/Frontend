@@ -1,5 +1,5 @@
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
-import { RequestParams } from '~/apis/axiosRequest'
+import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
 import { LOGIN_URL, SIGNUP_URL } from '~/urls/account'
 
 export default interface VisitingUser {
@@ -14,7 +14,7 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
 
     return this.mainConfig.$apis.backend.send(new RequestParams(
       SIGNUP_URL,
-      '$post',
+      REQUEST_METHODS.POST,
       {
         data: { email, username, phone_number: phoneNumber, password }
       }
@@ -31,7 +31,7 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
     console.log('login')
     return this.mainConfig.$apis.backend.send(new RequestParams(
       LOGIN_URL,
-      '$post',
+      REQUEST_METHODS.POST,
       {
         data: { email_or_username: emailOrUsername, password },
         retrieveAuth: true
