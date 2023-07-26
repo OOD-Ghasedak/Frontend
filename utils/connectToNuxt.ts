@@ -4,4 +4,8 @@ export class OutsideVueComponent {
   protected get $CurrentNuxtInstance (): NuxtApp {
     return window.$nuxt
   }
+
+  protected get mainConfig () {
+    return this.$CurrentNuxtInstance.context
+  }
 }

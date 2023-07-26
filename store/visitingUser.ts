@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import {
   Mutation,
   VuexModule,
@@ -6,21 +7,39 @@ import {
 } from 'vuex-module-decorators'
 import { store } from '~/store'
 
-interface CoreState {
-  name: string
+export interface VisitingUserStore {
+  setAccessToken(accessToken: string);
+  accessToken: string;
+  setRefreshToken(refreshToken: string);
+  refreshToken: string;
 }
 
 @Module({ dynamic: true, name: 'VisitingUser', store, namespaced: true })
-class VisitingUserStore extends VuexModule implements CoreState {
-  // state
-  name: string = ''
+class ConcreteVisitingUserStore extends VuexModule implements VisitingUserStore {
+  private _accessToken: string = ''
+  private _refreshToken: string = ''
 
-  // mutations
   @Mutation
-  public SET_NAME (name: string) {
-    this.name = name
-    console.log(`set name ${this.name}`)
+  setAccessToken (accessToken: string) {
+    Cookies.set('accessToken', accessToken)
+    console.log('cookies set')
+
+    // this._accessToken = accessToken
+  }
+
+  get accessToken (): string {
+    return Cookies.get('accessToken')
+    // return this._accessToken
+  }
+
+  @Mutation
+  setRefreshToken (refreshToken: string) {
+    this._refreshToken = refreshToken
+  }
+
+  get refreshToken (): string {
+    return this._refreshToken
   }
 }
 
-export default getModule(VisitingUserStore)
+export default getModule(ConcreteVisitingUserStore)
