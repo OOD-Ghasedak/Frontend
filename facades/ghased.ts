@@ -1,30 +1,51 @@
 /* eslint-disable */
 
+import { reject, resolve } from "cypress/types/bluebird";
+import axiosRequest, { RequestParams } from "~/apis/axiosRequest";
+import { JoinedChannel, OwnedOrManagedChannel } from "~/models";
+import { JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from "~/urls/channel";
+
 interface UserProfile {
-    phone_number: string;
-    user_name: string;
-    email: string;
+  phone_number: string;
+  user_name: string;
+  email: string;
 }
 
 export default interface Ghased {
-    getProfile(): Promise<UserProfile>;
+  getProfile(): Promise<UserProfile>;
 
-    editProfile(editInfo: Partial<UserProfile>): Promise<any>;
+  editProfile(editInfo: Partial<UserProfile>): Promise<any>;
 
-    changePassword(oldPassword: string, newPassword: string): Promise<any>;
+  changePassword(oldPassword: string, newPassword: string): Promise<any>;
+
+  getJoinedChannels(): Promise<JoinedChannel[]>;
+
+  getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]>;
 }
 
 class ConcreteGhased implements Ghased {
-  getProfile (): Promise<UserProfile> {
+  getProfile(): Promise<UserProfile> {
     throw new Error('Method not implemented.')
   }
 
-  editProfile (editInfo: Partial<UserProfile>): Promise<any> {
+  editProfile(editInfo: Partial<UserProfile>): Promise<any> {
     throw new Error('Method not implemented.')
   }
 
-  changePassword (oldPassword: string, newPassword: string): Promise<any> {
+  changePassword(oldPassword: string, newPassword: string): Promise<any> {
     throw new Error('Method not implemented.')
+  }
+
+  getJoinedChannels(): Promise<JoinedChannel[]> {
+    return axiosRequest.axiosRequest(new RequestParams(JOINED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
+      return response
+    })
+  }
+
+  async getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]> {
+    return axiosRequest.axiosRequest(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
+      return response
+    })
   }
 }
 

@@ -50,31 +50,36 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import Vue from 'vue'
 import { JoinedChannel, OwnedOrManagedChannel } from '~/models'
+import RootComponent from '~/utils/rootComponent'
 
 @Component
-export default class Page extends Vue {
+export default class Page extends RootComponent {
   username = 'sep'
 
   joinedChannelsAreVisible = true
 
-  get joinedChannels (): JoinedChannel[] {
-    return [{
-      id: '2',
-      name: 'se',
-      description: '2223',
-      subscription_status: 0
-    }]
-  }
+  joinedChannels: JoinedChannel[] = [{
+    id: '2',
+    name: 'se',
+    description: '2223',
+    subscription_status: 0
+  }]
 
-  get ownedOrManagedChannels (): OwnedOrManagedChannel[] {
-    return [{
-      id: '2',
-      name: 'se',
-      description: '2313',
-      role: 3
-    }]
+  ownedOrManagedChannels: OwnedOrManagedChannel[] = [{
+    id: '2',
+    name: 'se',
+    description: '2313',
+    role: 3
+  }]
+
+  mounted () {
+    this.mainConfig.$facades.ghased.getJoinedChannels().then((joinedChannels) => {
+      this.joinedChannels = joinedChannels
+    })
+    this.mainConfig.$facades.ghased.getOwnedOrManagedChannels().then((ownedOrManagedChannels) => {
+      this.ownedOrManagedChannels = ownedOrManagedChannels
+    })
   }
 }
 </script>
@@ -136,6 +141,7 @@ export default class Page extends Vue {
 
 .see-channels > .header > .see-joined-channels-button {
   background-color: var(--top-color-1);
+  border-top-right-radius: 10px;
 }
 .see-joined-channels-button > h4 {
   color: var(--top-color-7);
@@ -143,6 +149,7 @@ export default class Page extends Vue {
 
 .see-channels > .header > .see-owned-or-managed-channels-button {
   background-color: var(--top-color-7);
+  border-top-left-radius: 10px;
 }
 .see-owned-or-managed-channels-button > h4 {
   color: var(--top-color-1);
