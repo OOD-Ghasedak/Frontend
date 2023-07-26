@@ -1,7 +1,8 @@
 {
     "conventionalCommits.scopes": [
         "core",
-        "account"
+        "account",
+        "channel"
     ],
     "cSpell.words": [
         "Ghased",

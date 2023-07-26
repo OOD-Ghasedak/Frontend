@@ -1,9 +1,9 @@
 /* eslint-disable */
 
-import { reject, resolve } from "cypress/types/bluebird";
-import axiosRequest, { RequestParams } from "~/apis/axiosRequest";
+import { RequestParams } from "~/apis/axiosRequest";
 import { JoinedChannel, OwnedOrManagedChannel } from "~/models";
 import { JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from "~/urls/channel";
+import { OutsideVueComponent } from "~/utils/connectToNuxt";
 
 interface UserProfile {
   phone_number: string;
@@ -23,7 +23,7 @@ export default interface Ghased {
   getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]>;
 }
 
-class ConcreteGhased implements Ghased {
+class ConcreteGhased extends OutsideVueComponent implements Ghased {
   getProfile(): Promise<UserProfile> {
     throw new Error('Method not implemented.')
   }
@@ -37,13 +37,13 @@ class ConcreteGhased implements Ghased {
   }
 
   getJoinedChannels(): Promise<JoinedChannel[]> {
-    return axiosRequest.axiosRequest(new RequestParams(JOINED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
+    return this.mainConfig.$apis.backend.send(new RequestParams(JOINED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
       return response
     })
   }
 
   async getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]> {
-    return axiosRequest.axiosRequest(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
+    return this.mainConfig.$apis.backend.send(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, '$get', { withAuth: true, retrieveAuth: true })).then((response) => {
       return response
     })
   }

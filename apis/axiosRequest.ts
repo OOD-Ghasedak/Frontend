@@ -38,7 +38,11 @@ export class RequestParams {
   }
 }
 
-export class AxiosRequest extends OutsideVueComponent {
+export interface BackendAPI {
+  send(requestParams: RequestParams): Promise<any>;
+}
+
+class AxiosRequest extends OutsideVueComponent implements BackendAPI {
   defaultCatchFunction (error: any): void {
     if (error?.response?.data) {
       // this.$showError(error.response.data[Object.keys(error.response.data)[0]])
@@ -66,7 +70,7 @@ export class AxiosRequest extends OutsideVueComponent {
     return config
   }
 
-  axiosRequest (request: RequestParams): Promise<any> {
+  send (request: RequestParams): Promise<any> {
     const url: string = request.address
     const config = this.getConfig(request.params.config, request.params.withAuth)
     const otherArgs = request.axiosCallArgs(config)
@@ -91,4 +95,5 @@ export class AxiosRequest extends OutsideVueComponent {
   }
 }
 
-export default new AxiosRequest()
+const concreteBackendAPI: BackendAPI = new AxiosRequest()
+export default concreteBackendAPI
