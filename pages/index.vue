@@ -61,6 +61,14 @@ export default class IndexPage extends Vue {
   --top-color-5: #a682d9;
   --top-color-6: #c0a6e4;
   --top-color-7: #f0e9f9;
+  --warning-color-1: #998439;
+  --warning-color-2: #b09741;
+  --warning-color-3: #fbd85d;
+  --warning-color-4: #fcdf79;
+  --warning-color-5: #fde8a1;
+  --warning-color-6: #fdefbd;
+  --warning-color-7: #fffbef;
+  --error-color-1: #ef6262;
 }
 
 :root {

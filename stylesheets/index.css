@@ -9,15 +9,12 @@ div {
   }
   
   button {
+    display: flex;
     border-radius: 15px;
     /*font-size: 5vw;*/
     /*font-weight: 600;*/
-    min-height: 48px;
-    height: 48px;
     border-width: 0;
     background: transparent;
-    color: var(--primary-color-1);
-    font-size: 41px;
   }
   
   h1, h2, h3, h4, h5, h6, p {
@@ -58,6 +55,22 @@ div {
     font-weight: lighter;
   }
 
+  h2.secondary {
+    color: var(--secondary-color-2);
+  }
+
+  h3.secondary {
+    color: var(--secondary-color-1);
+  }
+
+  h5.secondary {
+    color: var(--secondary-color-2);
+  }
+
+  .error {
+    color: var(--error-color-1);
+  }
+
   input, p {
     font-size: 29px;
     font-weight: var(--medium-font-size);
@@ -87,6 +100,18 @@ div {
 
 .row {
   flex-direction: row;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.image-sized--2{
+  width: 20px;
+  height: 20px;
+}
+
+.image-sized--1{
+  width: 25px;
+  height: 25px;
 }
 
   .image-sized-1 {
@@ -103,8 +128,17 @@ div {
     width: 119px;
     height: 119px;
   }
+
+  .image-sized-4 {
+    width: 159px;
+    height: 159px;
+  }
   
 .horizontally-centered {
+  align-self: center;
+}
+
+.vertically-centered {
   align-self: center;
 }
 
