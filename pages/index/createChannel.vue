@@ -10,11 +10,11 @@
     </div>
     <div class="choose-name">
       <h3>{{ 'مخاطبین کانال شما را با چه اسمی خواهند شناخت؟' }}</h3>
-      <input placeholder="نام کانال خود را وارد کنید...">
+      <input v-model="channelName" placeholder="نام کانال خود را وارد کنید...">
     </div>
     <div class="choose-description">
       <h3>{{ 'توضیحی مختصر در رابطه با کانال خود در بخش زیر وارد کنید.' }}</h3>
-      <input placeholder="بیوگرافی کانال خود را وارد کنید...">
+      <input v-model="channelDescription" placeholder="بیوگرافی کانال خود را وارد کنید...">
     </div>
     <button>
       <h2>{{ 'ادامه' }}</h2>
@@ -32,7 +32,12 @@ import RootComponent from '~/utils/rootComponent'
   components: { BackButton }
 })
 export default class CreateChannelPage extends RootComponent {
+  channelName: string = ''
+  channelDescription: string = ''
 
+  createChannel () {
+    this.mainConfig.$facades.ghased.createChannel(this.channelName, this.channelDescription)
+  }
 }
 </script>
 
