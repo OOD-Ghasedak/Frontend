@@ -5,5 +5,4 @@ services:
     image: ghcr.io/ood-ghasedak/frontend:feat-ci
     ports:
       - "3000:3000"
-    command:
-      "npm run start"
+    command: ["npm", "run", "start"]
