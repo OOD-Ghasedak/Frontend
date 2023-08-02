@@ -46,6 +46,8 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
       - name: Stop Prior Container
         run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} docker stop $CONTAINER_NAME
+      - name: Removee Prior Container
+        run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} docker rm $CONTAINER_NAME
       - name: Pull New Image
         if: always()
         run: docker pull ghcr.io/ood-ghasedak/frontend:feat-ci

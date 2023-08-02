@@ -1,8 +1,0 @@
-version: "3"
-
-services:
-  nuxt:
-    image: ghcr.io/ood-ghasedak/frontend:feat-ci
-    ports:
-      - "3000:3000"
-    command: ["npm", "run", "start"]
