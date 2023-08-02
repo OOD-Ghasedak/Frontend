@@ -1,6 +1,7 @@
 <template>
   <button class="back-button" @click="back">
-    <h3>{{ 'بازگشت >' }}</h3>
+    <h3>{{ 'بازگشت' }}</h3>
+    <img src="@/static/images/back.svg" class="image-sized--1">
   </button>
 </template>
 
@@ -25,5 +26,13 @@ export default class BackButton extends Vue {
 .back-button {
     position: absolute;
     left: 30px;
+}
+
+.back-button > h3 {
+  color: var(--top-color-4);
+}
+
+.back-button > img {
+  margin-right: 5px;
 }
 </style>

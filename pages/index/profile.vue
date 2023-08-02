@@ -1,11 +1,6 @@
 <template>
   <div class="profile">
-    <button style="display: none;" type="button" class="back-btn">
-      <img src="public/images/back.svg" alt="back arrow">
-      <h5 class="back" style="color: #3e1874">
-        بازگشت
-      </h5>
-    </button>
+    <BackButton />
     <div class="profile-intro">
       <img class="image-sized-4 horizontally-centered" src="@/static/images/ghased.svg" alt="Profile picture">
       <div class="profile-name">
@@ -88,10 +83,13 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import BackButton from '~/components/BackButton.vue'
 import { Money, UserProfile, UserWallet } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component
+@Component({
+  components: { BackButton }
+})
 export default class ProfilePage extends RootComponent {
   profile: UserProfile = {
     user_name: 'sepehrkianian09',
