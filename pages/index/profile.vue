@@ -14,7 +14,7 @@
         </h5>
         <div class="profile-username horizontally-centered row">
           <h5 class="username-field">
-            @mammad
+            {{ `@${profile.user_name}` }}
           </h5>
           <button style="margin-right: 5px;">
             <img class="image-sized--2" src="public/images/edit.svg" alt="verified">
@@ -27,7 +27,7 @@
         <div class="email">
           <div class="see row">
             <img class="image-sized--1">
-            <h5>{{ 'sepehrkianian@gmail.com' }}</h5>
+            <h5>{{ profile.email || profile.phone_number }}</h5>
           </div>
           <div class="edit row">
             <h6>{{ 'شماره تلفن/ایمیل' }}</h6>
@@ -58,7 +58,7 @@
               {{ 'موجودی' }}
             </h2>
             <h5 class="secondary">
-              {{ '۱۲۰۰۰۰۰۰ ریال' }}
+              {{ `${wallet.balance} ریال` }}
             </h5>
           </div>
           <img class="image-sized-1">
@@ -67,14 +67,14 @@
           <h3 class="text-centered">
             {{ 'عملیات' }}
           </h3>
-          <input placeholder="مقدار">
+          <input v-model="walletOperationMoney" placeholder="مقدار">
           <div class="actions row">
-            <button>
+            <button @click="deposit">
               <h3 class="error">
                 {{ 'برداشت' }}
               </h3>
             </button>
-            <button>
+            <button @click="withdraw">
               <h3 class="secondary">
                 {{ 'واریز' }}
               </h3>
@@ -88,11 +88,32 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import Vue from 'vue'
+import { Money, UserProfile, UserWallet } from '~/models'
+import RootComponent from '~/utils/rootComponent'
 
 @Component
-export default class ProfilePage extends Vue {
+export default class ProfilePage extends RootComponent {
+  profile: UserProfile
+  wallet: UserWallet
 
+  walletOperationMoney: Money = 0
+
+  mounted () {
+    this.mainConfig.$facades.ghased.getProfile().then((profile) => {
+      this.profile = profile
+    })
+    this.mainConfig.$facades.wallet.getWallet().then((wallet) => {
+      this.wallet = wallet
+    })
+  }
+
+  withdraw () {
+    this.mainConfig.$facades.wallet.withdraw(this.walletOperationMoney)
+  }
+
+  deposit () {
+    this.mainConfig.$facades.wallet.deposit(this.walletOperationMoney)
+  }
 }
 </script>
 
@@ -164,7 +185,7 @@ img {
 .content > .wallet > .see {
   border-bottom: 1px solid;
   padding: 10px 4%;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .wallet > .edit {

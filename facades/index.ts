@@ -1,14 +1,17 @@
 import { Plugin } from '@nuxt/types'
 import Ghased, { concreteGhased } from './ghased'
 import VisitingUser, { concreteVisitingUser } from './visitingUser'
+import Wallet, { concreteWallet } from './wallet'
 interface Facades {
   visitingUser: VisitingUser,
-  ghased: Ghased
+  ghased: Ghased,
+  wallet: Wallet
 }
 
 const concreteFacades: Facades = {
   visitingUser: concreteVisitingUser,
-  ghased: concreteGhased
+  ghased: concreteGhased,
+  wallet: concreteWallet
 }
 
 declare module '@nuxt/types' {

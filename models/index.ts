@@ -11,3 +11,15 @@ export interface JoinedChannel extends Channel {
 export interface OwnedOrManagedChannel extends Channel {
     role;
 }
+
+export interface UserProfile {
+    phone_number: string;
+    user_name: string;
+    email: string;
+}
+
+export interface UserWallet {
+    balance: number
+}
+
+export type Money = number;
