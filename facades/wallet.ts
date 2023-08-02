@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
 import { Money, UserWallet } from '~/models'
 import { WALLET_URL } from '~/urls/financial'

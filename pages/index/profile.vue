@@ -7,7 +7,7 @@
       </h5>
     </button>
     <div class="profile-intro">
-      <img class="image-sized-4 horizontally-centered" src="public/images/profile-pic.svg" alt="Profile picture">
+      <img class="image-sized-4 horizontally-centered" src="@/static/images/ghased.svg" alt="Profile picture">
       <div class="profile-name">
         <h5 class="text-centered">
           قاصد
@@ -17,7 +17,7 @@
             {{ `@${profile.user_name}` }}
           </h5>
           <button style="margin-right: 5px;">
-            <img class="image-sized--2" src="public/images/edit.svg" alt="verified">
+            <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
           </button>
         </div>
       </div>
@@ -26,26 +26,26 @@
       <div class="user edit-form">
         <div class="email">
           <div class="see row">
-            <img class="image-sized--1">
+            <img class="image-sized--1" src="@/static/images/email.svg">
             <h5>{{ profile.email || profile.phone_number }}</h5>
           </div>
           <div class="edit row">
             <h6>{{ 'شماره تلفن/ایمیل' }}</h6>
             <button style="margin-right: 5px;">
-              <img class="image-sized--2" src="public/images/edit.svg" alt="verified">
+              <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
         </div>
         <div class="password">
           <div class="see row">
-            <img class="image-sized--1">
+            <img class="image-sized--1" src="@/static/images/key.svg">
             <h5>{{ '******' }}</h5>
-            <img class="image-sized--2 vertically-centered">
+            <img class="image-sized--2 vertically-centered" src="@/static/images/eye.svg">
           </div>
           <div class="edit row">
             <h6>{{ 'رمزعبور' }}</h6>
             <button style="margin-right: 5px;">
-              <img class="image-sized--2" src="public/images/edit.svg" alt="verified">
+              <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
         </div>
@@ -61,7 +61,7 @@
               {{ `${wallet.balance} ریال` }}
             </h5>
           </div>
-          <img class="image-sized-1">
+          <img class="image-sized-1" src="@/static/images/wallet.svg">
         </div>
         <div class="edit horizontally-centered">
           <h3 class="text-centered">
@@ -93,8 +93,15 @@ import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ProfilePage extends RootComponent {
-  profile: UserProfile
-  wallet: UserWallet
+  profile: UserProfile = {
+    user_name: 'sepehrkianian09',
+    email: 'sepehrkianian09@gmail.com',
+    phone_number: '09112245833'
+  }
+
+  wallet: UserWallet = {
+    balance: 98000
+  }
 
   walletOperationMoney: Money = 0
 
@@ -145,10 +152,6 @@ export default class ProfilePage extends RootComponent {
 
 .profile-username > .username-field {
   margin-left: 5px;
-}
-
-img {
-  background-color: blue;
 }
 
 .profile > .content {

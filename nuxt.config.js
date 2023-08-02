@@ -1,7 +1,7 @@
 const debugMode = false
-function isProduction () {
-  return process.env.NODE_ENV === 'production'
-}
+// function isProduction () {
+//   return process.env.NODE_ENV === 'production'
+// }
 
 if (debugMode) {
   console.log('process environment')
@@ -9,7 +9,7 @@ if (debugMode) {
 }
 
 const PRODUCTION_API_BASE = 'http://ood.ablimootorsh.info:8000'
-const DEVELOPMENT_API_BASE = 'http://localhost:8000'
+// const DEVELOPMENT_API_BASE = 'http://localhost:8000'
 const API_BASE = PRODUCTION_API_BASE
 // const API_BASE = isProduction() ? PRODUCTION_API_BASE : DEVELOPMENT_API_BASE
 const options = {
