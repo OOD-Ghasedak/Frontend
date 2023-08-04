@@ -29,13 +29,13 @@ import RootComponent from '~/utils/rootComponent'
 export default class SignUpPage extends RootComponent {
   emailOrPhoneNumber: string = ''
   signup () {
-    // this.mainConfig.$facades.visitingUser.create_user(this.email, this.username, this.phoneNumber, this.password)
-    //   .then(() => {
-    //     this.$router.push({ path: '/login' })
-    //   })
-    //   .catch((error: string) => {
-    //     this.$nuxt.showError(error)
-    //   })
+    this.mainConfig.$facades.visitingUser.signUp(this.emailOrPhoneNumber)
+      .then(() => {
+        this.$router.push('ConfirmSignUpPage')
+      })
+      .catch((error: string) => {
+        this.$nuxt.showError(error)
+      })
   }
 }
 </script>

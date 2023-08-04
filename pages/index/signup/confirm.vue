@@ -22,11 +22,13 @@ import RootComponent from '~/utils/rootComponent'
 @Component({
   components: { BackButton, CodeInput }
 })
-export default class VerifySignUpPage extends RootComponent {
+export default class ConfirmSignUpPage extends RootComponent {
   email: string = 'sepehrkianian@gmail.com'
-  verify (v: string) {
-    console.log(`verified: ${v}`)
-    console.log(typeof v)
+  verify (verifyCode: string) {
+    this.mainConfig.$facades.visitingUser.signUpVerify(verifyCode)
+      .then(() => {
+        this.$router.push('CompleteSignUpPage')
+      })
   }
 }
 </script>

@@ -29,7 +29,10 @@ export default class CompleteSignUpPage extends RootComponent {
   password: string = ''
 
   completeSignUp () {
-    console.log('complete signup')
+    this.mainConfig.$facades.visitingUser.signUpComplete(this.username, this.password)
+      .then(() => {
+        this.$router.push('Login')
+      })
   }
 }
 </script>

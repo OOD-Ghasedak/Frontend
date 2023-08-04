@@ -30,7 +30,7 @@ import RootComponent from '~/utils/rootComponent'
     BackButton
   }
 })
-export default class Login extends RootComponent {
+export default class LoginPage extends RootComponent {
   emailOrUsername: string = ''
   password: string = ''
   login () {

@@ -3,28 +3,26 @@ import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
 import { LOGIN_URL, SIGNUP_URL } from '~/urls/account'
 
 export default interface VisitingUser {
-  create_user(email: string, username: string, phone_number: string, password: string): Promise<any>;
+  signUp(emailOrPhoneNumber: string): Promise<any>;
+
+  signUpVerify(verifyCode: string): Promise<any>;
+
+  signUpComplete(username: string, password: string): Promise<any>;
 
   login(emailOrUsername: string, password: string): Promise<any>;
 }
 
 class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
-  create_user (email: string, username: string, phoneNumber: string, password: string) {
-    console.log('create_user')
+  signUp (emailOrPhoneNumber: string): Promise<any> {
+    throw new Error('Method not implemented.')
+  }
 
-    return this.mainConfig.$apis.backend.send(new RequestParams(
-      SIGNUP_URL,
-      REQUEST_METHODS.POST,
-      {
-        data: { email, username, phone_number: phoneNumber, password }
-      }
-    )).then(() => {
-      console.log('success')
-    }).catch((response) => {
-      console.log('failure')
-      console.log(response)
-      throw response
-    })
+  signUpVerify (verifyCode: string): Promise<any> {
+    throw new Error('Method not implemented.')
+  }
+
+  signUpComplete (username: string, password: string): Promise<any> {
+    throw new Error('Method not implemented.')
   }
 
   login (emailOrUsername: string, password: string) {
