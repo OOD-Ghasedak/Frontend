@@ -15,9 +15,8 @@
         <img src="@/static/images/key.svg">
       </div>
     </div>
-    <button>
+    <button class="secondary-button" @click="console.log('jesus')">
       <h2>{{ 'تکمیل ثبت‌نام' }}</h2>
-      <img src="@/static/images/next.svg" class="image-sized--2">
     </button>
   </div>
 </template>

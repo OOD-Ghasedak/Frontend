@@ -15,8 +15,8 @@
       <img src="@/static/images/email.svg">
     </div>
 
-    <button class="horizontally-centered" @click="signup">
-      <h2>{{ 'ثبت نام >' }}</h2>
+    <button class="secondary-button horizontally-centered" @click="signup">
+      <h2>{{ 'ثبت نام' }}</h2>
     </button>
   </div>
 </template>

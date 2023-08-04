@@ -20,8 +20,8 @@
         <img src="@/static/images/key.svg">
       </div>
     </div>
-    <button class="horizontally-centered" @click="login">
-      <h2>{{ 'ورود >' }}</h2>
+    <button class="secondary-button horizontally-centered" @click="login">
+      <h2>{{ 'ورود' }}</h2>
     </button>
   </div>
 </template>

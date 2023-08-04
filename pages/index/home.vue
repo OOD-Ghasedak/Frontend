@@ -144,6 +144,9 @@ export default class Page extends RootComponent {
 
 .see-channels > .header > button {
   border-radius: 0;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
 }
 
 .see-channels > .header > .see-joined-channels-button {

@@ -6,9 +6,8 @@
       {{ `کد ۴رقمی ارسال‌شده به ${email} را وارد کنید.` }}
     </h3>
     <CodeInput class-name="verification-code" :fields="4" type="number" @complete="verify" />
-    <button>
+    <button class="secondary-button">
       <h2>{{ 'تایید' }}</h2>
-      <img src="@/static/images/next.svg" class="image-sized--2">
     </button>
   </div>
 </template>

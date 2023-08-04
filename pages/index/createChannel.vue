@@ -4,9 +4,9 @@
     <h1>{{ 'ساخت کانال' }}</h1>
     <div class="choose-picture">
       <h3>{{ 'تصویر کانال' }}</h3>
-      <div class="chose-picture circular image-sized-3">
+      <button class="chose-picture circular image-sized-3">
         <h1>{{ '+' }}</h1>
-      </div>
+      </button>
     </div>
     <div class="choose-name">
       <h3>{{ 'مخاطبین کانال شما را با چه اسمی خواهند شناخت؟' }}</h3>
@@ -16,9 +16,8 @@
       <h3>{{ 'توضیحی مختصر در رابطه با کانال خود در بخش زیر وارد کنید.' }}</h3>
       <input v-model="channelDescription" placeholder="بیوگرافی کانال خود را وارد کنید...">
     </div>
-    <button>
+    <button class="secondary-button">
       <h2>{{ 'ادامه' }}</h2>
-      <img src="@/static/images/next.svg" class="image-sized--2">
     </button>
   </div>
 </template>
