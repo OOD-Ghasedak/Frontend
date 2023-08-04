@@ -1,24 +1,22 @@
 <template>
   <div class="account-div login">
+    <BackButton />
+
     <div class="title">
       <h1 class="text-centered">
-        ورود
+        {{ 'ورود' }}
       </h1>
       <p class="text-centered">
-        .لطفا اطلاعات زیر را وارد کنید
+        {{ '.لطفا اطلاعات زیر را وارد کنید' }}
       </p>
     </div>
     <div class="inputs">
-      <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری">
-      <input v-model="password" placeholder="رمز عبور" type="password">
+      <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری خود را وارد کنید...">
+      <input v-model="password" placeholder="رمز عبور خود را وارد کنید..." type="password">
     </div>
-
-    <div class="action">
-      <button class="horizontally-centered" @click="login">
-        <h2>{{ 'ورود >' }}</h2>
-      </button>
-    </div>
-    <BackButton />
+    <button class="horizontally-centered" @click="login">
+      <h2>{{ 'ورود >' }}</h2>
+    </button>
   </div>
 </template>
 
@@ -50,4 +48,9 @@ export default class Login extends RootComponent {
     height: 200px;
 }
 
+.account-div {
+  height: 100%;
+  padding: 50px max(30px, 5%);
+  justify-content: space-between;
+}
 </style>

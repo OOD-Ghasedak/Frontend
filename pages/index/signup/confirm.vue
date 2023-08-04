@@ -18,10 +18,11 @@ import Component from 'vue-class-component'
 import CodeInput from 'vue-verification-code-input'
 import BackButton from '~/components/BackButton.vue'
 import RootComponent from '~/utils/rootComponent'
-  @Component({
-    components: { BackButton, CodeInput }
-  })
-export default class VerifyPage extends RootComponent {
+
+@Component({
+  components: { BackButton, CodeInput }
+})
+export default class VerifySignUpPage extends RootComponent {
   email: string = 'sepehrkianian@gmail.com'
   verify (v: string) {
     console.log(`verified: ${v}`)
