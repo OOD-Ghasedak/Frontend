@@ -11,8 +11,14 @@
       </p>
     </div>
     <div class="inputs">
-      <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری خود را وارد کنید...">
-      <input v-model="password" placeholder="رمز عبور خود را وارد کنید..." type="password">
+      <div class="icon-input">
+        <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری خود را وارد کنید...">
+        <img src="@/static/images/atsign.svg">
+      </div>
+      <div class="icon-input">
+        <input v-model="password" placeholder="رمز عبور خود را وارد کنید..." type="password">
+        <img src="@/static/images/key.svg">
+      </div>
     </div>
     <button class="horizontally-centered" @click="login">
       <h2>{{ 'ورود >' }}</h2>
@@ -46,6 +52,7 @@ export default class LoginPage extends RootComponent {
 <style>
 .login > .inputs {
     height: 200px;
+    justify-content: space-between;
 }
 
 .account-div {

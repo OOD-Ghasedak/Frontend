@@ -3,7 +3,7 @@
     <div class="header">
       <div class="row-1 row">
         <div class="user row">
-          <img class="image-sized-2 circular">
+          <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
           <div class="user-name">
             <h3>{{ 'قاصد' }} </h3>
             <h6>{{ username }}</h6>
@@ -16,13 +16,16 @@
         </div>
         <div class="create-channel">
           <button class="horizontally-centered circular image-sized-1">
-            {{ '+' }}
+            <h2>{{ '+' }}</h2>
           </button>
           <h6>{{ 'ساخت کانال' }}</h6>
         </div>
       </div>
       <div class="search-channel">
-        <input class="horizontally-centered text-centered" placeholder="جستجوی کانال">
+        <div class="icon-input">
+          <input class="text-centered" placeholder="جستجوی کانال">
+          <img src="@/static/images/magnifier.svg">
+        </div>
       </div>
     </div>
     <div class="see-channels">
@@ -103,12 +106,13 @@ export default class Page extends RootComponent {
     height: fit-content;
 }
 
-.row-1 > .user > img {
-    background-color: blue;
-}
 .user > .user-name {
   margin-right: 10px;
   justify-content: center;
+}
+
+.search-channel {
+  padding: 0 15%;
 }
 
 .search-channel > input {
@@ -123,8 +127,11 @@ export default class Page extends RootComponent {
   justify-content: center;
   margin-bottom: 5px;
   background-color: var(--top-color-3);
-  color: var(--white);
   padding: 0;
+}
+.create-channel > button > h2 {
+  margin: auto;
+  color: var(--white);
 }
 
 .see-channels > .header {

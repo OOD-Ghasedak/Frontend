@@ -6,8 +6,14 @@
       <h3>{{ 'لطفا اطلاعات زیر را وارد کنید.' }}</h3>
     </div>
     <div class="inputs">
-      <input v-model="username" placeholder="نام کاربری خود را وارد کنید">
-      <input v-model="password" placeholder="رمزعبور خود را وارد کنید" type="password">
+      <div class="icon-input">
+        <input v-model="username" placeholder="نام کاربری خود را وارد کنید">
+        <img src="@/static/images/user.svg">
+      </div>
+      <div class="icon-input">
+        <input v-model="password" placeholder="رمزعبور خود را وارد کنید" type="password">
+        <img src="@/static/images/key.svg">
+      </div>
     </div>
     <button>
       <h2>{{ 'تکمیل ثبت‌نام' }}</h2>
@@ -43,6 +49,11 @@ export default class CompleteSignUpPage extends RootComponent {
   align-items: center;
   justify-content: space-between;
   padding: 50px 17%;
+}
+
+.signup-complete > .inputs {
+  height: 190px;
+  justify-content: space-between;
 }
 
 .title {
