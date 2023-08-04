@@ -15,6 +15,7 @@ module.exports = {
     'no-console': 0,
     'import/no-named-as-default': 0,
     'no-useless-constructor': 0,
-    'import/no-named-as-default-member': 0
+    'import/no-named-as-default-member': 0,
+    'no-control-regex': 0
   }
 }

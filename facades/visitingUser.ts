@@ -22,7 +22,7 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
       } else if (this.emailPattern.test(emailOrPhoneNumber)) {
         resolve({ email: emailOrPhoneNumber })
       } else {
-        reject('Input is Not Valid')
+        reject(new Error('Input is Not Valid'))
       }
     })
   }
@@ -37,7 +37,7 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
   }
 
   signUpVerify (verifyCode: string): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.mainConfig.$stores.visitingUser.setOTP(verifyCode)
       resolve('Success')
     })
