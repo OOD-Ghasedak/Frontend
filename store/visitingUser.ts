@@ -8,6 +8,8 @@ import {
 import { store } from '~/store'
 
 export interface VisitingUserStore {
+  setOTP(otp: string);
+  otp: string;
   setAccessToken(accessToken: string);
   accessToken: string;
   setRefreshToken(refreshToken: string);
@@ -18,6 +20,15 @@ export interface VisitingUserStore {
 class ConcreteVisitingUserStore extends VuexModule implements VisitingUserStore {
   private _accessToken: string = ''
   private _refreshToken: string = ''
+
+  @Mutation
+  setOTP (otp: string) {
+    Cookies.set('otp', otp)
+  }
+
+  get otp (): string {
+    return Cookies.get('otp')
+  }
 
   @Mutation
   setAccessToken (accessToken: string) {
