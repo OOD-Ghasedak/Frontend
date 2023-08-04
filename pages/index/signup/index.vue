@@ -10,7 +10,10 @@
         {{ '.لطفا اطلاعات زیر را وارد کنید' }}
       </p>
     </div>
-    <input v-model="emailOrPhoneNumber" placeholder="ایمیل/شماره‌تلفن خود را وارد کنید...">
+    <div class="icon-input">
+      <input v-model="emailOrPhoneNumber" placeholder="ایمیل/شماره‌تلفن خود را وارد کنید...">
+      <img src="@/static/images/email.svg">
+    </div>
 
     <button class="horizontally-centered" @click="signup">
       <h2>{{ 'ثبت نام >' }}</h2>
