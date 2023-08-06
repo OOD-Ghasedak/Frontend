@@ -1,101 +1,97 @@
-@import "./account.css";
+/* @import "./account.css"; */
 
 * {
   direction: rtl;
 }
 div {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  button {
-    display: flex;
-    border-radius: 15px;
-    /*font-size: 5vw;*/
-    /*font-weight: 600;*/
-    border-width: 0;
-    background: transparent;
-  }
-  
-  h1, h2, h3, h4, h5, h6, p {
-    direction: ltr;
-    /* align-self: center; */
-    margin-bottom: 0;
-    color: var(--top-color-1);
-    text-align: right;
-  }
-  
-  h1 {
-    font-size: 49px;
-    font-weight: bolder;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  h2 {
-    font-size: 32px;
-    font-weight: bold;
-  }
+button {
+  display: flex;
+  border-width: 0;
+}
 
-  h3 {
-    font-size: 29px;
-    font-weight: var(--medium-font-size);
-  }
+h1, h2, h3, h4, h5, h6, p {
+  /* direction: ltr; */
+  /* align-self: center; */
+  margin-bottom: 0;
+  color: var(--top-color-1);
+  text-align: right;
+}
 
-  h4 {
-    font-size: 26px;
-    font-weight: normal;
-  }
+h1 {
+  font-size: 49px;
+  font-weight: bolder;
+}
 
-  h5 {
-    font-size: 20px;
-    font-weight: normal;
-  }
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
 
-  h6 {
-    font-size: 17px;
-    font-weight: lighter;
-  }
+h3 {
+  font-size: 29px;
+  font-weight: var(--medium-font-size);
+}
 
-  h2.secondary {
-    color: var(--secondary-color-2);
-  }
+h4 {
+  font-size: 26px;
+  font-weight: normal;
+}
 
-  h3.secondary {
-    color: var(--secondary-color-1);
-  }
+h5 {
+  font-size: 20px;
+  font-weight: normal;
+}
 
-  h5.secondary {
-    color: var(--secondary-color-2);
-  }
+h6 {
+  font-size: 17px;
+  font-weight: lighter;
+}
 
-  .error {
-    color: var(--error-color-1);
-  }
+h2.secondary {
+  color: var(--secondary-color-2);
+}
 
-  input, p {
-    font-size: 29px;
-    font-weight: var(--medium-font-size);
-    color: var(--top-color-1);
-  }
-  input {
-    border: none;
-      height: 56px;
-      padding: 5px 10px;
-      border-bottom: 1px solid;
-      outline: none;
-      border-color: var(--top-color-1);
-      color: var(--top-color-5);
-  }
-  
-  /* hide number input arrow */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  /* Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
+h3.secondary {
+  color: var(--secondary-color-1);
+}
+
+h5.secondary {
+  color: var(--secondary-color-2);
+}
+
+.error {
+  color: var(--error-color-1);
+}
+
+input, p {
+  font-size: 29px;
+  font-weight: var(--medium-font-size);
+  color: var(--top-color-1);
+}
+input {
+  border: none;
+    height: 56px;
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+    outline: none;
+    border-color: var(--top-color-1);
+    color: var(--top-color-5);
+}
+
+/* hide number input arrow */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 
 .row {
@@ -114,25 +110,25 @@ div {
   height: 25px;
 }
 
-  .image-sized-1 {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .image-sized-2 {
-    width: 98px;
-    height: 98px;
-  }
-  
-  .image-sized-3 {
-    width: 119px;
-    height: 119px;
-  }
+.image-sized-1 {
+  width: 50px;
+  height: 50px;
+}
 
-  .image-sized-4 {
-    width: 159px;
-    height: 159px;
-  }
+.image-sized-2 {
+  width: 98px;
+  height: 98px;
+}
+
+.image-sized-3 {
+  width: 119px;
+  height: 119px;
+}
+
+.image-sized-4 {
+  width: 159px;
+  height: 159px;
+}
   
 .horizontally-centered {
   align-self: center;
@@ -142,10 +138,35 @@ div {
   align-self: center;
 }
 
-  .text-centered {
-    text-align: center;
-  }
-  
-  .circular {
-    border-radius: 50%;
-  }
+.text-centered {
+  text-align: center;
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.icon-input {
+  position: relative;
+}
+
+.icon-input > img {
+  position: absolute;
+  left: 0;
+  margin: auto 0;
+  top: 0;
+  bottom: 0;
+}
+
+
+.secondary-button {
+  display: flex;
+  border-width: 0;
+  background: transparent;
+  align-items: center;
+}
+.secondary-button:after {
+  content: url('~/static/images/next.svg');
+  margin-right: 15px;
+  height: 40px;
+}

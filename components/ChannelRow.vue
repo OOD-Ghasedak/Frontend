@@ -12,8 +12,8 @@
       </div>
     </div>
     <slot />
-    <button class="visit-button">
-      <h5>{{ 'مشاهده کانال >' }}</h5>
+    <button class="visit-button secondary-button">
+      <h5>{{ 'مشاهده کانال' }}</h5>
     </button>
   </div>
 </template>

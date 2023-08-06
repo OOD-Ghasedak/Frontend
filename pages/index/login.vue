@@ -1,24 +1,28 @@
 <template>
   <div class="account-div login">
+    <BackButton />
+
     <div class="title">
       <h1 class="text-centered">
-        ورود
+        {{ 'ورود' }}
       </h1>
       <p class="text-centered">
-        .لطفا اطلاعات زیر را وارد کنید
+        {{ '.لطفا اطلاعات زیر را وارد کنید' }}
       </p>
     </div>
     <div class="inputs">
-      <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری">
-      <input v-model="password" placeholder="رمز عبور" type="password">
+      <div class="icon-input">
+        <input v-model="emailOrUsername" placeholder="ایمیل/نام کاربری خود را وارد کنید...">
+        <img src="@/static/images/atsign.svg">
+      </div>
+      <div class="icon-input">
+        <input v-model="password" placeholder="رمز عبور خود را وارد کنید..." type="password">
+        <img src="@/static/images/key.svg">
+      </div>
     </div>
-
-    <div class="action">
-      <button class="horizontally-centered" @click="login">
-        <h2>{{ 'ورود >' }}</h2>
-      </button>
-    </div>
-    <BackButton />
+    <button class="secondary-button horizontally-centered" @click="login">
+      <h2>{{ 'ورود' }}</h2>
+    </button>
   </div>
 </template>
 
@@ -32,7 +36,7 @@ import RootComponent from '~/utils/rootComponent'
     BackButton
   }
 })
-export default class Login extends RootComponent {
+export default class LoginPage extends RootComponent {
   emailOrUsername: string = ''
   password: string = ''
   login () {
@@ -48,6 +52,12 @@ export default class Login extends RootComponent {
 <style>
 .login > .inputs {
     height: 200px;
+    justify-content: space-between;
 }
 
+.account-div {
+  height: 100%;
+  padding: 50px max(30px, 5%);
+  justify-content: space-between;
+}
 </style>

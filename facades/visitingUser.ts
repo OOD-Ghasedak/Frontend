@@ -1,30 +1,56 @@
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
-import { LOGIN_URL, SIGNUP_URL } from '~/urls/account'
+import { LOGIN_URL, SIGNUP_URL, VERIFY_SIGNUP_URL } from '~/urls/account'
 
 export default interface VisitingUser {
-  create_user(email: string, username: string, phone_number: string, password: string): Promise<any>;
+  signUp(emailOrPhoneNumber: string): Promise<any>;
+
+  signUpVerify(verifyCode: string): Promise<any>;
+
+  signUpComplete(username: string, password: string): Promise<any>;
 
   login(emailOrUsername: string, password: string): Promise<any>;
 }
 
 class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
-  create_user (email: string, username: string, phoneNumber: string, password: string) {
-    console.log('create_user')
-
-    return this.mainConfig.$apis.backend.send(new RequestParams(
-      SIGNUP_URL,
-      REQUEST_METHODS.POST,
-      {
-        data: { email, username, phone_number: phoneNumber, password }
+  private readonly phoneNumberPattern: RegExp = /^[0][9]\d{9}$/
+  private readonly emailPattern: RegExp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|\\[\x01-\x09\x0B\x0C\x0E-\x7F])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21-\x5A\x53-\x7F]|\\[\x01-\x09\x0B\x0C\x0E-\x7F])+)\])/
+  private validateSignUpInput (emailOrPhoneNumber: string): Promise<object> {
+    return new Promise((resolve, reject) => {
+      if (this.phoneNumberPattern.test(emailOrPhoneNumber)) {
+        resolve({ phone_number: emailOrPhoneNumber })
+      } else if (this.emailPattern.test(emailOrPhoneNumber)) {
+        resolve({ email: emailOrPhoneNumber })
+      } else {
+        reject(new Error('Input is Not Valid'))
       }
-    )).then(() => {
-      console.log('success')
-    }).catch((response) => {
-      console.log('failure')
-      console.log(response)
-      throw response
     })
+  }
+
+  signUp (emailOrPhoneNumber: string): Promise<any> {
+    return this.validateSignUpInput(emailOrPhoneNumber)
+      .then((sendData) => {
+        return this.mainConfig.$apis.backend.send(new RequestParams(VERIFY_SIGNUP_URL, REQUEST_METHODS.POST, {
+          data: sendData
+        }))
+      })
+  }
+
+  signUpVerify (verifyCode: string): Promise<any> {
+    return new Promise((resolve) => {
+      this.mainConfig.$stores.visitingUser.setOTP(verifyCode)
+      resolve('Success')
+    })
+  }
+
+  signUpComplete (username: string, password: string): Promise<any> {
+    return this.mainConfig.$apis.backend.send(new RequestParams(SIGNUP_URL, REQUEST_METHODS.POST, {
+      data: {
+        username,
+        password,
+        otp: this.mainConfig.$stores.visitingUser.otp
+      }
+    }))
   }
 
   login (emailOrUsername: string, password: string) {

@@ -24,8 +24,15 @@ export default class BackButton extends Vue {
 }
 
 .back-button {
+  display: flex;
+  border-width: 0;
+  background: transparent;
+}
+
+.back-button {
     position: absolute;
     left: 30px;
+    top: 50px;
 }
 
 .back-button > h3 {
