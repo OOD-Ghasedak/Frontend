@@ -12,6 +12,13 @@ export interface OwnedOrManagedChannel extends Channel {
     role;
 }
 
+export interface ChannelContent {
+    price;
+    summary;
+    type;
+    data;
+}
+
 export interface UserProfile {
     phone_number: string;
     user_name: string;
