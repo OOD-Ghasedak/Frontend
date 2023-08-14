@@ -1,7 +1,7 @@
 <template>
   <div class="channel row">
     <div class="content row">
-      <img class="image-sized-3 circular">
+      <img class="image-sized-3 circular" src="@/static/images/ghased.svg">
       <div class="text">
         <h3 class="name">
           {{ channel.name }}
@@ -34,9 +34,6 @@ export default class ChannelRow extends Vue {
   height: 170px;
   align-items: center;
   justify-content: space-around;
-}
-.channel > .content > img {
-  background-color: blue;
 }
 .channel > .content > .text {
   justify-content: center;
