@@ -32,11 +32,11 @@ import RootComponent from '~/utils/rootComponent'
 export default class SignUpPage extends RootComponent {
   emailOrPhoneNumber: string = ''
   signup () {
-    const phoneNumber = this.$options.filters.toPersianDigits(this.emailOrPhoneNumber)
-    // const phoneNumber = this.emailOrPhoneNumber
+    // const phoneNumber = this.$options.filters.toPersianDigits(this.emailOrPhoneNumber)
+    const phoneNumber = this.emailOrPhoneNumber
     this.mainConfig.$facades.visitingUser.signUp(phoneNumber)
       .then(() => {
-        this.$router.push('ConfirmSignUpPage')
+        this.$router.push({ name: 'ConfirmSignUpPage' })
       })
       .catch((error: string) => {
         this.$nuxt.showError(error)
@@ -44,6 +44,10 @@ export default class SignUpPage extends RootComponent {
   }
 }
 </script>
+
+<router>
+  {name: 'SignUpPage'}
+</router>
 
 <style>
 .account-div {

@@ -57,7 +57,7 @@ import { JoinedChannel, OwnedOrManagedChannel } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
-export default class Page extends RootComponent {
+export default class HomePage extends RootComponent {
   username = 'sep'
 
   joinedChannelsAreVisible = true
@@ -86,6 +86,9 @@ export default class Page extends RootComponent {
   }
 }
 </script>
+<router>
+  {name: "HomePage"}
+</router>
 
 <style>
 .home-page {

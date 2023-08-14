@@ -15,7 +15,7 @@
         <img src="@/static/images/key.svg">
       </div>
     </div>
-    <button class="secondary-button" @click="console.log('jesus')">
+    <button class="secondary-button" @click="completeSignUp">
       <h2>{{ 'تکمیل ثبت‌نام' }}</h2>
     </button>
   </div>
@@ -36,11 +36,14 @@ export default class CompleteSignUpPage extends RootComponent {
   completeSignUp () {
     this.mainConfig.$facades.visitingUser.signUpComplete(this.username, this.password)
       .then(() => {
-        this.$router.push('Login')
+        this.$router.push({ name: 'LoginPage' })
       })
   }
 }
 </script>
+<router>
+  {name: "CompleteSignUpPage"}
+</router>
 
 <style>
 .signup-complete {

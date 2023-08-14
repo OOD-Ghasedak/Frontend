@@ -48,6 +48,9 @@ export default class LoginPage extends RootComponent {
   }
 }
 </script>
+<router>
+  {name: "LoginPage"}
+</router>
 
 <style>
 .login > .inputs {

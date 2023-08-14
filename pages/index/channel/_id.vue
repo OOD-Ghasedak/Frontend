@@ -14,7 +14,7 @@
     </div>
     <div class="contents">
       <div v-for="(content, i) in contents" :key="`content-${i}`" class="channel-content">
-        <img class="content-type" src="@/static/images/channel-content-type/text.svg">
+        <img class="content-type" src="@/static/images/channel-content-types/text.svg">
         <h5>{{ content.name }}</h5>
         <h6>{{ content.summary }}</h6>
         <p>{{ content.data }}</p>

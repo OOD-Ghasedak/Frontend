@@ -26,11 +26,15 @@ export default class ConfirmSignUpPage extends RootComponent {
   verify (verifyCode: string) {
     this.mainConfig.$facades.visitingUser.signUpVerify(verifyCode)
       .then(() => {
-        this.$router.push('CompleteSignUpPage')
+        this.$router.push({ name: 'CompleteSignUpPage' })
       })
   }
 }
 </script>
+
+<router>
+  {name: "ConfirmSignUpPage"}
+</router>
 
 <style>
 .signup-confirm {

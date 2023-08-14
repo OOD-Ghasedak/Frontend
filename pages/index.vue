@@ -20,7 +20,7 @@
         </div>
       </template>
       <template #default>
-        <div style="margin: auto;">
+        <div style="margin: auto; text-align: right;">
           {{ message }}
         </div>
       </template>
