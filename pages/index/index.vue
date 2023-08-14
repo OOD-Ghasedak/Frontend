@@ -59,14 +59,17 @@ import RootComponent from '~/utils/rootComponent'
 @Component
 export default class WelcomePage extends RootComponent {
   goToSignUpPage () {
-    this.$router.push('/signup/')
+    this.$router.push({ name: 'SignUpPage' })
   }
 
   goToLoginPage () {
-    this.$router.push('/login/')
+    this.$router.push({ name: 'LoginPage' })
   }
 }
 </script>
+<router>
+  {name: "WelcomePage"}
+</router>
 
 <style>
 .welcome-page {
