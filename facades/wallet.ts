@@ -1,8 +1,6 @@
-/* eslint-disable */
-
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
 import { Money, UserWallet } from '~/models'
-import { WALLET_URL } from '~/urls/financial'
+import { DEPOSIT_URL, WALLET_URL, WITHDRAW_URL } from '~/urls/financial'
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface Wallet {
@@ -23,12 +21,24 @@ class ConcreteWallet extends OutsideVueComponent implements Wallet {
     ))
   }
 
-  deposit (money: number) {
-    throw new Error('Method not implemented.')
+  deposit (amount: Money) {
+    return this.mainConfig.$apis.backend.send(new RequestParams(
+      DEPOSIT_URL, REQUEST_METHODS.POST, {
+        withAuth: true,
+        retrieveAuth: true,
+        data: { amount }
+      }
+    ))
   }
 
-  withdraw (money: number) {
-    throw new Error('Method not implemented.')
+  withdraw (amount: Money) {
+    return this.mainConfig.$apis.backend.send(new RequestParams(
+      WITHDRAW_URL, REQUEST_METHODS.POST, {
+        withAuth: true,
+        retrieveAuth: true,
+        data: { amount }
+      }
+    ))
   }
 }
 
