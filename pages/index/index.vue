@@ -58,11 +58,11 @@ import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class WelcomePage extends RootComponent {
-  goToSignUpPage() {
+  goToSignUpPage () {
     this.$router.push('/signup/')
   }
 
-  goToLoginPage() {
+  goToLoginPage () {
     this.$router.push('/login/')
   }
 }
