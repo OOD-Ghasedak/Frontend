@@ -13,11 +13,7 @@
     <div class="intro-boxes">
       <div class="top-intro">
         <div class="top-intro-box intro-box">
-          <img
-            src="@/static/images/intro-top.svg"
-            alt="Share with people in channels"
-            class="top-intro-icon"
-          >
+          <img src="@/static/images/intro-top.svg" alt="Share with people in channels" class="top-intro-icon">
           محتوای خود را در کانال‌های خود به اشتراک بگذارید
         </div>
       </div>
@@ -37,16 +33,16 @@
     <center>
       <div class="actions">
         <div class="signup-button" @click="goToSignUpPage">
-          <img src="@/static/images/chevron-left.svg" alt="Back" class="signup-button-icon">
           <p class="signup-button-text">
             شروع کنید
           </p>
+          <img src="@/static/images/chevron-left.svg" alt="Back" class="signup-button-icon">
         </div>
         <div class="signin-section">
-          <a href="" class="signin-button" @click.prevent="goToLoginPage">وارد شوید</a>
           <p class="signin-section-text">
             اکانت دارید؟
           </p>
+          <a href="" class="signin-button" @click.prevent="goToLoginPage">وارد شوید</a>
         </div>
       </div>
     </center>
@@ -84,16 +80,21 @@ export default class WelcomePage extends RootComponent {
 .header {
   margin-top: 40px;
   font-size: 4.9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .logo-withtypography {
   margin: 0 40px;
   vertical-align: middle;
+  width: 200px;
 }
 
 .top-illustration {
   position: fixed;
   top: 150px;
+  left: 0px;
   max-width: 100%;
   height: auto;
   width: auto\9;
@@ -110,20 +111,26 @@ export default class WelcomePage extends RootComponent {
   /* ie8 */
 }
 
+.intro-boxes {
+  width: 90%;
+  margin-right: 10px;
+}
+
 .intro-box {
   border-radius: 1rem;
-  padding: 1rem 5rem;
+  padding: 1rem 6rem;
   text-align: center;
   position: relative;
-  font-size: 4.3rem;
+  font-size: 3.5rem;
   font-weight: 700;
+  width: fit-content;
 }
 
 .top-intro {
   margin-top: 60px;
   display: flex;
   justify-content: right;
-  margin-right: 40px;
+  margin-right: 4px;
 }
 
 .top-intro-box {
@@ -134,7 +141,7 @@ export default class WelcomePage extends RootComponent {
 .top-intro-icon {
   position: absolute;
   top: -10px;
-  right: -200px;
+  right: -250px;
   width: 50%;
   height: 50%;
 }
@@ -143,28 +150,30 @@ export default class WelcomePage extends RootComponent {
   margin-top: 60px;
   display: flex;
   justify-content: left;
-  margin-left: 300px;
+  justify-self: left;
+  margin-right: 150px;
+  /* margin-left: 300px; */
 }
 
 .middle-intro-box {
   background-color: var(--secondary-color-7);
   color: var(--secondary-color-1);
-
 }
 
 .middle-intro-icon {
   position: absolute;
   top: -10px;
-  right: -130px;
+  left: -150px;
   width: 50%;
   height: 50%;
 }
 
 .bottom-intro {
   margin-top: 60px;
+  margin-right: 20px;
   display: flex;
   justify-content: right;
-  margin-right: 100px;
+  /* margin-right: 100px; */
 }
 
 .bottom-intro-box {
@@ -175,19 +184,23 @@ export default class WelcomePage extends RootComponent {
 .bottom-intro-icon {
   position: absolute;
   top: -12px;
-  right: -160px;
+  right: -200px;
   width: 50%;
   height: 50%;
 }
 
 .signup-button {
-  margin-top: 150px;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  margin-top: 50px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  max-width: 120px;
+  max-width: 150px;
   padding: 10px 10px;
   background-color: var(--top-color-7);
-  border-radius: 5px;
+  border-radius: 8px;
   border-color: var(--top-color-1);
   border-style: solid;
   cursor: pointer;
@@ -195,15 +208,22 @@ export default class WelcomePage extends RootComponent {
 
 .signup-button-text {
   color: var(--top-color-1);
-  font-size: 2rem;
+  font-size: 1.5rem;
+  align-self: center;
   font-family: 'Yekan Bakh Fat';
   margin: 0px;
+}
+
+.signup-button-icon {
+  align-self: center;
+  margin-right: 20px;
 }
 
 .signin-section {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-top: 20px;
 }
 
 .signin-section-text {
