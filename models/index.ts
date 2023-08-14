@@ -1,3 +1,5 @@
+export type Money = number;
+
 export interface Channel {
     id: string;
     name: string;
@@ -12,11 +14,18 @@ export interface OwnedOrManagedChannel extends Channel {
     role;
 }
 
+export enum ChannelContentType {}
+
 export interface ChannelContent {
-    price;
-    summary;
-    type;
-    data;
+    name: string;
+    price: Money;
+    summary: string;
+    type: ChannelContentType;
+    data: string;
+}
+
+export enum ChannelRole {
+    MEMBER, SPECIAL_MEMBER, ADMIN, OWNER
 }
 
 export interface UserProfile {
@@ -28,5 +37,3 @@ export interface UserProfile {
 export interface UserWallet {
     balance: number
 }
-
-export type Money = number;
