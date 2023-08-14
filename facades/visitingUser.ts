@@ -19,9 +19,9 @@ class PhoneNumberOrEmailValidator extends OutsideVueComponent {
     return new Promise((resolve, reject) => {
       if (this.phoneNumberPattern.test(emailOrPhoneNumber)) {
         const phoneNumber = this.$CurrentNuxtInstance.$options.filters.toPersianDigits(emailOrPhoneNumber)
-        resolve({ phone_number: phoneNumber, email: '' })
+        resolve({ phone_number: phoneNumber, email: null })
       } else if (this.emailPattern.test(emailOrPhoneNumber)) {
-        resolve({ email: emailOrPhoneNumber, phone_number: '' })
+        resolve({ email: emailOrPhoneNumber, phone_number: null })
       } else {
         reject(new Error('Input is Not Valid'))
       }
