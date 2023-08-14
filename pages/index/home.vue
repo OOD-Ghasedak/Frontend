@@ -2,19 +2,21 @@
   <div class="home-page">
     <div class="header">
       <div class="row-1 row">
-        <div class="user row">
-          <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
-          <div class="user-name">
-            <h3>{{ 'قاصد' }} </h3>
-            <h6>{{ username }}</h6>
+        <nuxt-link :to="{name: 'ProfilePage'}" custom>
+          <div class="user row">
+            <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
+            <div class="user-name">
+              <h3>{{ 'قاصد' }} </h3>
+              <h6>{{ username }}</h6>
+            </div>
           </div>
-        </div>
+        </nuxt-link>
         <div class="ghasedak">
           <h2>
             {{ 'قاصدک' }}
           </h2>
         </div>
-        <nuxt-link class="create-channel-link" :to="{name: 'CreateChannelPage'}" custom>
+        <nuxt-link :to="{name: 'CreateChannelPage'}" custom>
           <div class="create-channel">
             <button class="horizontally-centered circular image-sized-1">
               <h2>{{ '+' }}</h2>
@@ -124,7 +126,7 @@ export default class HomePage extends RootComponent {
   width: min(90%, 400px);
 }
 
-.create-channel-link {
+.row-1 > a {
   display: flex;
 }
 

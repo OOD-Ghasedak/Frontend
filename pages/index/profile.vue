@@ -131,6 +131,9 @@ export default class ProfilePage extends RootComponent {
   }
 }
 </script>
+<router>
+  {name: "ProfilePage"}
+</router>
 
 <style>
 

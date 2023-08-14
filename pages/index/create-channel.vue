@@ -36,6 +36,9 @@ export default class CreateChannelPage extends RootComponent {
 
   createChannel () {
     this.mainConfig.$facades.ghased.createChannel(this.channelName, this.channelDescription)
+      .then(() => {
+        this.$router.push({ name: 'HomePage' })
+      })
   }
 }
 </script>
