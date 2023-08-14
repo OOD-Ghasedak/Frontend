@@ -49,9 +49,6 @@ jobs:
         run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} docker rm $CONTAINER_NAME
       - name: Delete Prior Image
         run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} docker image rm  ghcr.io/ood-ghasedak/frontend:latest
-      - name: Pull New Image
-        if: always()
-        run: docker pull ghcr.io/ood-ghasedak/frontend:latest
       - name: Deploy
         if: always()
         run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} docker run -p 3000:3000 -d --name $CONTAINER_NAME ghcr.io/ood-ghasedak/frontend:latest
