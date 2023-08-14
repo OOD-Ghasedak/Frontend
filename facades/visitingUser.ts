@@ -12,12 +12,12 @@ export default interface VisitingUser {
   login(emailOrUsername: string, password: string): Promise<any>;
 }
 
-class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
+class PhoneNumberOrEmailValidator extends OutsideVueComponent {
   private readonly phoneNumberPattern: RegExp = /^[0][9]\d{9}$/
   private readonly emailPattern: RegExp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|\\[\x01-\x09\x0B\x0C\x0E-\x7F])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21-\x5A\x53-\x7F]|\\[\x01-\x09\x0B\x0C\x0E-\x7F])+)\])/
-  private validateSignUpInput (emailOrPhoneNumber: string): Promise<object> {
+  public validateSignUpInput (emailOrPhoneNumber: string): Promise<object> {
     return new Promise((resolve, reject) => {
-      if (this.phoneNumberPattern.test(emailOrPhoneNumber)) {
+      if (this.phoneNumberPattern.test(this.$CurrentNuxtInstance.$options.filters.toEnglishDigits(emailOrPhoneNumber))) {
         resolve({ phone_number: emailOrPhoneNumber })
       } else if (this.emailPattern.test(emailOrPhoneNumber)) {
         resolve({ email: emailOrPhoneNumber })
@@ -26,13 +26,21 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
       }
     })
   }
+}
+
+class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
+  private readonly phoneNumberOrEmailValidator = new PhoneNumberOrEmailValidator()
 
   signUp (emailOrPhoneNumber: string): Promise<any> {
-    return this.validateSignUpInput(emailOrPhoneNumber)
+    return this.phoneNumberOrEmailValidator.validateSignUpInput(emailOrPhoneNumber)
       .then((sendData) => {
         return this.mainConfig.$apis.backend.send(new RequestParams(VERIFY_SIGNUP_URL, REQUEST_METHODS.POST, {
           data: sendData
         }))
+          .then((response) => {
+            const otp = response.data.otp
+            this.$CurrentNuxtInstance.showMessage(`کد فرستاده شده به تلفن/شماره موبایل شما ${otp} است. متاسفانه سیستم پیامکی ما غیرفعال است`)
+          })
       })
   }
 

@@ -32,7 +32,9 @@ import RootComponent from '~/utils/rootComponent'
 export default class SignUpPage extends RootComponent {
   emailOrPhoneNumber: string = ''
   signup () {
-    this.mainConfig.$facades.visitingUser.signUp(this.emailOrPhoneNumber)
+    const phoneNumber = this.$options.filters.toPersianDigits(this.emailOrPhoneNumber)
+    // const phoneNumber = this.emailOrPhoneNumber
+    this.mainConfig.$facades.visitingUser.signUp(phoneNumber)
       .then(() => {
         this.$router.push('ConfirmSignUpPage')
       })

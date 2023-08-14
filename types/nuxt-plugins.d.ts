@@ -6,6 +6,7 @@ import { NuxtApp } from '@nuxt/types/app' // eslint-disable-line @typescript-esl
 declare module '@nuxt/types/app' {
     // 3. Declare augmentation for Vue
     interface NuxtApp {
-        showError: (j: string) => void;
+        showError: (error: string) => void;
+        showMessage: (message: string) => void;
     }
 }
