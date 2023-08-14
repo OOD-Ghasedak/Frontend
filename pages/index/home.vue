@@ -14,12 +14,14 @@
             {{ 'قاصدک' }}
           </h2>
         </div>
-        <div class="create-channel">
-          <button class="horizontally-centered circular image-sized-1">
-            <h2>{{ '+' }}</h2>
-          </button>
-          <h6>{{ 'ساخت کانال' }}</h6>
-        </div>
+        <nuxt-link class="create-channel-link" :to="{name: 'CreateChannelPage'}" custom>
+          <div class="create-channel">
+            <button class="horizontally-centered circular image-sized-1">
+              <h2>{{ '+' }}</h2>
+            </button>
+            <h6>{{ 'ساخت کانال' }}</h6>
+          </div>
+        </nuxt-link>
       </div>
       <div class="search-channel">
         <div class="icon-input">
@@ -120,6 +122,10 @@ export default class HomePage extends RootComponent {
 
 .search-channel > input {
   width: min(90%, 400px);
+}
+
+.create-channel-link {
+  display: flex;
 }
 
 .create-channel {

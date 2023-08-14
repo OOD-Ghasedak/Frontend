@@ -39,6 +39,9 @@ export default class CreateChannelPage extends RootComponent {
   }
 }
 </script>
+<router>
+  {name: "CreateChannelPage"}
+</router>
 
 <style>
 .create-channel-page {
