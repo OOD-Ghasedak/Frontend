@@ -64,20 +64,26 @@
           </h3>
           <input v-model="walletOperationMoney" placeholder="مقدار">
           <div class="actions row">
-            <button @click="deposit">
+            <button class="withdraw-button" @click="deposit">
               <h3 class="error">
                 {{ 'برداشت' }}
               </h3>
+              <img src="@/static/images/arrow-up.svg">
             </button>
-            <button @click="withdraw">
+            <button class="deposit-button" @click="withdraw">
               <h3 class="secondary">
                 {{ 'واریز' }}
               </h3>
+              <img src="@/static/images/arrow-down.svg">
             </button>
           </div>
         </div>
       </div>
     </div>
+    <button class="logout-button error-button">
+      <h2>{{ 'خروج' }}</h2>
+      <img src="@/static/images/logout.svg">
+    </button>
   </div>
 </template>
 
@@ -140,16 +146,19 @@ export default class ProfilePage extends RootComponent {
 }
 
 .profile-intro {
-  /* gap: 10em; */
   height: 250px;
+  justify-content: space-between;
 }
 
-.profile-username {
-
+.profile {
+  height: 100%;
+  justify-content: space-between;
+  padding: 50px 4% 30px;
 }
 
 .profile-username > .username-field {
   margin-left: 5px;
+  direction: ltr;
 }
 
 .profile > .content {
@@ -179,14 +188,32 @@ export default class ProfilePage extends RootComponent {
   margin-left: 5px;
 }
 
+.profile > .content {
+  flex-wrap: nowrap;
+  gap: 30px;
+}
+
 .content > .user {
   justify-content: space-around;
+}
+
+.content > .wallet {
+  width: -webkit-fill-available;
 }
 
 .content > .wallet > .see {
   border-bottom: 1px solid;
   padding: 10px 4%;
   align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.content > .wallet > .see > .show-balance {
+  align-items: center;
+  position: absolute;
+  right: 0;
+  left: 0;
 }
 
 .wallet > .edit {
@@ -195,12 +222,40 @@ export default class ProfilePage extends RootComponent {
 }
 
 .wallet > .edit > .actions {
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.wallet > .edit > .actions > button {
+  background: transparent;
+  border-bottom: 2px solid var(--button-color);
+  color: var(--button-color);
+  gap: 5px;
+}
+
+.deposit-button {
+  --button-color: var(--secondary-color-1);
+}
+
+.withdraw-button {
+  --button-color: var(--error-color-1);
 }
 
 .wallet > .edit > input {
   font-size: 22px;
   border-radius: 10px;
   border: none;
+}
+
+.logout-button {
+  width: fit-content;
+  align-self: center;
+}
+
+.error-button {
+  border-radius: 10px;
+  padding: 7px 10px;
+  align-items: center;
+  gap: 10px;
+  background-color: #fe2f2f;
 }
 </style>
