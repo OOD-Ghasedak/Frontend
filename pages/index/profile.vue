@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <button class="logout-button error-button">
+    <button class="logout-button error-button" @click="logout">
       <h2>{{ 'خروج' }}</h2>
       <img src="@/static/images/logout.svg">
     </button>
@@ -125,6 +125,10 @@ export default class ProfilePage extends RootComponent {
   deposit () {
     this.mainConfig.$facades.wallet.deposit(this.walletOperationMoney)
   }
+
+  logout () {
+    this.mainConfig.$facades.ghased.logout()
+  }
 }
 </script>
 
@@ -161,10 +165,6 @@ export default class ProfilePage extends RootComponent {
   direction: ltr;
 }
 
-.profile > .content {
-  justify-content: space-around;
-}
-
 .email > .see > h5 {
   text-align: left;
     margin: 0 auto 0 0;
@@ -176,10 +176,6 @@ export default class ProfilePage extends RootComponent {
   border-radius: 10px;
 }
 
-.content > .user {
-  padding: 20px 5%;
-}
-
 .password > .see {
   justify-content: space-between;
 }
@@ -189,12 +185,22 @@ export default class ProfilePage extends RootComponent {
 }
 
 .profile > .content {
+  justify-content: space-around;
   flex-wrap: nowrap;
   gap: 30px;
 }
 
 .content > .user {
-  justify-content: space-around;
+  padding: 20px 5%;
+  justify-content: space-between;
+}
+
+.content > .user > div {
+  gap: 8px;
+}
+
+.content > .user > div > div {
+  flex-wrap: nowrap;
 }
 
 .content > .wallet {

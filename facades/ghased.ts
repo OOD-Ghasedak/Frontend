@@ -7,6 +7,8 @@ import { CREATE_CHANNEL_URL, JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL 
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface Ghased {
+  logout(): Promise<any>;
+
   getProfile(): Promise<UserProfile>;
 
   editProfile(editInfo: Partial<UserProfile>): Promise<any>;
@@ -21,6 +23,10 @@ export default interface Ghased {
 }
 
 class ConcreteGhased extends OutsideVueComponent implements Ghased {
+  logout(): Promise<any> {
+    throw new Error('Method not implemented.')
+  }
+  
   getProfile (): Promise<UserProfile> {
     return this.mainConfig.$apis.backend.send(new RequestParams(PROFILE_URL, REQUEST_METHODS.GET, {
       withAuth: true,
