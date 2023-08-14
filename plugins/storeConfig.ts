@@ -1,11 +1,14 @@
 import { Plugin } from '@nuxt/types'
+import concreteGhasedStore, { GhasedStore } from '~/store/ghased'
 import concreteVisitingUserStore, { VisitingUserStore } from '~/store/visitingUser'
 interface Stores {
     visitingUser: VisitingUserStore
+    ghased: GhasedStore
 }
 
 const concreteStores: Stores = {
-  visitingUser: concreteVisitingUserStore
+  visitingUser: concreteVisitingUserStore,
+  ghased: concreteGhasedStore
 }
 
 declare module '@nuxt/types' {

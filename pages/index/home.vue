@@ -7,7 +7,7 @@
             <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
             <div class="user-name">
               <h3>{{ 'قاصد' }} </h3>
-              <h6>{{ username }}</h6>
+              <h6>{{ profile.user_name }}</h6>
             </div>
           </div>
         </nuxt-link>
@@ -57,12 +57,16 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { JoinedChannel, OwnedOrManagedChannel } from '~/models'
+import { JoinedChannel, OwnedOrManagedChannel, UserProfile } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class HomePage extends RootComponent {
-  username = 'sep'
+  profile: UserProfile = {
+    user_name: 'sepehrkianian09',
+    email: 'sepehrkianian09@gmail.com',
+    phone_number: '09112245833'
+  }
 
   joinedChannelsAreVisible = true
 
@@ -81,6 +85,9 @@ export default class HomePage extends RootComponent {
   }]
 
   mounted () {
+    this.mainConfig.$facades.ghased.getProfile().then((profile) => {
+      this.profile = profile
+    })
     this.mainConfig.$facades.ghased.getJoinedChannels().then((joinedChannels) => {
       this.joinedChannels = joinedChannels
     })
