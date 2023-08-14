@@ -4,12 +4,24 @@
     <b-modal id="error" hide-footer title="خطا">
       <template #modal-title>
         <div>
-          خطا
+          {{ 'خطا' }}
         </div>
       </template>
       <template #default>
         <div style="margin: auto;">
           {{ error }}
+        </div>
+      </template>
+    </b-modal>
+    <b-modal id="message" hide-footer title="پیام">
+      <template #modal-title>
+        <div>
+          {{ 'پیام' }}
+        </div>
+      </template>
+      <template #default>
+        <div style="margin: auto;">
+          {{ message }}
         </div>
       </template>
     </b-modal>
@@ -28,8 +40,15 @@ export default class IndexPage extends Vue {
     this.$bvModal.show('error')
   }
 
+  message: string = ''
+  showMessage (message: string) {
+    this.message = message
+    this.$bvModal.show('message')
+  }
+
   mounted () {
     this.$nuxt.showError = this.showError
+    this.$nuxt.showMessage = this.showMessage
   }
 }
 </script>
