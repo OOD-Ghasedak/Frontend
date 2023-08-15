@@ -1,9 +1,9 @@
 /* eslint-disable */
 
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
-import { JoinedChannel, OwnedOrManagedChannel, UserProfile, UserWallet } from '~/models'
+import { Channel, JoinedChannel, OwnedOrManagedChannel, UserProfile, UserWallet } from '~/models'
 import { PROFILE_URL } from '~/urls/account'
-import { CREATE_CHANNEL_URL, JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from '~/urls/channel'
+import { CHANNEL_URL, CREATE_CHANNEL_URL, JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from '~/urls/channel'
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface Ghased {
@@ -20,6 +20,8 @@ export default interface Ghased {
   getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]>;
 
   createChannel(name: string, description: string): Promise<any>;
+
+  searchChannel(search_name: string): Promise<Channel[]>;
 }
 
 class ConcreteGhased extends OutsideVueComponent implements Ghased {
@@ -64,6 +66,10 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
         description
       }
     }))
+  }
+
+  searchChannel(search_name: string): Promise<Channel[]> {
+    throw new Error('Method not implemented.')
   }
 }
 

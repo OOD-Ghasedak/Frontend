@@ -12,9 +12,9 @@
       </div>
     </div>
     <slot />
-    <button class="visit-button secondary-button">
+    <nuxt-link :to="{name: 'ChannelPage', params: {id: channel.id}}" class="visit-button secondary-button">
       <h5>{{ 'مشاهده کانال' }}</h5>
-    </button>
+    </nuxt-link>
   </div>
 </template>
 

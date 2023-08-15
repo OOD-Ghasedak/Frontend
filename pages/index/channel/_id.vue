@@ -48,6 +48,9 @@ export default class ChannelPage extends RootComponent {
   }
 }
 </script>
+<router>
+  {name: "ChannelPage"}
+</router>
 
 <style>
 .channel-page {

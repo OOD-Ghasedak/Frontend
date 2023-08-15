@@ -5,4 +5,6 @@ export const JOINED_CHANNELS_URL = new Url('subscribe/joined-channels', ROOT_URL
 
 export const OWNED_OR_MANAGED_CHANNELS_URL = new Url('channel-management/managed-channels', ROOT_URL)
 
-export const CREATE_CHANNEL_URL = new Url('channels/create', ROOT_URL)
+export const CHANNEL_URL = new Url('channels', ROOT_URL)
+
+export const CREATE_CHANNEL_URL = new Url('create', CHANNEL_URL)

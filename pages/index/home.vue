@@ -25,12 +25,12 @@
           </div>
         </nuxt-link>
       </div>
-      <div class="search-channel">
+      <nuxt-link :to="{name: 'SearchChannelPage'}" class="search-channel">
         <div class="icon-input">
           <input class="text-centered" placeholder="جستجوی کانال">
           <img src="@/static/images/magnifier.svg">
         </div>
-      </div>
+      </nuxt-link>
     </div>
     <div class="see-channels">
       <div class="header">
