@@ -14,7 +14,7 @@ export interface OwnedOrManagedChannel extends Channel {
     role;
 }
 
-export enum ChannelContentType {}
+export enum ChannelContentType { }
 
 export interface ChannelContent {
     name: string;
@@ -30,7 +30,7 @@ export enum ChannelRole {
 
 export interface UserProfile {
     phone_number: string;
-    user_name: string;
+    username: string;
     email: string;
 }
 

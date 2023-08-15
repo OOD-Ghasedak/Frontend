@@ -16,7 +16,7 @@
       <h3>{{ 'توضیحی مختصر در رابطه با کانال خود در بخش زیر وارد کنید.' }}</h3>
       <input v-model="channelDescription" placeholder="بیوگرافی کانال خود را وارد کنید...">
     </div>
-    <button class="secondary-button">
+    <button class="secondary-button" @click="createChannel">
       <h2>{{ 'ادامه' }}</h2>
     </button>
   </div>

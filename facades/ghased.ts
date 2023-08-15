@@ -30,14 +30,12 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
   getProfile (): Promise<UserProfile> {
     return this.mainConfig.$apis.backend.send(new RequestParams(PROFILE_URL, REQUEST_METHODS.GET, {
       withAuth: true,
-      retrieveAuth: true
     }))
   }
 
   editProfile (editInfo: Partial<UserProfile>): Promise<any> {
     return this.mainConfig.$apis.backend.send(new RequestParams(PROFILE_URL, REQUEST_METHODS.PATCH, {
       withAuth: true,
-      retrieveAuth: true,
       data: editInfo
     }))
   }
@@ -47,13 +45,13 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
   }
 
   getJoinedChannels (): Promise<JoinedChannel[]> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(JOINED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true, retrieveAuth: true })).then((response) => {
+    return this.mainConfig.$apis.backend.send(new RequestParams(JOINED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true })).then((response) => {
       return response
     })
   }
 
   getOwnedOrManagedChannels (): Promise<OwnedOrManagedChannel[]> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true, retrieveAuth: true })).then((response) => {
+    return this.mainConfig.$apis.backend.send(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true })).then((response) => {
       return response
     })
   }
@@ -61,7 +59,6 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
   createChannel(name: string, description: string): Promise<any> {
     return this.mainConfig.$apis.backend.send(new RequestParams(CREATE_CHANNEL_URL, REQUEST_METHODS.POST, {
       withAuth: true,
-      retrieveAuth: true,
       data: {
         name,
         description

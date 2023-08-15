@@ -71,7 +71,7 @@ export default class WelcomePage extends RootComponent {
   {name: "WelcomePage"}
 </router>
 
-<style>
+<style scoped>
 .welcome-page {
   font-size: 62.5%;
   max-width: 100%;

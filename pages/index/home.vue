@@ -7,7 +7,7 @@
             <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
             <div class="user-name">
               <h3>{{ 'قاصد' }} </h3>
-              <h6>{{ profile.user_name }}</h6>
+              <h6>{{ profile.username }}</h6>
             </div>
           </div>
         </nuxt-link>
@@ -63,7 +63,7 @@ import RootComponent from '~/utils/rootComponent'
 @Component
 export default class HomePage extends RootComponent {
   profile: UserProfile = {
-    user_name: 'sepehrkianian09',
+    username: 'sepehrkianian09',
     email: 'sepehrkianian09@gmail.com',
     phone_number: '09112245833'
   }

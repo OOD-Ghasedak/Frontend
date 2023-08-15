@@ -9,7 +9,7 @@
         </h5>
         <div class="profile-username horizontally-centered row">
           <h5 class="username-field">
-            {{ `@${profile.user_name}` }}
+            {{ `@${profile.username}` }}
           </h5>
           <button style="margin-right: 5px;">
             <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
@@ -98,7 +98,7 @@ import RootComponent from '~/utils/rootComponent'
 })
 export default class ProfilePage extends RootComponent {
   profile: UserProfile = {
-    user_name: 'sepehrkianian09',
+    username: 'sepehrkianian09',
     email: 'sepehrkianian09@gmail.com',
     phone_number: '09112245833'
   }

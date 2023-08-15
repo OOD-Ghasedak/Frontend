@@ -15,8 +15,7 @@ class ConcreteWallet extends OutsideVueComponent implements Wallet {
   getWallet (): Promise<UserWallet> {
     return this.mainConfig.$apis.backend.send(new RequestParams(
       WALLET_URL, REQUEST_METHODS.GET, {
-        withAuth: true,
-        retrieveAuth: true
+        withAuth: true
       }
     ))
   }
@@ -25,7 +24,6 @@ class ConcreteWallet extends OutsideVueComponent implements Wallet {
     return this.mainConfig.$apis.backend.send(new RequestParams(
       DEPOSIT_URL, REQUEST_METHODS.POST, {
         withAuth: true,
-        retrieveAuth: true,
         data: { amount }
       }
     ))
@@ -35,7 +33,6 @@ class ConcreteWallet extends OutsideVueComponent implements Wallet {
     return this.mainConfig.$apis.backend.send(new RequestParams(
       WITHDRAW_URL, REQUEST_METHODS.POST, {
         withAuth: true,
-        retrieveAuth: true,
         data: { amount }
       }
     ))
