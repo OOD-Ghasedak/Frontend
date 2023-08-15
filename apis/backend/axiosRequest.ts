@@ -17,7 +17,7 @@ class AxiosRequest extends OutsideVueComponent implements BackendAPI {
       // put access token into config
       // const accessToken = this.$store.state
       config.headers = config.headers || {}
-      config.headers.Authorization = `JWT ${this.mainConfig.$stores.visitingUser.accessToken}`
+      config.headers.Authorization = `JWT ${this.mainConfig.$stores.main.accessToken}`
     }
     // todo use jwt-token here
     // const auth = this.$cookie.getCookie('auth')
@@ -43,8 +43,8 @@ class AxiosRequest extends OutsideVueComponent implements BackendAPI {
             // this.$cookie.setCookie('auth', response.data.token)
             console.log('token response')
             console.log(response)
-            this.mainConfig.$stores.visitingUser.setAccessToken(response.access_token)
-            this.mainConfig.$stores.visitingUser.setRefreshToken(response.refresh_token)
+            this.mainConfig.$stores.main.setAccessToken(response.access_token)
+            this.mainConfig.$stores.main.setRefreshToken(response.refresh_token)
           }
           resolve(response)
         })
