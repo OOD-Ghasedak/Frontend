@@ -3,7 +3,7 @@
     <BackButton />
     <h1>{{ 'تایید اطلاعات' }}</h1>
     <h3 class="text-centered">
-      {{ `کد ۴رقمی ارسال‌شده به ${email} را وارد کنید.` }}
+      {{ `کد ۴رقمی ارسال‌شده به ${emailOrPhoneNumber} را وارد کنید.` }}
     </h3>
     <CodeInput class-name="verification-code" :fields="4" type="number" @complete="verify" />
     <button class="secondary-button">
@@ -22,7 +22,10 @@ import RootComponent from '~/utils/rootComponent'
   components: { BackButton, CodeInput }
 })
 export default class ConfirmSignUpPage extends RootComponent {
-  email: string = 'sepehrkianian@gmail.com'
+  get emailOrPhoneNumber (): string {
+    return this.mainConfig.$stores.visitingUser.emailOrPhoneNumber
+  }
+
   verify (verifyCode: string) {
     this.mainConfig.$facades.visitingUser.signUpVerify(verifyCode)
       .then(() => {

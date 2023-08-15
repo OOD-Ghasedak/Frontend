@@ -39,8 +39,9 @@ class ConcreteVisitingUser extends OutsideVueComponent implements VisitingUser {
           data: sendData
         }))
           .then((data) => {
+            this.mainConfig.$stores.visitingUser.setEmailOrPhoneNumber(emailOrPhoneNumber)
             const otp = data.otp
-            this.$CurrentNuxtInstance.showMessage(`کد فرستاده شده به تلفن/شماره موبایل شما ${otp} است. متاسفانه سیستم پیامکی ما غیرفعال است.`)
+            this.$CurrentNuxtInstance.showMessage(`کد فرستاده شده به ایمیل/تلفن شما ${otp} است. متاسفانه سیستم پیامکی ما غیرفعال است.`)
           })
       })
   }

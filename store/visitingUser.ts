@@ -10,6 +10,8 @@ import { store } from '~/store'
 export interface VisitingUserStore {
   setOTP(otp: string);
   otp: string;
+  setEmailOrPhoneNumber(emailOrPhoneNumber: string);
+  emailOrPhoneNumber: string;
   setAccessToken(accessToken: string);
   accessToken: string;
   setRefreshToken(refreshToken: string);
@@ -18,6 +20,15 @@ export interface VisitingUserStore {
 
 @Module({ dynamic: true, name: 'VisitingUser', store, namespaced: true })
 class ConcreteVisitingUserStore extends VuexModule implements VisitingUserStore {
+  @Mutation
+  setEmailOrPhoneNumber (emailOrPhoneNumber: string) {
+    Cookies.set('emailOrPhoneNumber', emailOrPhoneNumber)
+  }
+
+  get emailOrPhoneNumber (): string {
+    return Cookies.get('emailOrPhoneNumber')
+  }
+
   private _accessToken: string = ''
   private _refreshToken: string = ''
 
