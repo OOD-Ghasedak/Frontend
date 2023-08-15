@@ -133,6 +133,15 @@ export default class HomePage extends RootComponent {
   width: min(90%, 400px);
 }
 
+.home-page > .header > .row-1 {
+  position: relative;
+}
+
+.row-1 > .ghasedak {
+  position: absolute;
+  align-self: center;
+}
+
 .row-1 > a {
   display: flex;
 }
