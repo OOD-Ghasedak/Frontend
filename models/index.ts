@@ -14,7 +14,9 @@ export interface OwnedOrManagedChannel extends Channel {
     role;
 }
 
-export enum ChannelContentType { }
+export enum ChannelContentType {
+    TEXT, IMAGE, VIDEO
+ }
 
 export interface ChannelContent {
     name: string;

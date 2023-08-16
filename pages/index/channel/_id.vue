@@ -14,14 +14,22 @@
     </div>
     <div class="contents">
       <div v-for="(content, i) in contents" :key="`content-${i}`" class="channel-content">
-        <img class="content-type" src="@/static/images/channel-content-types/text.svg">
-        <h5>{{ content.name }}</h5>
-        <h6>{{ content.summary }}</h6>
-        <p>{{ content.data }}</p>
+        <div class="content-type">
+          <img class="image-sized--1" src="@/static/images/channel-content-types/text.svg">
+        </div>
+        <h5 class="text-centered">
+          {{ content.name }}
+        </h5>
+        <!-- <h6>
+          {{ content.summary }}
+        </h6> -->
+        <h6>
+          {{ content.data }}
+        </h6>
         <div class="actions">
-          <button>
-            <h5>{{ 'دانلود سریع' }}</h5>
-            <img>
+          <button class="primary-button">
+            <p>{{ 'دانلود سریع' }}</p>
+            <img src="@/static/images/download.svg" class="image-sized--2">
           </button>
         </div>
       </div>
@@ -31,13 +39,22 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { Channel, ChannelContent } from '~/models'
+import { Channel, ChannelContent, ChannelContentType } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ChannelPage extends RootComponent {
   channel: Channel = { id: '2', name: 'mofo', description: 'this channel is about mofos' }
-  contents: ChannelContent[] = []
+  contents: ChannelContent[] = [
+    {
+      name: 'متن آهنگ ساسی',
+      price: 10000,
+      summary: 'متن آهنگ ساسی',
+      type: ChannelContentType.TEXT,
+      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا'
+    }
+  ]
+
   get channelId (): string {
     return this.$route.params.id || '4568'
   }
@@ -56,6 +73,7 @@ export default class ChannelPage extends RootComponent {
 .channel-page {
   height: 100%;
   padding: 20px 3%;
+  gap: 20px;
 }
 
 .channel-page > .header {
@@ -81,4 +99,38 @@ export default class ChannelPage extends RootComponent {
   background-color: var(--secondary-color-6);
   padding: 7px 5px;
 }
+
+.contents > .channel-content {
+  position: relative;
+  padding: 20px 3% 10px;
+  gap: 25px;
+  border-bottom: 1px solid var(--top-color-1);
+  z-index: 1;
+}
+
+.contents > .channel-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .3;
+  z-index: -1;
+  background-color: var(--top-color-7);
+}
+
+.channel-content > .content-type {
+  position: absolute;
+  right: 3%;
+  top: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: var(--top-color-7);
+}
+
+.channel-content > .actions {
+  align-items: flex-end;
+}
+
 </style>

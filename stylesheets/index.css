@@ -52,6 +52,12 @@ h6 {
   font-weight: lighter;
 }
 
+p {
+  font-size: 11px;
+  font-weight: lighter;
+  color: var(--top-color-1);
+}
+
 h2.secondary {
   color: var(--secondary-color-2);
 }
@@ -68,7 +74,7 @@ h5.secondary {
   color: var(--error-color-1);
 }
 
-input, p {
+input {
   font-size: 29px;
   font-weight: var(--medium-font-size);
   color: var(--top-color-1);
@@ -143,6 +149,10 @@ input[type="number"] {
   text-align: center;
 }
 
+.items-centered {
+  align-items: center;
+}
+
 .circular {
   border-radius: 50%;
 }
@@ -159,6 +169,15 @@ input[type="number"] {
   bottom: 0;
 }
 
+.primary-button {
+  border-radius: 10px;
+  background-color: var(--top-color-7);
+  padding: 6px 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 5px;
+  align-items: center;
+}
 
 .secondary-button {
   display: flex;
