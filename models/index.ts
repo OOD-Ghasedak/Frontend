@@ -15,15 +15,16 @@ export interface OwnedOrManagedChannel extends Channel {
 }
 
 export enum ChannelContentType {
-    TEXT, IMAGE, VIDEO
+    TEXT, IMAGE, VIDEO, VOICE
  }
 
 export interface ChannelContent {
     name: string;
     price: Money;
-    summary: string;
     type: ChannelContentType;
     data: string;
+    summary: string;
+    is_monetary: boolean;
 }
 
 export enum ChannelRole {

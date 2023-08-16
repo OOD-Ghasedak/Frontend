@@ -3,6 +3,12 @@
     <div class="content-type">
       <img class="image-sized--1" src="@/static/images/channel-content-types/text.svg">
     </div>
+    <div v-if="content.is_monetary" class="monetary-sign row">
+      <img class="image-sized--1" src="@/static/images/dollar-green.svg">
+      <p class="text-centered">
+        {{ 'محتوای پولی' }}
+      </p>
+    </div>
     <h5 class="text-centered">
       {{ content.name }}
     </h5>
@@ -33,14 +39,19 @@ import { ChannelContent } from '~/models'
 
   @Component
 export default class ChannelContentCard extends Vue {
-      @Prop() readonly content: ChannelContent
+  @Prop() readonly content: ChannelContent
 }
 </script>
 
 <style scoped>
 .channel-content {
+  --channel-left-right-padding: 3%;
+  --channel-absolute-items-top-padding: 10px;
+}
+
+.channel-content {
   position: relative;
-  padding: 20px 3% 10px;
+  padding: 20px var(--channel-left-right-padding) 10px;
   gap: 25px;
   border-bottom: 1px solid var(--top-color-1);
   z-index: 1;
@@ -60,11 +71,23 @@ export default class ChannelContentCard extends Vue {
 
 .channel-content > .content-type {
   position: absolute;
-  right: 3%;
-  top: 10px;
+  right: var(--channel-left-right-padding);
+  top: var(--channel-absolute-items-top-padding);
   border-radius: 10px;
   padding: 5px;
   background-color: var(--top-color-7);
+}
+
+.channel-content > .monetary-sign {
+  left: var(--channel-left-right-padding);
+  top: var(--channel-absolute-items-top-padding);
+  position: absolute;
+  align-items: center;
+  gap: 5px;
+  width: 70px;
+  height: 30px;
+  flex-wrap: nowrap;
+  padding: 2.5px 3px;
 }
 
 .channel-content > .actions {

@@ -32,21 +32,24 @@ export default class ChannelPage extends RootComponent {
       price: 10000,
       summary: 'متن آهنگ ساسی',
       type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا'
+      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
+      is_monetary: true
     },
     {
       name: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
       type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا',
+      is_monetary: false
     },
     {
       name: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
       type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا'
+      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
+      is_monetary: true
     }
   ]
 
