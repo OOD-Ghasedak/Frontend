@@ -190,3 +190,10 @@ input[type="number"] {
   margin-right: 15px;
   height: 40px;
 }
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--item-min-width), 1fr));
+  gap: 1rem;
+  align-items: start;
+}

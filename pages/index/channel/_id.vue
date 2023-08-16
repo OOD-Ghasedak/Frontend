@@ -12,7 +12,7 @@
       </div>
       <back-button />
     </div>
-    <div class="contents">
+    <div class="contents responsive-grid">
       <div v-for="(content, i) in contents" :key="`content-${i}`" class="channel-content">
         <div class="content-type">
           <img class="image-sized--1" src="@/static/images/channel-content-types/text.svg">
@@ -26,10 +26,14 @@
         <h6>
           {{ content.data }}
         </h6>
-        <div class="actions">
+        <div class="actions row">
           <button class="primary-button">
             <p>{{ 'دانلود سریع' }}</p>
             <img src="@/static/images/download.svg" class="image-sized--2">
+          </button>
+          <button class="primary-button">
+            <p>{{ 'دیدن مطلب...' }}</p>
+            <img src="@/static/images/next.svg" class="image-sized--2">
           </button>
         </div>
       </div>
@@ -46,6 +50,20 @@ import RootComponent from '~/utils/rootComponent'
 export default class ChannelPage extends RootComponent {
   channel: Channel = { id: '2', name: 'mofo', description: 'this channel is about mofos' }
   contents: ChannelContent[] = [
+    {
+      name: 'متن آهنگ ساسی',
+      price: 10000,
+      summary: 'متن آهنگ ساسی',
+      type: ChannelContentType.TEXT,
+      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا'
+    },
+    {
+      name: 'متن آهنگ ساسی',
+      price: 10000,
+      summary: 'متن آهنگ ساسی',
+      type: ChannelContentType.TEXT,
+      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+    },
     {
       name: 'متن آهنگ ساسی',
       price: 10000,
@@ -100,6 +118,10 @@ export default class ChannelPage extends RootComponent {
   padding: 7px 5px;
 }
 
+.channel-page > .contents {
+  --item-min-width: 300px;
+}
+
 .contents > .channel-content {
   position: relative;
   padding: 20px 3% 10px;
@@ -130,7 +152,8 @@ export default class ChannelPage extends RootComponent {
 }
 
 .channel-content > .actions {
-  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 </style>
