@@ -1,8 +1,26 @@
 <template>
   <div class="channel-page">
     <div class="header row">
-      <img class="circular image-sized-3" src="@/static/images/ghased.svg">
-      <div class="title">
+      <div class="right row">
+        <img class="circular image-sized-3" src="@/static/images/ghased.svg">
+        <nuxt-link v-if="channelRoleProps.canAddContent" :to="{name: 'ChannelAddContentPage'}" custom>
+          <div class="the-link">
+            <button class="horizontally-centered circular image-sized-1">
+              <img class="image-sized--1" src="@/static/images/plus.svg">
+            </button>
+            <h6>{{ 'افزودن محتوا' }}</h6>
+          </div>
+        </nuxt-link>
+        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage'}" custom>
+          <div class="the-link">
+            <button class="horizontally-centered circular image-sized-1">
+              <img class="image-sized--1" src="@/static/images/info.svg">
+            </button>
+            <h6>{{ 'مدیریت کانال' }}</h6>
+          </div>
+        </nuxt-link>
+      </div>
+      <div class="center">
         <h1>{{ channel.name }}</h1>
         <channel-role-component :role="channelRole" />
         <button v-if="channelRoleProps.canLeaveChannel" class="leave-group-button" @click="leaveChannel">
@@ -33,7 +51,7 @@ import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ChannelPage extends RootComponent {
-  channelRole: ChannelRole = ChannelRole.MEMBER
+  channelRole: ChannelRole = ChannelRole.ADMIN
 
   get channelRoleProps () {
     return ChannelRolesProps[this.channelRole]
@@ -107,12 +125,12 @@ export default class ChannelPage extends RootComponent {
   height: fit-content;
 }
 
-.channel-page > .header > .title {
+.channel-page > .header > .center {
   position: relative;
   align-items: center;
 }
 
-.channel-page > .header > .title > .channel-type {
+.channel-page > .header > .center > .channel-type {
   position: absolute;
   right: -85px;
   top: 4px;
@@ -121,7 +139,7 @@ export default class ChannelPage extends RootComponent {
   padding: 7px 5px;
 }
 
-.channel-page > .header > .title > .joined-channel {
+.channel-page > .header > .center > .joined-channel {
   position: absolute;
   left: -125px;
   top: 5px;
@@ -131,7 +149,7 @@ export default class ChannelPage extends RootComponent {
   gap: 1rem;
 }
 
-.channel-page > .header > .title > .leave-group-button {
+.channel-page > .header > .center > .leave-group-button {
   background-color: var(--error-color-2);
   border-radius: 10px;
   padding: 5px 1rem;
@@ -142,6 +160,29 @@ export default class ChannelPage extends RootComponent {
 
 .leave-group-button > h6 {
   color: var(--error-color);
+}
+
+.channel-page > .header > .right {
+  gap: 10px;
+}
+
+.channel-page > .header > .right > a {
+  display: flex;
+  justify-content: center;
+}
+
+.channel-page > .header > .right .the-link {
+  justify-content: center;
+}
+
+.channel-page > .header > .right .the-link > button {
+  justify-content: center;
+  margin-bottom: 5px;
+  background-color: var(--top-color-3);
+  padding: 0;
+}
+.channel-page > .header > .right .the-link > button > img {
+  margin: auto;
 }
 
 .channel-page > .contents {
