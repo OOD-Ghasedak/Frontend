@@ -28,9 +28,7 @@ export interface ChannelContent {
     is_monetary: boolean;
 }
 
-export enum ChannelRole {
-    MEMBER, SPECIAL_MEMBER, ADMIN, OWNER
-}
+export * from './channelRoles'
 
 export interface UserProfile {
     phone_number: string;
@@ -39,5 +37,5 @@ export interface UserProfile {
 }
 
 export interface UserWallet {
-    balance: number
+    balance: Money
 }

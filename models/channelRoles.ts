@@ -1,6 +1,8 @@
-import { ChannelRole } from '.'
+export enum ChannelRole {
+  MEMBER, SPECIAL_MEMBER, ADMIN, OWNER
+}
 
-export interface ChannelRoleProps {
+interface ChannelRoleProps {
   canManageChannel: boolean,
   canManageAdmins: boolean,
   canAddContent: boolean,
@@ -9,7 +11,7 @@ export interface ChannelRoleProps {
   canLeaveChannel: boolean
 }
 
-const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonly<ChannelRoleProps>> }> = {
+export const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonly<ChannelRoleProps>> }> = {
   [ChannelRole.OWNER]: {
     canManageChannel: true,
     canManageAdmins: true,
@@ -27,5 +29,3 @@ const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonly<Chann
   },
   [ChannelRole.MEMBER]: { canLeaveChannel: true }
 }
-
-export default ChannelRolesProps
