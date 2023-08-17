@@ -19,6 +19,7 @@ export enum ChannelContentType {
  }
 
 export interface ChannelContent {
+    id: string;
     name: string;
     price: Money;
     type: ChannelContentType;

@@ -28,6 +28,7 @@ export default class ChannelPage extends RootComponent {
   channel: Channel = { id: '2', name: 'mofo', description: 'this channel is about mofos' }
   contents: ChannelContent[] = [
     {
+      id: '0',
       name: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
@@ -36,6 +37,7 @@ export default class ChannelPage extends RootComponent {
       is_monetary: true
     },
     {
+      id: '1',
       name: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
@@ -44,6 +46,7 @@ export default class ChannelPage extends RootComponent {
       is_monetary: false
     },
     {
+      id: '2',
       name: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
@@ -54,7 +57,7 @@ export default class ChannelPage extends RootComponent {
   ]
 
   get channelId (): string {
-    return this.$route.params.id || '4568'
+    return this.$route.params.channel_id || '4568'
   }
 
   mounted () {
