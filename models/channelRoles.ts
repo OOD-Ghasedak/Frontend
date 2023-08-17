@@ -1,20 +1,31 @@
 import { ChannelRole } from '.'
 
-export class ChannelRoleProps {
-  constructor (
-        public readonly canAddContent: boolean,
-        public readonly canManageChannel: boolean,
-        public readonly canEditContents: boolean,
-        public readonly canRemoveContents: boolean,
-        public readonly canManageAdmins: boolean
-  ) { }
+export interface ChannelRoleProps {
+  canManageChannel: boolean,
+  canManageAdmins: boolean,
+  canAddContent: boolean,
+  canEditContents: boolean,
+  canRemoveContents: boolean,
+  canLeaveChannel: boolean
 }
 
-const ChannelRolesProps: Readonly<{ [key in ChannelRole]: ChannelRoleProps }> = {
-  [ChannelRole.OWNER]: new ChannelRoleProps(true, true, true, true, true),
-  [ChannelRole.ADMIN]: new ChannelRoleProps(true, true, true, true, true),
-  [ChannelRole.SPECIAL_MEMBER]: new ChannelRoleProps(true, true, true, true, true),
-  [ChannelRole.MEMBER]: new ChannelRoleProps(true, true, true, true, true)
+const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonly<ChannelRoleProps>> }> = {
+  [ChannelRole.OWNER]: {
+    canManageChannel: true,
+    canManageAdmins: true,
+    canAddContent: true,
+    canEditContents: true,
+    canRemoveContents: true
+  },
+  [ChannelRole.ADMIN]: {
+    canAddContent: true,
+    canEditContents: true,
+    canRemoveContents: true
+  },
+  [ChannelRole.SPECIAL_MEMBER]: {
+    canLeaveChannel: true
+  },
+  [ChannelRole.MEMBER]: { canLeaveChannel: true }
 }
 
 export default ChannelRolesProps
