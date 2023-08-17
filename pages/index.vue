@@ -73,6 +73,13 @@ export default class IndexPage extends Vue {
   --secondary-color-5: #93e3eb;
   --secondary-color-6: #b3ebf1;
   --secondary-color-7: #ecfafc;
+  --pale-secondary-color-1: #66918d;
+  --pale-secondary-color-2: #75a6a2;
+  --pale-secondary-color-3: #a7ede7;
+  --pale-secondary-color-4: #b6f0eb;
+  --pale-secondary-color-5: #ccf5f1;
+  --pale-secondary-color-6: #dbf8f5;
+  --pale-secondary-color-7: #f6fdfd;
   --top-color-1: #3e1874;
   --top-color-2: #471b85;
   --top-color-3: #6527be;
@@ -88,6 +95,8 @@ export default class IndexPage extends Vue {
   --warning-color-6: #fdefbd;
   --warning-color-7: #fffbef;
   --error-color-1: #ef6262;
+  --error-color-2: #ffdbdb;
+  --error-color: #fc3a3a;
 }
 
 :root {
