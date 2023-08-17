@@ -22,6 +22,8 @@ export default interface Ghased {
   createChannel(name: string, description: string): Promise<any>;
 
   searchChannel(search_name: string): Promise<Channel[]>;
+
+  enterChannel(channelId: string): Promise<any>;
 }
 
 class ConcreteGhased extends OutsideVueComponent implements Ghased {
@@ -70,6 +72,13 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
 
   searchChannel(search_name: string): Promise<Channel[]> {
     throw new Error('Method not implemented.')
+  }
+
+  enterChannel(channelId: string): Promise<any> {
+    throw new Error('Method not implemented.')
+    // todo
+    // get your role
+    // save it in the store
   }
 }
 
