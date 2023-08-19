@@ -194,6 +194,8 @@ input[type="number"] {
 .error-button {
   background-color: var(--error-color-2);
   border-radius: 10px;
+  width: fit-content;
+  gap: 0.5rem;
 }
 
 .error-button > h1, .error-button > h2, .error-button > h3, .error-button > h4, .error-button > h5, .error-button > h6, .error-button > p {

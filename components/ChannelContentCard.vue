@@ -47,6 +47,7 @@ import { ChannelContent, ChannelRole, ChannelRolesProps } from '~/models'
 export default class ChannelContentCard extends Vue {
   @Prop() readonly content: ChannelContent
 
+  // todo
   channelRole: ChannelRole = ChannelRole.ADMIN
 
   get channelRoleProps () {

@@ -11,7 +11,7 @@
             <h6>{{ 'افزودن محتوا' }}</h6>
           </div>
         </nuxt-link>
-        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage'}" custom>
+        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{path: `/channel/${channelId}/manage`}" replace="false" custom>
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/info.svg">
@@ -51,7 +51,8 @@ import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ChannelPage extends RootComponent {
-  channelRole: ChannelRole = ChannelRole.ADMIN
+  // todo
+  channelRole: ChannelRole = ChannelRole.OWNER
 
   get channelRoleProps () {
     return ChannelRolesProps[this.channelRole]

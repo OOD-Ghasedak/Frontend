@@ -258,13 +258,11 @@ export default class ProfilePage extends RootComponent {
 .logout-button {
   width: fit-content;
   align-self: center;
-}
-
-.error-button {
   border-radius: 10px;
   padding: 7px 10px;
   align-items: center;
   gap: 10px;
   background-color: #fe2f2f;
 }
+
 </style>
