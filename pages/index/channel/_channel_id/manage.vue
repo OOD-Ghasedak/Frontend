@@ -31,6 +31,33 @@
           {{ 'biography' }}
         </h5>
       </div>
+      <div class="admins manage-section">
+        <div class="header">
+          <img src="@/static/images/channel-roles/admin.svg">
+          <h4>{{ 'مدیران کانال' }}</h4>
+        </div>
+        <div class="content">
+          <div v-for="(admin, i) in admins" :key="`admin-${i}`" class="admin row">
+            <div class="content row">
+              <img src="@/static/images/ghased.svg" class="image-sized-1">
+              <div class="names">
+                <h5>{{ admin.name }}</h5>
+                <h6>{{ `@${admin.username}` }}</h6>
+              </div>
+            </div>
+            <div class="actions row">
+              <button class="primary-button">
+                <h6>{{ 'تغییر درصد' }}</h6>
+                <img src="@/static/images/exchange.svg" class="image-sized--2">
+              </button>
+              <button class="error-button">
+                <h6>{{ 'عزل' }}</h6>
+                <img class="image-sized--2" src="@/static/images/leave-red.svg">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row-2" />
     <div class="row-3" />
@@ -43,7 +70,7 @@ import RootComponent from '~/utils/rootComponent'
 
     @Component
 export default class ChannelManagePage extends RootComponent {
-
+  admins = [{ name: 'احمد', username: 'ahmad001' }]
 }
 </script>
 <router>
@@ -73,8 +100,14 @@ export default class ChannelManagePage extends RootComponent {
   right: 0;
 }
 
+.channel-manage-page > .row {
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
 .channel-manage-page .manage-section {
   width: -webkit-fill-available;
+  position: relative;
   --right-padding: 10px;
   --top-padding: 15px;
   --left-padding: 15px;
@@ -111,16 +144,25 @@ export default class ChannelManagePage extends RootComponent {
 .channel-manage-page .manage-section > .content {
   margin-right: var(--right-padding);
   margin-top: 10px;
-}
-
-.channel-manage-page .biography {
-  position: relative;
+  margin-left: var(--left-padding);
 }
 
 .channel-manage-page .biography > .edit {
   position: absolute;
   top: var(--top-padding);
   left: var(--left-padding);
+  align-items: center;
+}
+
+.channel-manage-page .admins > .content > .admin {
+  justify-content: space-between;
+  align-items: center;
+}
+.admin > .actions {
+  gap: 0.5rem;
+}
+.admin > .content {
+  gap: 0.5rem;
   align-items: center;
 }
 

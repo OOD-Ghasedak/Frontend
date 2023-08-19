@@ -175,6 +175,7 @@ input[type="number"] {
   padding: 6px 10px;
   width: -moz-fit-content;
   width: fit-content;
+  height: fit-content;
   gap: 5px;
   align-items: center;
 }
@@ -195,7 +196,9 @@ input[type="number"] {
   background-color: var(--error-color-2);
   border-radius: 10px;
   width: fit-content;
+  height: fit-content;
   gap: 0.5rem;
+  padding: 6px 10px;
 }
 
 .error-button > h1, .error-button > h2, .error-button > h3, .error-button > h4, .error-button > h5, .error-button > h6, .error-button > p {
