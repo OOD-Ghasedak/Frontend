@@ -65,6 +65,9 @@ h2.secondary {
 h3.secondary {
   color: var(--secondary-color-1);
 }
+h4.secondary {
+  color: var(--secondary-color-3);
+}
 
 h5.secondary {
   color: var(--secondary-color-2);
@@ -203,6 +206,15 @@ input[type="number"] {
 
 .error-button > h1, .error-button > h2, .error-button > h3, .error-button > h4, .error-button > h5, .error-button > h6, .error-button > p {
   color: var(--error-color);
+}
+
+.secondary-button-2 {
+  background-color: var(--secondary-color-6);
+  width: fit-content;
+  border-radius: 10px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3px 6px;
 }
 
 .responsive-grid {

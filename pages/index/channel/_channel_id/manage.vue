@@ -47,11 +47,11 @@
             </div>
             <div class="actions row">
               <button class="primary-button">
-                <h6>{{ 'تغییر درصد' }}</h6>
+                <p>{{ 'تغییر درصد' }}</p>
                 <img src="@/static/images/exchange.svg" class="image-sized--2">
               </button>
               <button class="error-button">
-                <h6>{{ 'عزل' }}</h6>
+                <p>{{ 'عزل' }}</p>
                 <img class="image-sized--2" src="@/static/images/leave-red.svg">
               </button>
             </div>
@@ -59,7 +59,32 @@
         </div>
       </div>
     </div>
-    <div class="row-2" />
+    <div class="subscriptions manage-section">
+      <div class="header">
+        <img src="@/static/images/info-green.svg">
+        <h4 class="secondary">
+          {{ 'مدیریت اشتراک' }}
+        </h4>
+      </div>
+      <div class="content">
+        <div class="subscriptions-content row">
+          <div v-for="(subscription, i) in subscriptions" :key="`subscription-${i}`" class="subscription">
+            <div class="length row">
+              <h1>{{ subscription.length }}</h1>
+              <h5>{{ 'ماهه' }}</h5>
+            </div>
+            <div class="price row">
+              <h2>{{ subscription.price }}</h2>
+              <p>{{ 'تومان' }}</p>
+            </div>
+          </div>
+        </div>
+        <button class="edit secondary-button-2">
+          <h6>{{ 'ویرایش اشتراک' }}</h6>
+          <img class="image-sized--1" src="@/static/images/paper-money.svg">
+        </button>
+      </div>
+    </div>
     <div class="row-3" />
   </div>
 </template>
@@ -70,7 +95,19 @@ import RootComponent from '~/utils/rootComponent'
 
     @Component
 export default class ChannelManagePage extends RootComponent {
-  admins = [{ name: 'احمد', username: 'ahmad001' }]
+  admins = [
+    { name: 'احمد', username: 'ahmad001' },
+    { name: 'احمد', username: 'ahmad001' },
+    { name: 'احمد', username: 'ahmad001' },
+    { name: 'احمد', username: 'ahmad001' }
+  ]
+
+  subscriptions = [
+    { length: 1, price: 20000 },
+    { length: 1, price: 20000 },
+    { length: 1, price: 20000 },
+    { length: 1, price: 20000 }
+  ]
 }
 </script>
 <router>
@@ -81,6 +118,7 @@ export default class ChannelManagePage extends RootComponent {
 .channel-manage-page {
   height: 100%;
   padding: 40px 5% 0 9%;
+  gap: 1rem;
 }
 
 .channel-manage-page > .header {
@@ -112,6 +150,7 @@ export default class ChannelManagePage extends RootComponent {
   --top-padding: 15px;
   --left-padding: 15px;
   padding-bottom: 10px;
+  z-index: 0;
 }
 .channel-manage-page .manage-section::before {
   content: "";
@@ -121,7 +160,7 @@ export default class ChannelManagePage extends RootComponent {
   width: 100%;
   height: 100%;
   opacity: .3;
-  z-index: 0;
+  z-index: -1;
   background-color: var(--top-color-7);
   border-radius: 10px;
 }
@@ -166,4 +205,37 @@ export default class ChannelManagePage extends RootComponent {
   align-items: center;
 }
 
+.channel-manage-page .subscriptions > .content {
+  gap: 1rem;
+}
+.channel-manage-page .subscriptions > .content > .edit {
+  align-self: center;
+}
+
+.subscriptions-content {
+  margin-top: 10px;
+  justify-content: space-around;
+}
+.subscriptions-content > .subscription {
+  background-color: var(--secondary-color-6);
+    border-radius: 10px;
+    padding: 2px 10px;
+    gap:10px;
+}
+.subscriptions-content > .subscription > .length {
+  align-items: flex-end;
+  margin-top: 20px;
+  margin-right: -8px;
+}
+.subscriptions-content > .subscription > .length > h1 {
+  line-height: 0.6;
+}
+.subscriptions-content > .subscription > .price {
+  align-items: flex-end;
+  margin-bottom: 10px;
+  margin-right: 25px;
+}
+.subscriptions-content > .subscription > .price > h2{
+  line-height: 0.6;
+}
 </style>
