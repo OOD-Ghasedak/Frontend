@@ -19,10 +19,16 @@
       {{ content.data }}
     </h6>
     <div class="actions row">
-      <button class="primary-button">
-        <p>{{ 'دانلود سریع' }}</p>
-        <img src="@/static/images/download.svg" class="image-sized--2">
-      </button>
+      <div v-if="channelRoleProps.canManageContents" class="content-management row">
+        <button class="error-button primary-button remove-button">
+          <p>{{ 'حذف...' }}</p>
+          <img src="@/static/images/trash-can.svg" class="image-sized--2">
+        </button>
+        <button class="primary-button">
+          <p>{{ 'ویرایش محتوا...' }}</p>
+          <img src="@/static/images/edit.svg" class="image-sized--2">
+        </button>
+      </div>
       <button class="primary-button">
         <p>{{ 'دیدن مطلب...' }}</p>
         <img src="@/static/images/next.svg" class="image-sized--2">
@@ -35,11 +41,17 @@
 import Component from 'vue-class-component'
 import Vue from 'vue'
 import { Prop } from 'vue-property-decorator'
-import { ChannelContent } from '~/models'
+import { ChannelContent, ChannelRole, ChannelRolesProps } from '~/models'
 
   @Component
 export default class ChannelContentCard extends Vue {
   @Prop() readonly content: ChannelContent
+
+  channelRole: ChannelRole = ChannelRole.ADMIN
+
+  get channelRoleProps () {
+    return ChannelRolesProps[this.channelRole]
+  }
 }
 </script>
 
@@ -91,7 +103,10 @@ export default class ChannelContentCard extends Vue {
 }
 
 .channel-content > .actions {
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.channel-content > .actions > .content-management {
   gap: 0.5rem;
 }
 </style>

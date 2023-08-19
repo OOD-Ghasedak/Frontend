@@ -23,7 +23,7 @@
       <div class="center">
         <h1>{{ channel.name }}</h1>
         <channel-role-component :role="channelRole" />
-        <button v-if="channelRoleProps.canLeaveChannel" class="leave-group-button" @click="leaveChannel">
+        <button v-if="channelRoleProps.canLeaveChannel" class="leave-group-button error-button" @click="leaveChannel">
           <h6>{{ 'خروج از کانال...' }}</h6>
           <img class="image-sized--1" src="@/static/images/leave-group.svg">
         </button>
@@ -150,16 +150,10 @@ export default class ChannelPage extends RootComponent {
 }
 
 .channel-page > .header > .center > .leave-group-button {
-  background-color: var(--error-color-2);
-  border-radius: 10px;
   padding: 5px 1rem;
   align-items: center;
   gap: 0.8rem;
   margin-top: 10px;
-}
-
-.leave-group-button > h6 {
-  color: var(--error-color);
 }
 
 .channel-page > .header > .right {

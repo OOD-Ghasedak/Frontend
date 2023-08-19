@@ -6,8 +6,7 @@ interface ChannelRoleProps {
   canManageChannel: boolean,
   canManageAdmins: boolean,
   canAddContent: boolean,
-  canEditContents: boolean,
-  canRemoveContents: boolean,
+  canManageContents: boolean,
   canLeaveChannel: boolean
 }
 
@@ -16,13 +15,11 @@ export const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonl
     canManageChannel: true,
     canManageAdmins: true,
     canAddContent: true,
-    canEditContents: true,
-    canRemoveContents: true
+    canManageContents: true
   },
   [ChannelRole.ADMIN]: {
     canAddContent: true,
-    canEditContents: true,
-    canRemoveContents: true
+    canManageContents: true
   },
   [ChannelRole.SPECIAL_MEMBER]: {
     canLeaveChannel: true
