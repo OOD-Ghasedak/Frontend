@@ -41,7 +41,7 @@ export default class LoginPage extends RootComponent {
   password: string = ''
   login () {
     this.mainConfig.$facades.visitingUser.login(this.emailOrUsername, this.password)
-      .then(() => { this.$router.push({ path: '/home/' }) })
+      .then(() => { this.$router.push({ name: 'HomePage' }) })
       .catch(() => {
         this.$nuxt.showError('error')
       })
