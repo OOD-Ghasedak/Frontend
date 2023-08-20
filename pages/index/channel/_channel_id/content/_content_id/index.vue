@@ -10,13 +10,15 @@ import RootComponent from '~/utils/rootComponent'
 @Component
 export default class ChannelContentPage extends RootComponent {
   contents: ChannelContent = {
-    id: '0',
-    name: 'متن آهنگ ساسی',
+    id: '1',
+    title: 'متن آهنگ ساسی',
     price: 10000,
     summary: 'متن آهنگ ساسی',
-    type: ChannelContentType.TEXT,
-    data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
-    is_monetary: true
+    content_type: ChannelContentType.TEXT,
+    complete_content: {
+      text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+    },
+    is_premium: false
   }
 
   get contentId (): string {

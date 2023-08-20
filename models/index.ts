@@ -15,17 +15,20 @@ export interface OwnedOrManagedChannel extends Channel {
 }
 
 export enum ChannelContentType {
-    TEXT, IMAGE, VIDEO, VOICE
- }
-
+    TEXT = 'text', IMAGE = 'image', VIDEO = 'video', VOICE = 'audio'
+}
+export interface ChannelCompleteContent {
+    text: string;
+    file?: string;
+}
 export interface ChannelContent {
     id: string;
-    name: string;
-    price: Money;
-    type: ChannelContentType;
-    data: string;
+    title: string;
     summary: string;
-    is_monetary: boolean;
+    is_premium: boolean;
+    price: Money;
+    content_type: ChannelContentType;
+    complete_content?: ChannelCompleteContent;
 }
 
 export * from './channelRoles'

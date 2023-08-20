@@ -62,30 +62,34 @@ export default class ChannelPage extends RootComponent {
   contents: ChannelContent[] = [
     {
       id: '0',
-      name: 'متن آهنگ ساسی',
-      price: 10000,
+      title: 'متن آهنگ ساسی',
       summary: 'متن آهنگ ساسی',
-      type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
-      is_monetary: true
+      price: 10000,
+      content_type: ChannelContentType.IMAGE,
+      is_premium: true
     },
     {
       id: '1',
-      name: 'متن آهنگ ساسی',
+      title: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
-      type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا',
-      is_monetary: false
+      content_type: ChannelContentType.TEXT,
+      complete_content: {
+        text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+      },
+      is_premium: false
     },
     {
       id: '2',
-      name: 'متن آهنگ ساسی',
+      title: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
-      type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
-      is_monetary: true
+      content_type: ChannelContentType.IMAGE,
+      complete_content: {
+        text: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
+        file: 'https://cc-prod.scene7.com/is/image/CCProdAuthor/how_to_cut_out_images_photoshop_P1_mobile_360x270?$pjpeg$&jpegSize=200&wid=720'
+      },
+      is_premium: true
     }
   ]
 
