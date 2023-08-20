@@ -129,6 +129,30 @@
         </div>
       </div>
     </div>
+    <div class="members">
+      <h2>{{ 'اعضای کانال' }}</h2>
+      <div class="content">
+        <div v-for="(member, i) in members" :key="`member-${i}`" :class="`member row ${i % 2 == 0 ? 'odd': 'even'}`">
+          <div class="content row">
+            <img class="image-sized-1 circular" src="@/static/images/ghased.svg">
+            <div class="names">
+              <h3>{{ member.name }}</h3>
+              <h5>{{ `@${member.username}` }}</h5>
+            </div>
+          </div>
+          <div class="actions row">
+            <button class="primary-button">
+              <p>{{ 'ارتقا به مدیر کانال' }}</p>
+              <img class="image-sized--2" src="@/static/images/channel-roles/admin.svg">
+            </button>
+            <button class="error-button">
+              <p>{{ 'اخراج' }}</p>
+              <img class="image-sized--2" src="@/static/images/leave-red.svg">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -151,6 +175,13 @@ export default class ChannelManagePage extends RootComponent {
     { length: 1, price: 20000 },
     { length: 1, price: 20000 }
   ]
+
+  members = [
+    { name: 'sepehr', username: 'sep' },
+    { name: 'ashkan', username: 'ashk' },
+    { name: 'sadra', username: 'sad' },
+    { name: 'mohammad', username: 'abol' }
+  ]
 }
 </script>
 <router>
@@ -159,9 +190,13 @@ export default class ChannelManagePage extends RootComponent {
 
 <style>
 .channel-manage-page {
-  height: 100%;
+  min-height: 100%;
+  height: fit-content;
   padding: 40px 5% 0 9%;
   gap: 1rem;
+}
+.channel-manage-page > * {
+  height: fit-content;
 }
 
 .channel-manage-page > .header {
@@ -298,5 +333,46 @@ export default class ChannelManagePage extends RootComponent {
 }
 .channel-manage-page .sales-report > .content > .sales-report-item > .numbers > .number {
   align-items: center;
+}
+
+.channel-manage-page > .members {
+  gap: 1rem;
+  border: 1px solid var(--top-color-1);
+  border-radius: 10px;
+  padding: 20px 0 0;
+}
+
+.channel-manage-page > .members > h2 {
+  text-align: center;
+}
+
+.channel-manage-page > .members > .content {
+  /* gap: 1rem; */
+}
+
+.channel-manage-page > .members .member {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3%;
+}
+
+.channel-manage-page > .members .member.odd {
+  position: relative;
+  z-index: 0;
+}
+.channel-manage-page > .members .member.odd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .3;
+  z-index: -1;
+  background-color: var(--top-color-7);
+}
+
+.channel-manage-page > .members .member > div {
+  gap: 1rem;
 }
 </style>
