@@ -85,7 +85,50 @@
         </button>
       </div>
     </div>
-    <div class="row-3" />
+    <div class="sales-report manage-section">
+      <div class="header">
+        <img src="@/static/images/report.svg">
+        <h4 class="secondary">
+          {{ 'گزارش فروش کانال' }}
+        </h4>
+      </div>
+      <div class="content row">
+        <div class="sales-report-item row">
+          <h5>{{ 'اشتراکات فروخته‌شده' }}</h5>
+          <div class="numbers">
+            <div class="number row">
+              <h2>{{ '250,000,000' }}</h2>
+              <h5>{{ 'تومان' }}</h5>
+            </div>
+            <div class="number row">
+              <h2>{{ '340' }}</h2>
+              <h5>{{ 'عدد' }}</h5>
+            </div>
+          </div>
+          <button class="secondary-button-2">
+            <h6>{{ 'دیدن جزئیات' }}</h6>
+            <img class="image-sized--2" src="@/static/images/info-green.svg">
+          </button>
+        </div>
+        <div class="sales-report-item row">
+          <h5>{{ 'اشتراکات فروخته‌شده' }}</h5>
+          <div class="numbers">
+            <div class="number row">
+              <h2>{{ '250,000,000' }}</h2>
+              <h5>{{ 'تومان' }}</h5>
+            </div>
+            <div class="number row">
+              <h2>{{ '340' }}</h2>
+              <h5>{{ 'عدد' }}</h5>
+            </div>
+          </div>
+          <button class="secondary-button-2">
+            <h6>{{ 'دیدن جزئیات' }}</h6>
+            <img class="image-sized--2" src="@/static/images/info-green.svg">
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -93,7 +136,7 @@
 import Component from 'vue-class-component'
 import RootComponent from '~/utils/rootComponent'
 
-    @Component
+@Component
 export default class ChannelManagePage extends RootComponent {
   admins = [
     { name: 'احمد', username: 'ahmad001' },
@@ -237,5 +280,23 @@ export default class ChannelManagePage extends RootComponent {
 }
 .subscriptions-content > .subscription > .price > h2{
   line-height: 0.6;
+}
+
+.channel-manage-page .sales-report > .content {
+  justify-content: space-around;
+}
+.channel-manage-page .sales-report > .content > .sales-report-item {
+  align-items: center;
+  gap: 1rem;
+}
+.channel-manage-page .sales-report > .content > .sales-report-item > h5 {
+  width: min-content;
+  text-align: center;
+}
+.channel-manage-page .sales-report > .content > .sales-report-item > .numbers {
+  align-items: center;
+}
+.channel-manage-page .sales-report > .content > .sales-report-item > .numbers > .number {
+  align-items: center;
 }
 </style>

@@ -211,6 +211,7 @@ input[type="number"] {
 .secondary-button-2 {
   background-color: var(--secondary-color-6);
   width: fit-content;
+  height: fit-content;
   border-radius: 10px;
   align-items: center;
   gap: 0.5rem;
