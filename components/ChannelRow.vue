@@ -29,7 +29,7 @@ export default class ChannelRow extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .channel {
   height: 170px;
   align-items: center;

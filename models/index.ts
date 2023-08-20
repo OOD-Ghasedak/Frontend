@@ -1,3 +1,4 @@
+import { ChannelContentType } from './channelContentTypes'
 export type Money = number;
 
 export interface Channel {
@@ -13,10 +14,7 @@ export interface JoinedChannel extends Channel {
 export interface OwnedOrManagedChannel extends Channel {
     role;
 }
-
-export enum ChannelContentType {
-    TEXT = 'text', IMAGE = 'image', VIDEO = 'video', VOICE = 'audio'
-}
+export * from './channelContentTypes'
 export interface ChannelCompleteContent {
     text: string;
     file?: string;
