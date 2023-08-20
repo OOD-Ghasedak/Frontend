@@ -23,6 +23,27 @@
         </div>
       </div>
     </div>
+    <div class="summary manage-section">
+      <h3 class="header">
+        {{ 'خلاصه محتوا' }}
+      </h3>
+      <h5 class="content">
+        {{ content.summary }}
+      </h5>
+    </div>
+    <div class="content manage-section">
+      <div class="content">
+        <component :is="contentProps.content.fileTag" v-if="contentProps.content && content.complete_content" class="file-content" :src="content.complete_content.file" />
+        <h6 v-else-if="content.complete_content" class="text-content">
+          {{ content.complete_content.text }}
+        </h6>
+        <img v-else src="@/static/images/defaults/channel-default-content.svg" class="default-file-content">
+        <button v-if="!content.complete_content" class="buy-button secondary-button-2 horizontally-centered">
+          <h6>{{ 'خرید محتوا' }}</h6>
+          <img class="image-sized--1" src="@/static/images/paper-money.svg">
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -80,10 +101,12 @@ export default class ChannelContentPage extends RootComponent {
 .channel-content-page {
   height: 100%;
   margin: 30px 4%;
+  gap: 1rem;
 }
 
 .channel-content-page > .header {
   position: relative;
+  min-height: 100px;
 }
 
 .channel-content-page > .header > .channel {
@@ -130,5 +153,54 @@ export default class ChannelContentPage extends RootComponent {
 }
 .bottom > .bottom-item > h5 {
   align-self: center;
+}
+
+.channel-content-page .manage-section {
+  width: -webkit-fill-available;
+  position: relative;
+  --right-padding: 10px;
+  --top-padding: 15px;
+  --left-padding: 15px;
+  padding-bottom: 10px;
+  z-index: 0;
+}
+.channel-content-page .manage-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .3;
+  z-index: -1;
+  background-color: var(--top-color-7);
+  border-radius: 10px;
+}
+
+.channel-content-page .manage-section {
+  margin: 0 4%;
+}
+.channel-content-page .manage-section::before {
+  border-radius: 0;
+}
+
+.channel-content-page .manage-section > .header {
+  flex-direction: row;
+  gap: 1rem;
+  border-bottom: 1px solid var(--top-color-1);
+  padding: var(--top-padding) var(--right-padding) 10px 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.channel-content-page .manage-section > .content {
+  margin-right: var(--right-padding);
+  margin-top: 10px;
+  margin-left: var(--left-padding);
+}
+
+.channel-content-page > .content > .content {
+  gap: 1rem;
+  margin: 20px 5%;
 }
 </style>
