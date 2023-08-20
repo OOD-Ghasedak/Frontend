@@ -26,15 +26,15 @@
           <p>{{ 'حذف...' }}</p>
           <img src="@/static/images/trash-can.svg" class="image-sized--2">
         </button>
-        <button class="primary-button">
+        <nuxt-link :to="{name: 'ChannelEditContentPage', params: {...$route.params, content_id: content.id}}" class="primary-button">
           <p>{{ 'ویرایش محتوا...' }}</p>
           <img src="@/static/images/edit.svg" class="image-sized--2">
-        </button>
+        </nuxt-link>
       </div>
-      <button class="primary-button">
+      <nuxt-link :to="{name: 'ChannelContentPage', params: {...$route.params, content_id: content.id}}" class="primary-button">
         <p>{{ 'دیدن مطلب...' }}</p>
         <img src="@/static/images/next.svg" class="image-sized--2">
-      </button>
+      </nuxt-link>
     </div>
   </div>
 </template>

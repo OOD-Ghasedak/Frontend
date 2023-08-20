@@ -3,7 +3,7 @@
     <div class="header row">
       <div class="right row">
         <img class="circular image-sized-3" src="@/static/images/ghased.svg">
-        <nuxt-link v-if="channelRoleProps.canAddContent" :to="{name: 'ChannelAddContentPage'}" custom>
+        <nuxt-link v-if="channelRoleProps.canAddContent" :to="{name: 'ChannelAddContentPage', params: {...$route.params}}" custom>
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/plus.svg">
@@ -11,7 +11,7 @@
             <h6>{{ 'افزودن محتوا' }}</h6>
           </div>
         </nuxt-link>
-        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{path: `/channel/${channelId}/manage`}" replace="false" custom>
+        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage', params: {...$route.params}}" replace="false" custom>
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/info.svg">
