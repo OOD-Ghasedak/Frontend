@@ -22,6 +22,7 @@
           </div>
         </div>
       </div>
+      <premium-sign v-if="content.is_premium" />
     </div>
     <div class="summary manage-section">
       <h3 class="header">
@@ -107,6 +108,7 @@ export default class ChannelContentPage extends RootComponent {
 .channel-content-page > .header {
   position: relative;
   min-height: 100px;
+  gap: 1rem;
 }
 
 .channel-content-page > .header > .channel {
@@ -147,11 +149,14 @@ export default class ChannelContentPage extends RootComponent {
   width: 0;
   margin: 0 3vw;
 }
-
 .bottom > .bottom-item {
   gap: 1rem;
 }
 .bottom > .bottom-item > h5 {
+  align-self: center;
+}
+
+.channel-content-page > .header > .premium-sign {
   align-self: center;
 }
 

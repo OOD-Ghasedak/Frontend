@@ -3,12 +3,7 @@
     <div class="content-type">
       <img class="image-sized--1" :src="typeIconSrc">
     </div>
-    <div v-if="content.is_premium" class="monetary-sign row">
-      <img class="image-sized--1" src="@/static/images/dollar-green.svg">
-      <p class="text-centered">
-        {{ 'محتوای پولی' }}
-      </p>
-    </div>
+    <premium-sign v-if="content.is_premium" />
     <component :is="contentProps.content.fileTag" v-if="contentProps.content && content.complete_content" class="file-content" :src="content.complete_content.file" />
     <img v-else-if="contentProps.content" src="@/static/images/defaults/channel-default-content.svg" class="default-file-content">
     <h5 class="text-centered">
@@ -102,20 +97,10 @@ export default class ChannelContentCard extends Vue {
   background-color: var(--top-color-7);
 }
 
-.channel-content > .monetary-sign {
+.channel-content > .premium-sign {
   left: var(--channel-left-right-padding);
   top: var(--channel-absolute-items-top-padding);
   position: absolute;
-  align-items: center;
-  gap: 5px;
-  flex-wrap: nowrap;
-  padding: 4px 6px;
-  border-radius: 10px;
-  background-color: var(--secondary-color-7);
-}
-.channel-content > .monetary-sign > p {
-  width: min-content;
-    line-height: 1;
 }
 
 .channel-content > .file-content {
