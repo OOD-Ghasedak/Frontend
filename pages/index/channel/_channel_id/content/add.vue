@@ -3,7 +3,9 @@
     <BackButton />
     <div class="channel-info">
       <img src="@/static/images/ghased.svg" alt="" class="channel-picture">
-      <h5 class="channel-title">بهترین کانال دنیا</h5>
+      <h5 class="channel-title">
+        بهترین کانال دنیا
+      </h5>
     </div>
     <div class="title">
       <h1 class="text-centered">
@@ -11,7 +13,6 @@
       </h1>
     </div>
     <div class="main-body">
-
       <div class="input-box">
         <div class="input-title-div">
           <h5 class="input-title">
@@ -20,7 +21,7 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/h.svg" alt="" class="input-icon">
-          <input type="text" name="1month" id="" placeholder="عنوان محتوا را وارد کنید...">
+          <input id="" v-model="content.title" type="text" name="1month" placeholder="عنوان محتوا را وارد کنید...">
         </div>
       </div>
 
@@ -33,7 +34,7 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/paragraph.svg" alt="" class="input-icon">
-          <input type="text" name="1month" id="" placeholder="خلاصه محتوا را وارد کنید...">
+          <input id="" v-model="content.summary" type="text" name="1month" placeholder="خلاصه محتوا را وارد کنید...">
         </div>
       </div>
 
@@ -46,8 +47,7 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/doc.svg" alt="" class="input-icon">
-          <textarea type="text" name="1month" id="" placeholder="متن مورد نظر خود را وارد کنید.">
-          </textarea>
+          <textarea id="" v-model="content.text" type="text" name="1month" placeholder="متن مورد نظر خود را وارد کنید." />
         </div>
       </div>
 
@@ -57,15 +57,15 @@
             فایل خود را بارگذاری کنید.
           </h5>
         </div>
-        <input type="file">
+        <input type="file" @change="addFile">
       </div>
 
       <!-- Rounded switch -->
       <div class="make-financial">
         <!-- Rounded switch -->
         <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
+          <input v-model="content.is_premium" type="checkbox">
+          <span class="slider round" />
         </label>
 
         <div class="premium-sign row">
@@ -76,27 +76,45 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/paper-money.svg" alt="" class="input-icon">
-          <input type="number" name="1month" id="" placeholder="قیمت">
+          <input id="" v-model="content.price" type="number" name="1month" placeholder="قیمت">
         </div>
-
       </div>
-
 
       <button class="secondary-button horizontally-centered">
         <h2>{{ 'انتشار' }}</h2>
       </button>
-
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import { Mixins } from 'vue-property-decorator'
+import FileAPIHandler from '~/apis/fileAPIHandler'
+import { SentChannelContent } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
-export default class ChannelAddContentPage extends RootComponent {
+export default class ChannelAddContentPage extends Mixins(RootComponent, FileAPIHandler) {
+  content: SentChannelContent = {
+    title: '',
+    summary: '',
+    is_premium: false,
+    price: 0,
+    text: '',
+    file: null
+  }
 
+  addFile (event: InputEvent) {
+    const newFile = (event.target as HTMLInputElement).files[0]
+    if (newFile) {
+      this.readFile(newFile).then((response) => {
+        this.content.file = response
+      })
+    } else {
+      this.content.file = null
+    }
+  }
 }
 </script>
 <router>

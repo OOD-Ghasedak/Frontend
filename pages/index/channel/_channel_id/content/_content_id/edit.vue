@@ -3,7 +3,9 @@
     <BackButton />
     <div class="channel-info">
       <img src="@/static/images/ghased.svg" alt="" class="channel-picture">
-      <h5 class="channel-title">بهترین کانال دنیا</h5>
+      <h5 class="channel-title">
+        بهترین کانال دنیا
+      </h5>
     </div>
     <div class="title">
       <h1 class="text-centered">
@@ -11,7 +13,6 @@
       </h1>
     </div>
     <div class="main-body">
-
       <div class="input-box">
         <div class="input-title-div">
           <h5 class="input-title">
@@ -20,7 +21,7 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/h.svg" alt="" class="input-icon">
-          <input type="text" name="1month" id="" placeholder="عنوان محتوا را وارد کنید...">
+          <input id="" type="text" name="1month" placeholder="عنوان محتوا را وارد کنید...">
         </div>
       </div>
 
@@ -33,7 +34,7 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/paragraph.svg" alt="" class="input-icon">
-          <input type="text" name="1month" id="" placeholder="خلاصه محتوا را وارد کنید...">
+          <input id="" type="text" name="1month" placeholder="خلاصه محتوا را وارد کنید...">
         </div>
       </div>
 
@@ -46,8 +47,7 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/doc.svg" alt="" class="input-icon">
-          <textarea type="text" name="1month" id="" placeholder="متن مورد نظر خود را وارد کنید.">
-          </textarea>
+          <textarea id="" type="text" name="1month" placeholder="متن مورد نظر خود را وارد کنید." />
         </div>
       </div>
 
@@ -65,7 +65,7 @@
         <!-- Rounded switch -->
         <label class="switch">
           <input type="checkbox">
-          <span class="slider round"></span>
+          <span class="slider round" />
         </label>
 
         <div class="premium-sign row">
@@ -76,16 +76,13 @@
         </div>
         <div class="sub-input-div">
           <img src="@/static/images/paper-money.svg" alt="" class="input-icon">
-          <input type="number" name="1month" id="" placeholder="قیمت">
+          <input id="" type="number" name="1month" placeholder="قیمت">
         </div>
-
       </div>
-
 
       <button class="secondary-button horizontally-centered">
         <h2>{{ 'انتشار' }}</h2>
       </button>
-
     </div>
   </div>
 </template>
@@ -109,15 +106,15 @@ export default class ChannelEditContentPage extends RootComponent {
     is_premium: false
   }
 
-  get contentId(): string {
+  get contentId (): string {
     return this.$route.params.content_id
   }
 
-  get channelId(): string {
+  get channelId (): string {
     return this.$route.params.channel_id
   }
 
-  mounted() {
+  mounted () {
     // get channel
     // get contents
   }
