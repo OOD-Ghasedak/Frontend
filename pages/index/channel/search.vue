@@ -8,7 +8,7 @@
       <img src="@/static/images/magnifier.svg" @click="searchChannels">
     </div>
     <div class="channels">
-      <ChannelRow v-for="(channel, i) in channels" :key="`channel-${i}`" :channel="channel" />
+      <channel-row v-for="(channel, i) in channels" :key="`channel-${i}`" :channel="channel" />
     </div>
   </div>
 </template>
@@ -16,12 +16,9 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import { Channel, ChannelRole } from '~/models'
-import ChannelRow from '~/components/ChannelRow.vue'
 import RootComponent from '~/utils/rootComponent'
 
-@Component({
-  components: { ChannelRow }
-})
+@Component
 export default class SearchChannelPage extends RootComponent {
   channels: Channel[] = [
     {
