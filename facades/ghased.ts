@@ -74,11 +74,15 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
     }))
   }
 
-  searchChannel(search_name: string): Promise<Channel[]> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(CHANNEL_URL, REQUEST_METHODS.POST, {
+  searchChannel(searchName: string): Promise<Channel[]> {
+    return this.mainConfig.$apis.backend.send(new RequestParams(CHANNEL_URL, REQUEST_METHODS.GET, {
       withAuth: true,
-      data: { search: search_name }
-    }))
+      config: {
+        params: {
+          search: searchName
+        }
+      }
+    })).then(response => { return response.results })
   }
 
   joinChannel(channelId: string): Promise<any> {
