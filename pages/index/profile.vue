@@ -11,7 +11,7 @@
           <h5 class="username-field">
             {{ `@${profile.username}` }}
           </h5>
-          <button style="margin-right: 5px;">
+          <button style="margin-right: 5px;" @click="$bvModal.show('editUsername')">
             <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
           </button>
         </div>
@@ -84,6 +84,21 @@
       <h2>{{ 'خروج' }}</h2>
       <img src="@/static/images/logout.svg">
     </button>
+    <b-modal id="editUsername">
+      <template #default>
+        <div class="edit-profile-body">
+          <h5>{{ '.نام کاربری جدید را وارد کنید' }}</h5>
+          <input v-model="editedInfo.username">
+        </div>
+      </template>
+      <template #modal-footer>
+        <div class="edit-profile-footer">
+          <button class="primary-button">
+            <h6>{{ 'تغییر' }}</h6>
+          </button>
+        </div>
+      </template>
+    </b-modal>
   </div>
 </template>
 
@@ -101,6 +116,11 @@ export default class ProfilePage extends RootComponent {
     username: 'sepehrkianian09',
     email: 'sepehrkianian09@gmail.com',
     phone_number: '09112245833'
+  }
+
+  editedInfo = {
+    username: '',
+    phone_number_or_email: ''
   }
 
   wallet: UserWallet = {
@@ -263,6 +283,15 @@ export default class ProfilePage extends RootComponent {
   align-items: center;
   gap: 10px;
   background-color: #fe2f2f;
+}
+
+.edit-profile-body {
+  gap: 1rem;
+}
+.edit-profile-footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 
 </style>

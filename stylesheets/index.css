@@ -186,6 +186,7 @@ input[type="number"] {
 
 .secondary-button {
   display: flex;
+  width: fit-content;
   border-width: 0;
   background: transparent;
   align-items: center;
