@@ -31,6 +31,168 @@
       </button>
     </div>
 
+    <!-- define sub modal -->
+
+    <b-modal centered visible size="lg" class="buy-sub">
+      <template #default>
+        <div class="modal-main">
+          <div class="modal-body-title">
+            <h1 class="modal-title-text">
+              <center>تعریف اشتراک</center>
+            </h1>
+          </div>
+
+          <div class="modal-body-define-sub">
+            <div class="sub-input-div">
+              <p class="sub-month-title">۱</p>
+              <input type="number" name="1month" id="" placeholder="هزینه اشتراک ۱ ماهه (تومان)">
+            </div>
+            <div class="sub-input-div">
+              <p class="sub-month-title">۳</p>
+              <input type="number" name="3month" id="" placeholder="هزینه اشتراک ۳ ماهه (تومان)">
+            </div>
+            <div class="sub-input-div">
+              <p class="sub-month-title">۶</p>
+              <input type="number" name="6month" id="" placeholder="هزینه اشتراک ۶ ماهه (تومان)">
+            </div>
+            <div class="sub-input-div">
+              <p class="sub-month-title">۱۲</p>
+              <input type="number" name="12month" id="" placeholder="هزینه اشتراک ۱۲ ماهه (تومان)">
+            </div>
+
+          </div>
+        </div>
+      </template>
+      <template #modal-footer>
+        <div class="ok-button">
+
+          <button class="edit secondary-button-2">
+            <h6>{{ ' تعریف اشتراک' }}</h6>
+            <img class="image-sized--1" src="@/static/images/paper-money.svg">
+          </button>
+        </div>
+      </template>
+      <template #modal-header-close>
+        <div class="close-button">
+          <h5 class="close-text">
+            انصراف
+          </h5>
+          <img src="@/static/images/close.svg" alt="" class="close-icon">
+        </div>
+      </template>
+    </b-modal>
+
+
+
+    <!-- admin report modal -->
+    <!-- <b-modal centered hide-footer visible size="lg" class="buy-sub">
+      <template #default>
+        <div class="modal-main promote-to-admin-main">
+
+          <div class="content row">
+            <img src="@/static/images/ghased.svg" class="image-sized-1">
+            <div class="names">
+              <h5>hi</h5>
+              <h6>@hello</h6>
+            </div>
+          </div>
+
+          <div class="profit-part">
+            <h4 class="profit-text">پست‌های نوشته شده</h4>
+            <p class="number-of-posts-written">۲۵</p>
+          </div>
+
+        </div>
+      </template>
+
+      <template #modal-header-close>
+        <div class="close-button">
+          <h5 class="close-text">
+            انصراف
+          </h5>
+          <img src="@/static/images/close.svg" alt="" class="close-icon">
+        </div>
+      </template>
+    </b-modal> -->
+
+
+    <!-- change admin profit -->
+    <!-- <b-modal centered visible size="lg" class="buy-sub">
+      <template #default>
+        <div class="modal-main promote-to-admin-main">
+
+          <div class="content row">
+            <img src="@/static/images/ghased.svg" class="image-sized-1">
+            <div class="names">
+              <h5>hi</h5>
+              <h6>@hello</h6>
+            </div>
+          </div>
+
+          <div class="profit-part">
+            <h4 class="profit-text">عواید</h4>
+            <input type="number" name="profit" placeholder="درصد عواید" class="profit-input">
+            <p>درصد</p>
+          </div>
+
+        </div>
+      </template>
+      <template #modal-footer>
+        <div class="ok-button">
+          <button class="primary-button">
+            <h5>{{ 'تغییر درصد' }}</h5>
+            <img src="@/static/images/exchange.svg" class="image-sized--2">
+          </button>
+        </div>
+      </template>
+      <template #modal-header-close>
+        <div class="close-button">
+          <h5 class="close-text">
+            انصراف
+          </h5>
+          <img src="@/static/images/close.svg" alt="" class="close-icon">
+        </div>
+      </template>
+    </b-modal> -->
+
+    <!-- promote to admin modal -->
+    <!-- <b-modal centered visible size="lg" class="buy-sub">
+      <template #default>
+        <div class="modal-main promote-to-admin-main">
+
+          <div class="content row">
+            <img src="@/static/images/ghased.svg" class="image-sized-1">
+            <div class="names">
+              <h5>hi</h5>
+              <h6>@hello</h6>
+            </div>
+          </div>
+
+          <div class="profit-part">
+            <h4 class="profit-text">عواید</h4>
+            <input type="number" name="profit" placeholder="درصد عواید" class="profit-input">
+            <p>درصد</p>
+          </div>
+
+        </div>
+      </template>
+      <template #modal-footer>
+        <div class="ok-button">
+          <button class="primary-button">
+            <h5>{{ 'ارتقا به مدیر کانال' }}</h5>
+            <img class="image-sized--2" src="@/static/images/channel-roles/admin.svg">
+          </button>
+        </div>
+      </template>
+      <template #modal-header-close>
+        <div class="close-button">
+          <h5 class="close-text">
+            انصراف
+          </h5>
+          <img src="@/static/images/close.svg" alt="" class="close-icon">
+        </div>
+      </template>
+    </b-modal> -->
 
     <!-- change bio modal -->
     <!-- <b-modal centered visible size="lg" class="buy-sub">
@@ -625,6 +787,12 @@ export default class CreateChannelDefineSubscriptionPage extends RootComponent {
   color: var(--top-color-5);
 }
 
+input::placeholder {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--top-color-5);
+}
+
 .ok-button {
   display: flex;
   flex-direction: row;
@@ -681,5 +849,47 @@ export default class CreateChannelDefineSubscriptionPage extends RootComponent {
 
 .paragraph-icon {
   width: 15px;
+}
+
+.promote-to-admin-main {
+  align-items: center;
+}
+
+.row {
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.profit-part {
+  align-items: center;
+  margin-top: 25px;
+}
+
+.profit-input {
+  text-align: center;
+}
+
+.profit-text {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.number-of-posts-written {
+  font-family: 'Yekan Bakh Fat';
+  font-size: 3rem;
+}
+
+.sub-input-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.sub-month-title {
+  font-family: 'Yekan Bakh Fat';
+  font-size: 2rem;
+  margin-left: 10px;
 }
 </style>
