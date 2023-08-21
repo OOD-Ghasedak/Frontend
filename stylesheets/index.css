@@ -3,6 +3,7 @@
 * {
   direction: rtl;
 }
+
 div {
   display: flex;
   flex-direction: column;
@@ -14,7 +15,13 @@ button {
   background: transparent;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   /* direction: ltr; */
   /* align-self: center; */
   margin-bottom: 0;
@@ -65,6 +72,7 @@ h2.secondary {
 h3.secondary {
   color: var(--secondary-color-1);
 }
+
 h4.secondary {
   color: var(--secondary-color-3);
 }
@@ -82,14 +90,15 @@ input {
   font-weight: var(--medium-font-size);
   color: var(--top-color-1);
 }
+
 input {
   border: none;
-    height: 56px;
-    padding: 5px 10px;
-    border-bottom: 1px solid;
-    outline: none;
-    border-color: var(--top-color-1);
-    color: var(--top-color-5);
+  height: 56px;
+  padding: 5px 10px;
+  border-bottom: 1px solid;
+  outline: none;
+  border-color: var(--top-color-1);
+  color: var(--top-color-5);
 }
 
 /* hide number input arrow */
@@ -98,6 +107,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
@@ -110,12 +120,12 @@ input[type="number"] {
   margin-right: 0px;
 }
 
-.image-sized--2{
+.image-sized--2 {
   width: 20px;
   height: 20px;
 }
 
-.image-sized--1{
+.image-sized--1 {
   width: 25px;
   height: 25px;
 }
@@ -139,7 +149,7 @@ input[type="number"] {
   width: 159px;
   height: 159px;
 }
-  
+
 .horizontally-centered {
   align-self: center;
 }
@@ -164,7 +174,7 @@ input[type="number"] {
   position: relative;
 }
 
-.icon-input > img {
+.icon-input>img {
   position: absolute;
   left: 0;
   margin: auto 0;
@@ -191,6 +201,7 @@ input[type="number"] {
   background: transparent;
   align-items: center;
 }
+
 .secondary-button:after {
   content: url('~/static/images/next.svg');
   margin-right: 15px;
@@ -207,7 +218,13 @@ input[type="number"] {
   padding: 6px 10px;
 }
 
-.error-button > h1, .error-button > h2, .error-button > h3, .error-button > h4, .error-button > h5, .error-button > h6, .error-button > p {
+.error-button>h1,
+.error-button>h2,
+.error-button>h3,
+.error-button>h4,
+.error-button>h5,
+.error-button>h6,
+.error-button>p {
   color: var(--error-color);
 }
 
@@ -219,7 +236,7 @@ input[type="number"] {
   border-radius: 10px;
   align-items: center;
   gap: 0.5rem;
-  padding: 3px 6px;
+  padding: 5px 8px;
 }
 
 .responsive-grid {
