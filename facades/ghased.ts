@@ -3,7 +3,7 @@
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
 import { Channel, UserProfile } from '~/models'
 import { PROFILE_URL } from '~/urls/account'
-import { CHANNEL_URL, CREATE_CHANNEL_URL, GET_JOIN_CHANNEL_URL, JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from '~/urls/channel'
+import { CHANNELS_URL, CREATE_CHANNEL_URL, GET_JOIN_CHANNEL_URL, JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from '~/urls/channel'
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface Ghased {
@@ -75,7 +75,7 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
   }
 
   searchChannel(searchName: string): Promise<Channel[]> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(CHANNEL_URL, REQUEST_METHODS.GET, {
+    return this.mainConfig.$apis.backend.send(new RequestParams(CHANNELS_URL, REQUEST_METHODS.GET, {
       withAuth: true,
       config: {
         params: {
