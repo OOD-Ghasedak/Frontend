@@ -28,7 +28,7 @@ export interface ChannelContentModel {
 
 export interface SentChannelContent extends ChannelContentModel {
     text: string;
-    file: string | ArrayBuffer | null;
+    file: File | null;
 }
 
 export interface ChannelContent extends ChannelContentModel {

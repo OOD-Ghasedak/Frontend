@@ -4,25 +4,25 @@ import { GET_CHANNEL_CONTENTS_URL, GET_CHANNEL_URL, GET_CONTENT_URL } from '~/ur
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface ChannelManager {
-    addContent(channelId: string, content: SentChannelContent);
+  addContent(channelId: string, content: SentChannelContent);
 
-    editContent(channelId: string, editedContent: Partial<ChannelContent>);
+  editContent(channelId: string, editedContent: Partial<ChannelContent>);
 
-    removeContent(contentId: string);
+  removeContent(contentId: string);
 }
 
 class ConcreteChannelManager extends OutsideVueComponent implements ChannelManager {
   addContent (channelId: string, content: SentChannelContent) {
     return this.mainConfig.$apis.backend.send(new RequestParams(GET_CHANNEL_CONTENTS_URL(GET_CHANNEL_URL(channelId)), REQUEST_METHODS.POST, {
       withAuth: true,
-      data: content
+      data: this.mainConfig.$apis.file.toFormData(content)
     }))
   }
 
   editContent (channelId: string, editedContent: SentChannelContent) {
     return this.mainConfig.$apis.backend.send(new RequestParams(GET_CHANNEL_CONTENTS_URL(GET_CHANNEL_URL(channelId)), REQUEST_METHODS.PATCH, {
       withAuth: true,
-      data: editedContent
+      data: this.mainConfig.$apis.file.toFormData(editedContent)
     }))
   }
 
