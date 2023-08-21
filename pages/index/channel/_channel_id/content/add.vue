@@ -106,14 +106,9 @@ export default class ChannelAddContentPage extends Mixins(RootComponent, FileAPI
   }
 
   addFile (event: InputEvent) {
-    const newFile = (event.target as HTMLInputElement).files[0]
-    if (newFile) {
-      this.readFile(newFile).then((response) => {
-        this.content.file = response
-      })
-    } else {
-      this.content.file = null
-    }
+    this.inputFileOnChange(event).then((response) => {
+      this.content.file = response
+    })
   }
 }
 </script>

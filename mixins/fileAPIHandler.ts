@@ -19,4 +19,15 @@ export default class FileAPIHandler extends Vue {
       reader.readAsDataURL(file)
     })
   }
+
+  inputFileOnChange (event: InputEvent): Promise<FileReader['result'] | null> {
+    const newFile = (event.target as HTMLInputElement).files[0]
+    return new Promise((resolve, reject) => {
+      if (newFile) {
+        this.readFile(newFile).then(resolve).catch(reject)
+      } else {
+        resolve(null)
+      }
+    })
+  }
 }
