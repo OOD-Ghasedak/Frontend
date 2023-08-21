@@ -11,9 +11,6 @@
           <h5 class="username-field">
             {{ `@${profile.username}` }}
           </h5>
-          <button style="margin-right: 5px;" @click="showEditUsername">
-            <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
-          </button>
         </div>
       </div>
     </div>
@@ -26,7 +23,7 @@
           </div>
           <div class="edit row">
             <h6>{{ 'شماره تلفن/ایمیل' }}</h6>
-            <button style="margin-right: 5px;">
+            <button style="margin-right: 5px;" @click="$refs['editEmailOrPhoneNumber'].show()">
               <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
@@ -84,21 +81,21 @@
       <h2>{{ 'خروج' }}</h2>
       <img src="@/static/images/logout.svg">
     </button>
-    <edit-username ref="editUsername" />
+    <edit-email-or-phone-number ref="editEmailOrPhoneNumber" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
 import BackButton from '~/components/BackButton.vue'
-import EditUsername from '~/components/profile/EditUsername.vue'
+import EditEmailOrPhoneNumber from '~/components/profile/EditEmailOrPhoneNumber.vue'
 import { Money, UserProfile, UserWallet } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component({
   components: {
     BackButton,
-    EditUsername
+    EditEmailOrPhoneNumber
   }
 })
 export default class ProfilePage extends RootComponent {
