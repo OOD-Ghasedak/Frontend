@@ -11,7 +11,7 @@
           <h5 class="username-field">
             {{ `@${profile.username}` }}
           </h5>
-          <button style="margin-right: 5px;" @click="$bvModal.show('editUsername')">
+          <button style="margin-right: 5px;" @click="showEditUsername">
             <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
           </button>
         </div>
@@ -84,32 +84,22 @@
       <h2>{{ 'خروج' }}</h2>
       <img src="@/static/images/logout.svg">
     </button>
-    <b-modal id="editUsername">
-      <template #default>
-        <div class="edit-profile-body">
-          <h5>{{ '.نام کاربری جدید را وارد کنید' }}</h5>
-          <input v-model="editedInfo.username">
-        </div>
-      </template>
-      <template #modal-footer>
-        <div class="edit-profile-footer">
-          <button class="primary-button">
-            <h6>{{ 'تغییر' }}</h6>
-          </button>
-        </div>
-      </template>
-    </b-modal>
+    <edit-username ref="editUsername" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
 import BackButton from '~/components/BackButton.vue'
+import EditUsername from '~/components/profile/EditUsername.vue'
 import { Money, UserProfile, UserWallet } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component({
-  components: { BackButton }
+  components: {
+    BackButton,
+    EditUsername
+  }
 })
 export default class ProfilePage extends RootComponent {
   profile: UserProfile = {
@@ -144,6 +134,11 @@ export default class ProfilePage extends RootComponent {
 
   deposit () {
     this.mainConfig.$facades.wallet.deposit(this.walletOperationMoney)
+  }
+
+  showEditUsername () {
+    // @ts-ignore
+    this.$refs.editUsername.show()
   }
 
   logout () {
@@ -283,15 +278,6 @@ export default class ProfilePage extends RootComponent {
   align-items: center;
   gap: 10px;
   background-color: #fe2f2f;
-}
-
-.edit-profile-body {
-  gap: 1rem;
-}
-.edit-profile-footer {
-  display: flex;
-  width: 100%;
-  align-items: center;
 }
 
 </style>

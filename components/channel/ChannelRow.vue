@@ -30,8 +30,17 @@
 import Component from 'vue-class-component'
 import Vue from 'vue'
 import { Prop } from 'vue-property-decorator'
+import JoinedSign from './JoinedSign.vue'
+import JoinSign from './JoinSign.vue'
+import SubscriptionSign from './SubscriptionSign.vue'
 import { Channel, ChannelRolesProps } from '~/models'
-@Component
+@Component({
+  components: {
+    JoinedSign,
+    SubscriptionSign,
+    JoinSign
+  }
+})
 export default class ChannelRow extends Vue {
   get roleProps () {
     return ChannelRolesProps[this.channel.role]
