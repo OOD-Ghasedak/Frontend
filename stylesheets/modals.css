@@ -1,0 +1,296 @@
+.modal-body-buy-content {
+  align-items: center;
+}
+
+.price-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.modal-header .close {
+  margin-left: 0;
+}
+
+.close-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.close-icon {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 18px;
+}
+
+.close-text {
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+.modal-title-text {
+  font-family: 'Yekan Bakh Fat';
+  font-size: 2.3rem;
+}
+
+.modal-body-me {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.modal-body-title {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.subs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.deposit-button {
+  --button-color: var(--secondary-color-1);
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.sub-item-box {
+  border: solid;
+  border-radius: 8px;
+  border-color: var(--top-color-1);
+  background-color: var(--pale-secondary-color-6);
+}
+
+.sub-item-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-right: 5px;
+}
+
+.sub-item-month-number {
+  font-family: 'Yekan Bakh Fat';
+  font-size: 2.3rem;
+  color: var(--top-color-1);
+}
+
+.sub-item-months {
+  margin-bottom: 7px;
+  margin-right: 3px;
+  color: var(--top-color-5);
+}
+
+.sub-item-price {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.sub-item-price-number {
+  font-weight: 800;
+  color: var(--top-color-3);
+}
+
+.sub-item-toman {
+  margin-bottom: 5px;
+  margin-right: 3px;
+}
+
+.wallet-pane {
+  background-color: var(--pale-secondary-color-6);
+  height: fit-content;
+  border: solid;
+  border-radius: 10px;
+  border-color: var(--secondary-color-1);
+  padding: 10px;
+}
+
+.wallet-pane-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* width: 150px; */
+}
+
+.wallet-balance {
+  justify-content: center;
+  align-items: center;
+}
+
+.balance-text {
+  color: var(--secondary-color-2);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.wallet-icon {
+  width: 30px;
+}
+
+.wallet-pane-note {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.down-icon {
+  width: 20px;
+}
+
+.expand-button {
+  background-color: transparent;
+  border: none;
+}
+
+.depost-button-div {
+  justify-content: center;
+}
+
+.input-div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.deposit-input {
+  width: 200px;
+  justify-content: center;
+  justify-self: center;
+  border-radius: 10px;
+  font-size: 1rem;
+
+  margin: auto;
+  display: block;
+
+}
+
+.deposit-input::placeholder {
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.trans-text {
+  margin-right: 25px;
+}
+
+.page-title {
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title-text {
+  font-family: 'Yekan Bakh Fat';
+  margin-bottom: 20px;
+}
+
+.page-title-name {
+  font-size: 1.8rem;
+}
+
+.radios {
+  direction: rtl;
+  align-items: flex-start;
+
+}
+
+.radio-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sub-selection-text {
+  margin-right: 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--top-color-1);
+}
+
+.sub-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.sub-input {
+  font-size: 1.2rem;
+  color: var(--top-color-1);
+}
+
+.sub-input::placeholder {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--top-color-5);
+}
+
+.ok-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.submit-button {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.modal-title-warning {
+  color: var(--error-color);
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.modal-body-no-access {
+  align-items: center;
+}
+
+.modal-body-remove-admin {
+  align-items: center;
+}
+
+.no-access-text {
+  color: var(--error-color);
+  width: 300px;
+  text-align: center;
+  align-items: center;
+}
+
+.title-description {
+  margin-top: 10px;
+}
+
+.bio-input {
+  border: none;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.modal-body-change-bio {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.paragraph-icon {
+  width: 15px;
+}
