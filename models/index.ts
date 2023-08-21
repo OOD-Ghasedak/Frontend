@@ -10,12 +10,6 @@ export interface Channel {
     has_subscription: boolean;
 }
 
-export interface JoinedChannel extends Channel {
-    subscription_status;
-}
-
-export interface OwnedOrManagedChannel extends Channel {
-}
 export * from './channelRoles'
 
 export interface ChannelCompleteContent {

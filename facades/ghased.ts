@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
-import { Channel, JoinedChannel, OwnedOrManagedChannel, UserProfile, UserWallet } from '~/models'
+import { Channel, UserProfile } from '~/models'
 import { PROFILE_URL } from '~/urls/account'
 import { CHANNEL_URL, CREATE_CHANNEL_URL, GET_JOIN_CHANNEL_URL, JOINED_CHANNELS_URL, OWNED_OR_MANAGED_CHANNELS_URL } from '~/urls/channel'
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
@@ -15,9 +15,9 @@ export default interface Ghased {
 
   changePassword(oldPassword: string, newPassword: string): Promise<any>;
 
-  getJoinedChannels(): Promise<JoinedChannel[]>;
+  getJoinedChannels(): Promise<Channel[]>;
 
-  getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]>;
+  getOwnedOrManagedChannels(): Promise<Channel[]>;
 
   createChannel(name: string, description: string): Promise<any>;
 
@@ -52,13 +52,13 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
     throw new Error('Method not implemented.')
   }
 
-  getJoinedChannels(): Promise<JoinedChannel[]> {
+  getJoinedChannels(): Promise<Channel[]> {
     return this.mainConfig.$apis.backend.send(new RequestParams(JOINED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true })).then((response) => {
       return response
     })
   }
 
-  getOwnedOrManagedChannels(): Promise<OwnedOrManagedChannel[]> {
+  getOwnedOrManagedChannels(): Promise<Channel[]> {
     return this.mainConfig.$apis.backend.send(new RequestParams(OWNED_OR_MANAGED_CHANNELS_URL, REQUEST_METHODS.GET, { withAuth: true })).then((response) => {
       return response
     })
