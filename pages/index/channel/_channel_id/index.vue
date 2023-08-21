@@ -11,7 +11,7 @@
             <h6>{{ 'افزودن محتوا' }}</h6>
           </div>
         </nuxt-link>
-        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage', params: {...$route.params}}" replace="false" custom>
+        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage', params: {...$route.params}}" custom>
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/info.svg">
@@ -40,10 +40,19 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import JoinSign from '~/components/channel/JoinSign.vue'
+import JoinedSign from '~/components/channel/JoinedSign.vue'
+import SubscriptionSign from '~/components/channel/SubscriptionSign.vue'
 import { Channel, ChannelContent, ChannelContentType, ChannelRole, ChannelRolesProps } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component
+@Component({
+  components: {
+    SubscriptionSign,
+    JoinedSign,
+    JoinSign
+  }
+})
 export default class ChannelPage extends RootComponent {
   get channelRole () {
     return this.channel.role

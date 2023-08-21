@@ -61,13 +61,13 @@
           </h3>
           <input v-model="walletOperationMoney" placeholder="مقدار">
           <div class="actions row">
-            <button class="withdraw-button" @click="deposit">
+            <button class="withdraw-button" @click="withdraw">
               <h3 class="error">
                 {{ 'برداشت' }}
               </h3>
               <img src="@/static/images/arrow-up.svg">
             </button>
-            <button class="deposit-button" @click="withdraw">
+            <button class="deposit-button" @click="deposit">
               <h3 class="secondary">
                 {{ 'واریز' }}
               </h3>
@@ -129,11 +129,15 @@ export default class ProfilePage extends RootComponent {
   }
 
   withdraw () {
-    this.mainConfig.$facades.wallet.withdraw(this.walletOperationMoney)
+    this.mainConfig.$facades.wallet.withdraw(this.walletOperationMoney).then(() => {
+      this.$router.go(0)
+    })
   }
 
   deposit () {
-    this.mainConfig.$facades.wallet.deposit(this.walletOperationMoney)
+    this.mainConfig.$facades.wallet.deposit(this.walletOperationMoney).then(() => {
+      this.$router.go(0)
+    })
   }
 
   showEditUsername () {
@@ -142,7 +146,9 @@ export default class ProfilePage extends RootComponent {
   }
 
   logout () {
-    this.mainConfig.$facades.ghased.logout()
+    this.mainConfig.$facades.ghased.logout().then(() => {
+      this.$router.push({ name: 'WelcomePage' })
+    })
   }
 }
 </script>
@@ -277,7 +283,7 @@ export default class ProfilePage extends RootComponent {
   padding: 7px 10px;
   align-items: center;
   gap: 10px;
-  background-color: #fe2f2f;
+  /* background-color: #fe2f2f; */
 }
 
 </style>

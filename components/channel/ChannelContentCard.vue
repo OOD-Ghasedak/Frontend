@@ -38,9 +38,14 @@
 import Component from 'vue-class-component'
 import Vue from 'vue'
 import { Prop } from 'vue-property-decorator'
+import PremiumSign from '../content/PremiumSign.vue'
 import { ChannelContent, ChannelContentTypeProps, ChannelRole, ChannelRolesProps } from '~/models'
 
-@Component
+@Component({
+  components: {
+    PremiumSign
+  }
+})
 export default class ChannelContentCard extends Vue {
   @Prop() readonly content: ChannelContent
 

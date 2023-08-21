@@ -49,7 +49,7 @@
         <channel-row v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" :channel="channel" />
       </div>
       <div v-else class="see-owned-or-managed-channels">
-        <channel-row v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" :channel="channel" />
+        <owned-or-managed-channel-row v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" :channel="channel" />
       </div>
     </div>
   </div>
@@ -57,10 +57,17 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import ChannelRow from '~/components/channel/ChannelRow.vue'
+import OwnedOrManagedChannelRow from '~/components/channel/OwnedOrManagedChannelRow.vue'
 import { Channel, UserProfile } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component
+@Component({
+  components: {
+    ChannelRow,
+    OwnedOrManagedChannelRow
+  }
+})
 export default class HomePage extends RootComponent {
   profile: UserProfile = {
     username: 'sepehrkianian09',
