@@ -5,6 +5,8 @@ import ChannelContentComponent from '~/components/content/ChannelContentComponen
 
 @Component
 export default class ChannelAddContentPage extends ChannelContentComponent {
+  actionTitle = 'افزودن'
+
   content: SentChannelContent = {
     title: '',
     summary: '',

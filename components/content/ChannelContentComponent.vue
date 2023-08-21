@@ -9,7 +9,7 @@
     </div>
     <div class="title">
       <h1 class="text-centered">
-        {{ 'افزودن محتوا' }}
+        {{ `${actionTitle} محتوا` }}
       </h1>
     </div>
     <div class="main-body">
@@ -94,6 +94,8 @@ import RootComponent from '~/utils/rootComponent'
 
   @Component
 export default class ChannelContentComponent extends RootComponent {
+  actionTitle: string
+
   content: SentChannelContent = {
     title: '',
     summary: '',

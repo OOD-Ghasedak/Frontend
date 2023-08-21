@@ -1,10 +1,12 @@
 <script lang="ts">
 import Component from 'vue-class-component'
-import { SentChannelContent } from '~/models'
+import { ChannelContent, ChannelContentModel, SentChannelContent } from '~/models'
 import ChannelContentComponent from '~/components/content/ChannelContentComponent.vue'
 
 @Component
 export default class ChannelEditContentPage extends ChannelContentComponent {
+  actionTitle = 'ویرایش'
+
   content: SentChannelContent = {
     title: '',
     summary: '',
@@ -18,7 +20,22 @@ export default class ChannelEditContentPage extends ChannelContentComponent {
     return this.$route.params.content_id
   }
 
+  toChannelContentModel (content: ChannelContentModel): ChannelContentModel {
+    return { ...content }
+  }
+
+  toSentChannelContent (content: ChannelContent): SentChannelContent {
+    return {
+      ...this.toChannelContentModel(content),
+      text: content.complete_content ? content.complete_content.text : '',
+      file: null
+    }
+  }
+
   mounted () {
+    this.mainConfig.$facades.subscriber.getChannelContent(this.contentId).then((response) => {
+      this.content = this.toSentChannelContent(response)
+    })
   }
 
   contentAction () {
