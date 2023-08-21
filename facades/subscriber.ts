@@ -4,13 +4,13 @@ import { GET_CHANNEL_URL, GET_CHANNEL_CONTENTS_URL, GET_CONTENT_URL, GET_LEAVE_C
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface Subscriber {
-    getChannel(channelId: string): Promise<Channel>;
+  getChannel(channelId: string): Promise<Channel>;
 
-    getChannelContents(channelId: string): Promise<ChannelContent[]>;
+  getChannelContents(channelId: string): Promise<ChannelContent[]>;
 
-    getChannelContent(contentId: string): Promise<ChannelContent>;
+  getChannelContent(contentId: string): Promise<ChannelContent>;
 
-    leaveChannel(channelId: string): Promise<any>;
+  leaveChannel(channelId: string): Promise<any>;
 }
 
 class ConcreteSubscriber extends OutsideVueComponent implements Subscriber {
@@ -35,7 +35,7 @@ class ConcreteSubscriber extends OutsideVueComponent implements Subscriber {
   }
 
   leaveChannel (channelId: string): Promise<any> {
-    return this.mainConfig.$apis.backend.send(new RequestParams(GET_LEAVE_CHANNEL_URL(channelId), REQUEST_METHODS.POST, {
+    return this.mainConfig.$apis.backend.send(new RequestParams(GET_LEAVE_CHANNEL_URL(channelId), REQUEST_METHODS.DELETE, {
       withAuth: true
     }))
   }

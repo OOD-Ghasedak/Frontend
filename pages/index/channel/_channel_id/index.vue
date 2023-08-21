@@ -29,6 +29,7 @@
         </button>
         <subscription-sign v-if="channel.has_subscription" />
         <joined-sign v-if="channelRoleProps.canLeaveChannel" />
+        <join-sign v-if="channelRoleProps.canJoinChannel" :channel-id="channelId" />
       </div>
       <back-button />
     </div>
@@ -113,7 +114,9 @@ export default class ChannelPage extends RootComponent {
   }
 
   leaveChannel () {
-    this.mainConfig.$facades.subscriber.leaveChannel(this.channelId)
+    this.mainConfig.$facades.subscriber.leaveChannel(this.channelId).then(() => {
+      this.$router.go(0)
+    })
   }
 
   mounted () {
@@ -159,6 +162,11 @@ export default class ChannelPage extends RootComponent {
 }
 
 .channel-page > .header > .center > .joined-sign {
+  position: absolute;
+  left: -125px;
+  top: 5px;
+}
+.channel-page > .header > .center > .join-sign {
   position: absolute;
   left: -125px;
   top: 5px;

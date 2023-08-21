@@ -46,7 +46,7 @@
         </button>
       </div>
       <div v-if="joinedChannelsAreVisible" class="see-joined-channels">
-        <channel-row v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" :channel="channel" />
+        <joined-channel-row v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" :channel="channel" />
       </div>
       <div v-else class="see-owned-or-managed-channels">
         <owned-or-managed-channel-row v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" :channel="channel" />
@@ -58,6 +58,7 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import ChannelRow from '~/components/channel/ChannelRow.vue'
+import JoinedChannelRow from '~/components/channel/JoinedChannelRow.vue'
 import OwnedOrManagedChannelRow from '~/components/channel/OwnedOrManagedChannelRow.vue'
 import { Channel, UserProfile } from '~/models'
 import RootComponent from '~/utils/rootComponent'
@@ -65,7 +66,8 @@ import RootComponent from '~/utils/rootComponent'
 @Component({
   components: {
     ChannelRow,
-    OwnedOrManagedChannelRow
+    OwnedOrManagedChannelRow,
+    JoinedChannelRow
   }
 })
 export default class HomePage extends RootComponent {

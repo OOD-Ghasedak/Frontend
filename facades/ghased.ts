@@ -87,7 +87,8 @@ class ConcreteGhased extends OutsideVueComponent implements Ghased {
 
   joinChannel(channelId: string): Promise<any> {
     return this.mainConfig.$apis.backend.send(new RequestParams(GET_JOIN_CHANNEL_URL(channelId), REQUEST_METHODS.POST, {
-      withAuth: true
+      withAuth: true,
+      data: {}
     }))
   }
 }
