@@ -27,7 +27,7 @@ export default class EditEmailOrPhoneNumber extends RootComponent {
   edit () {
     phoneNumberOrEmailValidator.validateSignUpInput(this.editedEmailOrPhoneNumber).then((validatedData) => {
       this.mainConfig.$facades.ghased.editProfile(validatedData)
-    })
+    }).then(() => { this.$router.go(0) })
   }
 }
 </script>

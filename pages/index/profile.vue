@@ -36,7 +36,7 @@
           </div>
           <div class="edit row">
             <h6>{{ 'رمزعبور' }}</h6>
-            <button style="margin-right: 5px;">
+            <button style="margin-right: 5px;" @click="$refs['changePassword'].show()">
               <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
@@ -82,12 +82,14 @@
       <img src="@/static/images/logout.svg">
     </button>
     <edit-email-or-phone-number ref="editEmailOrPhoneNumber" />
+    <change-password ref="changePassword" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
 import BackButton from '~/components/BackButton.vue'
+import ChangePassword from '~/components/profile/ChangePassword.vue'
 import EditEmailOrPhoneNumber from '~/components/profile/EditEmailOrPhoneNumber.vue'
 import { Money, UserProfile, UserWallet } from '~/models'
 import RootComponent from '~/utils/rootComponent'
@@ -95,7 +97,8 @@ import RootComponent from '~/utils/rootComponent'
 @Component({
   components: {
     BackButton,
-    EditEmailOrPhoneNumber
+    EditEmailOrPhoneNumber,
+    ChangePassword
   }
 })
 export default class ProfilePage extends RootComponent {
