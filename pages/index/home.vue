@@ -7,7 +7,7 @@
             <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
             <div class="user-name">
               <h3>{{ 'قاصد' }} </h3>
-              <h6>{{ profile.username }}</h6>
+              <h6>{{ `@${profile.username}` }}</h6>
             </div>
           </div>
         </nuxt-link>
@@ -46,10 +46,10 @@
         </button>
       </div>
       <div v-if="joinedChannelsAreVisible" class="see-joined-channels">
-        <joined-channel-row v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" :channel="channel" />
+        <channel-row v-for="(channel, i) in joinedChannels" :key="`joined-channel-${i}`" :channel="channel" />
       </div>
       <div v-else class="see-owned-or-managed-channels">
-        <owned-or-managed-channel-row v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" :channel="channel" />
+        <channel-row v-for="(channel, i) in ownedOrManagedChannels" :key="`owned-or-managed-channel-${i}`" :channel="channel" />
       </div>
     </div>
   </div>
@@ -57,7 +57,7 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { JoinedChannel, OwnedOrManagedChannel, UserProfile } from '~/models'
+import { Channel, UserProfile } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
@@ -70,19 +70,8 @@ export default class HomePage extends RootComponent {
 
   joinedChannelsAreVisible = true
 
-  joinedChannels: JoinedChannel[] = [{
-    id: '2',
-    name: 'se',
-    description: '2223',
-    subscription_status: 0
-  }]
-
-  ownedOrManagedChannels: OwnedOrManagedChannel[] = [{
-    id: '2',
-    name: 'se',
-    description: '2313',
-    role: 3
-  }]
+  joinedChannels: Channel[] = []
+  ownedOrManagedChannels: Channel[] = []
 
   mounted () {
     this.mainConfig.$facades.ghased.getProfile().then((profile) => {

@@ -8,24 +8,40 @@
       <img src="@/static/images/magnifier.svg" @click="searchChannels">
     </div>
     <div class="channels">
-      <ChannelRow v-for="(channel, i) in channels" :key="`channel-${i}`" :channel="channel" />
+      <channel-row v-for="(channel, i) in channels" :key="`channel-${i}`" :channel="channel" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { Channel } from '~/models'
-import ChannelRow from '~/components/ChannelRow.vue'
+import { Channel, ChannelRole } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component({
-  components: { ChannelRow }
-})
+@Component
 export default class SearchChannelPage extends RootComponent {
   channels: Channel[] = [
-    { id: '1', name: 'goods', description: 'چرا؟' },
-    { id: '2', name: 'bads', description: 'چطور؟' }
+    {
+      id: '2',
+      name: 'mofo',
+      description: 'this channel is about mofos',
+      role: ChannelRole.SPECIAL_MEMBER,
+      has_subscription: true
+    },
+    {
+      id: '2',
+      name: 'mofo',
+      description: 'this channel is about mofos',
+      role: ChannelRole.VISITOR,
+      has_subscription: true
+    },
+    {
+      id: '2',
+      name: 'mofo',
+      description: 'this channel is about mofos',
+      role: ChannelRole.ADMIN,
+      has_subscription: false
+    }
   ]
 
   searchInput: string = ''

@@ -3,7 +3,7 @@
     <div class="header row">
       <div class="right row">
         <img class="circular image-sized-3" src="@/static/images/ghased.svg">
-        <nuxt-link v-if="channelRoleProps.canAddContent" :to="{name: 'ChannelAddContentPage'}" custom>
+        <nuxt-link v-if="channelRoleProps.canAddContent" :to="{name: 'ChannelAddContentPage', params: {...$route.params}}" custom>
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/plus.svg">
@@ -11,7 +11,7 @@
             <h6>{{ 'افزودن محتوا' }}</h6>
           </div>
         </nuxt-link>
-        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{path: `/channel/${channelId}/manage`}" replace="false" custom>
+        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage', params: {...$route.params}}" replace="false" custom>
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/info.svg">
@@ -27,14 +27,8 @@
           <h6>{{ 'خروج از کانال...' }}</h6>
           <img class="image-sized--1" src="@/static/images/leave-group.svg">
         </button>
-        <div class="channel-type row">
-          <img src="@/static/images/dollar.svg" class="image-sized--2">
-          <h6>{{ 'اشتراکی' }}</h6>
-        </div>
-        <div v-if="channelRoleProps.canLeaveChannel" class="joined-channel row">
-          <h6>{{ 'عضوشده' }}</h6>
-          <img class="image-sized--2" src="@/static/images/joined-channel.svg">
-        </div>
+        <subscription-sign v-if="channel.has_subscription" />
+        <joined-sign v-if="channelRoleProps.canLeaveChannel" />
       </div>
       <back-button />
     </div>
@@ -51,57 +45,75 @@ import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ChannelPage extends RootComponent {
-  // todo
-  channelRole: ChannelRole = ChannelRole.OWNER
+  get channelRole () {
+    return this.channel.role
+  }
 
   get channelRoleProps () {
     return ChannelRolesProps[this.channelRole]
   }
 
-  channel: Channel = { id: '2', name: 'mofo', description: 'this channel is about mofos' }
+  channel: Channel = {
+    id: '2',
+    name: 'mofo',
+    description: 'this channel is about mofos',
+    role: ChannelRole.MEMBER,
+    has_subscription: true
+  }
+
   contents: ChannelContent[] = [
     {
       id: '0',
-      name: 'متن آهنگ ساسی',
-      price: 10000,
+      title: 'متن آهنگ ساسی',
       summary: 'متن آهنگ ساسی',
-      type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
-      is_monetary: true
+      price: 10000,
+      content_type: ChannelContentType.IMAGE,
+      is_premium: true
     },
     {
       id: '1',
-      name: 'متن آهنگ ساسی',
+      title: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
-      type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا',
-      is_monetary: false
+      content_type: ChannelContentType.TEXT,
+      complete_content: {
+        text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+      },
+      is_premium: false
     },
     {
       id: '2',
-      name: 'متن آهنگ ساسی',
+      title: 'متن آهنگ ساسی',
       price: 10000,
       summary: 'متن آهنگ ساسی',
-      type: ChannelContentType.TEXT,
-      data: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
-      is_monetary: true
+      content_type: ChannelContentType.IMAGE,
+      complete_content: {
+        text: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
+        file: 'https://cc-prod.scene7.com/is/image/CCProdAuthor/how_to_cut_out_images_photoshop_P1_mobile_360x270?$pjpeg$&jpegSize=200&wid=720'
+      },
+      is_premium: true
     }
   ]
 
   get channelId (): string {
-    return this.$route.params.channel_id || '4568'
+    return this.$route.params.channel_id
+  }
+
+  joinChannel () {
+    this.mainConfig.$facades.ghased.joinChannel(this.channelId)
   }
 
   leaveChannel () {
-    // todo
+    this.mainConfig.$facades.subscriber.leaveChannel(this.channelId)
   }
 
   mounted () {
-    // todo
-    // enter channel
-    // get channel
-    // get contents
+    this.mainConfig.$facades.subscriber.getChannel(this.channelId).then((channel) => {
+      this.channel = channel
+    })
+    this.mainConfig.$facades.subscriber.getChannelContents(this.channelId).then((contents) => {
+      this.contents = contents
+    })
   }
 }
 </script>
@@ -131,23 +143,16 @@ export default class ChannelPage extends RootComponent {
   align-items: center;
 }
 
-.channel-page > .header > .center > .channel-type {
+.channel-page > .header > .center > .subscription-sign {
   position: absolute;
   right: -85px;
   top: 4px;
-  border-radius: 10px;
-  background-color: var(--secondary-color-6);
-  padding: 7px 5px;
 }
 
-.channel-page > .header > .center > .joined-channel {
+.channel-page > .header > .center > .joined-sign {
   position: absolute;
   left: -125px;
   top: 5px;
-  background-color: var(--secondary-color-6);
-  padding: 3px 1rem 3px 3px;
-  border-radius: 10px;
-  gap: 1rem;
 }
 
 .channel-page > .header > .center > .leave-group-button {

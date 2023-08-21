@@ -11,9 +11,6 @@
           <h5 class="username-field">
             {{ `@${profile.username}` }}
           </h5>
-          <button style="margin-right: 5px;">
-            <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
-          </button>
         </div>
       </div>
     </div>
@@ -26,7 +23,7 @@
           </div>
           <div class="edit row">
             <h6>{{ 'شماره تلفن/ایمیل' }}</h6>
-            <button style="margin-right: 5px;">
+            <button style="margin-right: 5px;" @click="$refs['editEmailOrPhoneNumber'].show()">
               <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
@@ -39,7 +36,7 @@
           </div>
           <div class="edit row">
             <h6>{{ 'رمزعبور' }}</h6>
-            <button style="margin-right: 5px;">
+            <button style="margin-right: 5px;" @click="$refs['changePassword'].show()">
               <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
@@ -84,23 +81,36 @@
       <h2>{{ 'خروج' }}</h2>
       <img src="@/static/images/logout.svg">
     </button>
+    <edit-email-or-phone-number ref="editEmailOrPhoneNumber" />
+    <change-password ref="changePassword" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
 import BackButton from '~/components/BackButton.vue'
+import ChangePassword from '~/components/profile/ChangePassword.vue'
+import EditEmailOrPhoneNumber from '~/components/profile/EditEmailOrPhoneNumber.vue'
 import { Money, UserProfile, UserWallet } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component({
-  components: { BackButton }
+  components: {
+    BackButton,
+    EditEmailOrPhoneNumber,
+    ChangePassword
+  }
 })
 export default class ProfilePage extends RootComponent {
   profile: UserProfile = {
     username: 'sepehrkianian09',
     email: 'sepehrkianian09@gmail.com',
     phone_number: '09112245833'
+  }
+
+  editedInfo = {
+    username: '',
+    phone_number_or_email: ''
   }
 
   wallet: UserWallet = {
@@ -124,6 +134,11 @@ export default class ProfilePage extends RootComponent {
 
   deposit () {
     this.mainConfig.$facades.wallet.deposit(this.walletOperationMoney)
+  }
+
+  showEditUsername () {
+    // @ts-ignore
+    this.$refs.editUsername.show()
   }
 
   logout () {

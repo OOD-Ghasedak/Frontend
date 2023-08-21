@@ -1,22 +1,19 @@
 <template>
   <div class="channel-content">
     <div class="content-type">
-      <img class="image-sized--1" src="@/static/images/channel-content-types/text.svg">
+      <img class="image-sized--1" :src="typeIconSrc">
     </div>
-    <div v-if="content.is_monetary" class="monetary-sign row">
-      <img class="image-sized--1" src="@/static/images/dollar-green.svg">
-      <p class="text-centered">
-        {{ 'محتوای پولی' }}
-      </p>
-    </div>
+    <premium-sign v-if="content.is_premium" />
+    <component :is="contentProps.content.fileTag" v-if="contentProps.content && content.complete_content" class="file-content" :src="content.complete_content.file" />
+    <img v-else-if="contentProps.content" src="@/static/images/defaults/channel-default-content.svg" class="default-file-content">
     <h5 class="text-centered">
-      {{ content.name }}
+      {{ content.title }}
     </h5>
     <!-- <h6>
           {{ content.summary }}
         </h6> -->
     <h6>
-      {{ content.data }}
+      {{ content.summary }}
     </h6>
     <div class="actions row">
       <div v-if="channelRoleProps.canManageContents" class="content-management row">
@@ -24,15 +21,15 @@
           <p>{{ 'حذف...' }}</p>
           <img src="@/static/images/trash-can.svg" class="image-sized--2">
         </button>
-        <button class="primary-button">
+        <nuxt-link :to="{name: 'ChannelEditContentPage', params: {...$route.params, content_id: content.id}}" class="primary-button">
           <p>{{ 'ویرایش محتوا...' }}</p>
           <img src="@/static/images/edit.svg" class="image-sized--2">
-        </button>
+        </nuxt-link>
       </div>
-      <button class="primary-button">
+      <nuxt-link :to="{name: 'ChannelContentPage', params: {...$route.params, content_id: content.id}}" class="primary-button">
         <p>{{ 'دیدن مطلب...' }}</p>
         <img src="@/static/images/next.svg" class="image-sized--2">
-      </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -41,9 +38,9 @@
 import Component from 'vue-class-component'
 import Vue from 'vue'
 import { Prop } from 'vue-property-decorator'
-import { ChannelContent, ChannelRole, ChannelRolesProps } from '~/models'
+import { ChannelContent, ChannelContentTypeProps, ChannelRole, ChannelRolesProps } from '~/models'
 
-  @Component
+@Component
 export default class ChannelContentCard extends Vue {
   @Prop() readonly content: ChannelContent
 
@@ -53,18 +50,27 @@ export default class ChannelContentCard extends Vue {
   get channelRoleProps () {
     return ChannelRolesProps[this.channelRole]
   }
+
+  get contentProps () {
+    return ChannelContentTypeProps[this.content.content_type]
+  }
+
+  get typeIconSrc () {
+    return require(`@/static/images/channel-content-types/${this.contentProps.icon}.svg`)
+  }
 }
 </script>
 
 <style scoped>
 .channel-content {
+  --channel-top-padding: 20px;
   --channel-left-right-padding: 3%;
   --channel-absolute-items-top-padding: 10px;
 }
 
 .channel-content {
   position: relative;
-  padding: 20px var(--channel-left-right-padding) 10px;
+  padding: var(--channel-top-padding) var(--channel-left-right-padding) 10px;
   gap: 25px;
   border-bottom: 1px solid var(--top-color-1);
   z-index: 1;
@@ -91,16 +97,18 @@ export default class ChannelContentCard extends Vue {
   background-color: var(--top-color-7);
 }
 
-.channel-content > .monetary-sign {
+.channel-content > .premium-sign {
   left: var(--channel-left-right-padding);
   top: var(--channel-absolute-items-top-padding);
   position: absolute;
-  align-items: center;
-  gap: 5px;
-  width: 70px;
-  height: 30px;
-  flex-wrap: nowrap;
-  padding: 2.5px 3px;
+}
+
+.channel-content > .file-content {
+  aspect-ratio: 16 / 9;
+  margin: calc(-1 * var(--channel-top-padding)) calc(-1 * var(--channel-left-right-padding)) 0;
+}
+.channel-content > .default-file-content {
+  aspect-ratio: 16 / 9;
 }
 
 .channel-content > .actions {

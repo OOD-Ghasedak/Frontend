@@ -1,4 +1,4 @@
-/* @import "./account.css"; */
+@import "./modals.css";
 
 * {
   direction: rtl;
@@ -183,6 +183,7 @@ input[type="number"] {
 }
 
 .primary-button {
+  display: flex;
   border-radius: 10px;
   background-color: var(--top-color-7);
   padding: 6px 10px;
@@ -195,6 +196,7 @@ input[type="number"] {
 
 .secondary-button {
   display: flex;
+  width: fit-content;
   border-width: 0;
   background: transparent;
   align-items: center;
@@ -207,6 +209,7 @@ input[type="number"] {
 }
 
 .error-button {
+  display: flex;
   background-color: var(--error-color-2);
   border-radius: 10px;
   width: fit-content;
@@ -226,6 +229,7 @@ input[type="number"] {
 }
 
 .secondary-button-2 {
+  display: flex;
   background-color: var(--secondary-color-6);
   width: fit-content;
   height: fit-content;
