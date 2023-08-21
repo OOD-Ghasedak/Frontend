@@ -15,7 +15,6 @@
 import Component from 'vue-class-component'
 import EditSection from './EditSection.vue'
 import RootComponent from '~/utils/rootComponent'
-import { phoneNumberOrEmailValidator } from '~/utils/phoneNumberValidator'
 
   @Component({
     components: { EditSection }
