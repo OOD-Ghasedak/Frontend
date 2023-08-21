@@ -17,7 +17,7 @@
     </h6>
     <div class="actions row">
       <div v-if="channelRoleProps.canManageContents" class="content-management row">
-        <button class="error-button primary-button remove-button">
+        <button class="error-button primary-button remove-button" @click="removeContent">
           <p>{{ 'حذف...' }}</p>
           <img src="@/static/images/trash-can.svg" class="image-sized--2">
         </button>
@@ -36,17 +36,17 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import Vue from 'vue'
 import { Prop } from 'vue-property-decorator'
 import PremiumSign from '../content/PremiumSign.vue'
 import { ChannelContent, ChannelContentTypeProps, ChannelRole, ChannelRolesProps } from '~/models'
+import RootComponent from '~/utils/rootComponent'
 
 @Component({
   components: {
     PremiumSign
   }
 })
-export default class ChannelContentCard extends Vue {
+export default class ChannelContentCard extends RootComponent {
   @Prop() readonly content: ChannelContent
 
   // todo
@@ -62,6 +62,16 @@ export default class ChannelContentCard extends Vue {
 
   get typeIconSrc () {
     return require(`@/static/images/channel-content-types/${this.contentProps.icon}.svg`)
+  }
+
+  get contentId () {
+    return this.content.id
+  }
+
+  removeContent () {
+    this.mainConfig.$facades.channelManager.removeContent(this.contentId).then(() => {
+      this.$router.go(0)
+    })
   }
 }
 </script>

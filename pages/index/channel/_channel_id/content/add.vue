@@ -17,7 +17,9 @@ export default class ChannelAddContentPage extends ChannelContentComponent {
   }
 
   contentAction () {
-    this.mainConfig.$facades.channelManager.addContent(this.channelId, this.content)
+    this.mainConfig.$facades.channelManager.addContent(this.channelId, this.content).then(() => {
+      this.$router.push({ name: 'ChannelPage', params: { ...this.$route.params } })
+    })
   }
 }
 </script>
