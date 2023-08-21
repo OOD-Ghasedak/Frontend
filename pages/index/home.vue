@@ -7,7 +7,7 @@
             <img class="image-sized-2 circular" src="@/static/images/ghased.svg">
             <div class="user-name">
               <h3>{{ 'قاصد' }} </h3>
-              <h6>{{ profile.username }}</h6>
+              <h6>{{ `@${profile.username}` }}</h6>
             </div>
           </div>
         </nuxt-link>
@@ -70,19 +70,9 @@ export default class HomePage extends RootComponent {
 
   joinedChannelsAreVisible = true
 
-  joinedChannels: JoinedChannel[] = [{
-    id: '2',
-    name: 'se',
-    description: '2223',
-    subscription_status: 0
-  }]
+  joinedChannels: JoinedChannel[] = []
 
-  ownedOrManagedChannels: OwnedOrManagedChannel[] = [{
-    id: '2',
-    name: 'se',
-    description: '2313',
-    role: 3
-  }]
+  ownedOrManagedChannels: OwnedOrManagedChannel[] = []
 
   mounted () {
     this.mainConfig.$facades.ghased.getProfile().then((profile) => {

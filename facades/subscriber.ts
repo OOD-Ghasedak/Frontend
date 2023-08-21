@@ -8,7 +8,7 @@ export default interface Subscriber {
 
     getChannelContents(channelId: string): Promise<ChannelContent[]>;
 
-    getChannelContent(channelId: string, contentId: string): Promise<ChannelContent>;
+    getChannelContent(contentId: string): Promise<ChannelContent>;
 
     leaveChannel(channelId: string): Promise<any>;
 }
@@ -28,7 +28,7 @@ class ConcreteSubscriber extends OutsideVueComponent implements Subscriber {
     })
   }
 
-  getChannelContent (channelId: string, contentId: string): Promise<ChannelContent> {
+  getChannelContent (contentId: string): Promise<ChannelContent> {
     return this.mainConfig.$apis.backend.send(new RequestParams(GET_CONTENT_URL(contentId), REQUEST_METHODS.GET, {
       withAuth: true
     }))

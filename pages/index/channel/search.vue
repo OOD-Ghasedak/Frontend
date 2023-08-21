@@ -28,15 +28,22 @@ export default class SearchChannelPage extends RootComponent {
       id: '2',
       name: 'mofo',
       description: 'this channel is about mofos',
-      role: ChannelRole.MEMBER,
+      role: ChannelRole.SPECIAL_MEMBER,
       has_subscription: true
     },
     {
       id: '2',
       name: 'mofo',
       description: 'this channel is about mofos',
-      role: ChannelRole.MEMBER,
+      role: ChannelRole.VISITOR,
       has_subscription: true
+    },
+    {
+      id: '2',
+      name: 'mofo',
+      description: 'this channel is about mofos',
+      role: ChannelRole.ADMIN,
+      has_subscription: false
     }
   ]
 

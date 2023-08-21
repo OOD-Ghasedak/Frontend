@@ -1,5 +1,5 @@
 export enum ChannelRole {
-  MEMBER, SPECIAL_MEMBER, ADMIN, OWNER
+  VISITOR = 'viewer', MEMBER = 'subscriber', SPECIAL_MEMBER = 'premium subscriber', ADMIN = 'admin', OWNER = 'owner'
 }
 
 interface ChannelRoleProps {
@@ -7,7 +7,8 @@ interface ChannelRoleProps {
   canManageAdmins: boolean,
   canAddContent: boolean,
   canManageContents: boolean,
-  canLeaveChannel: boolean
+  canLeaveChannel: boolean,
+  canJoinChannel: boolean,
 }
 
 export const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonly<ChannelRoleProps>> }> = {
@@ -24,5 +25,6 @@ export const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonl
   [ChannelRole.SPECIAL_MEMBER]: {
     canLeaveChannel: true
   },
-  [ChannelRole.MEMBER]: { canLeaveChannel: true }
+  [ChannelRole.MEMBER]: { canLeaveChannel: true },
+  [ChannelRole.VISITOR]: { canJoinChannel: true }
 }

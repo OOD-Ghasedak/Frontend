@@ -1,7 +1,7 @@
 <template>
   <div v-if="shouldShow" class="role row">
     <img :src="getImageSrc(roleConfig.icon)" class="image-sized--1">
-    <h5>{{ roleConfig.title }}</h5>
+    <h6>{{ roleConfig.title }}</h6>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default class ChannelRoleComponent extends Vue {
     }
 
     get shouldShow (): boolean {
-      return this.role !== ChannelRole.MEMBER
+      return this.role in RoleConfigs
     }
 
     getImageSrc (roleIcon: string) {

@@ -27,14 +27,8 @@
           <h6>{{ 'خروج از کانال...' }}</h6>
           <img class="image-sized--1" src="@/static/images/leave-group.svg">
         </button>
-        <div class="channel-type row">
-          <img src="@/static/images/dollar.svg" class="image-sized--2">
-          <h6>{{ 'اشتراکی' }}</h6>
-        </div>
-        <div v-if="channelRoleProps.canLeaveChannel" class="joined-channel row">
-          <h6>{{ 'عضوشده' }}</h6>
-          <img class="image-sized--2" src="@/static/images/joined-channel.svg">
-        </div>
+        <subscription-sign v-if="channel.has_subscription" />
+        <joined-sign v-if="channelRoleProps.canLeaveChannel" />
       </div>
       <back-button />
     </div>
@@ -149,23 +143,16 @@ export default class ChannelPage extends RootComponent {
   align-items: center;
 }
 
-.channel-page > .header > .center > .channel-type {
+.channel-page > .header > .center > .subscription-sign {
   position: absolute;
   right: -85px;
   top: 4px;
-  border-radius: 10px;
-  background-color: var(--secondary-color-6);
-  padding: 7px 5px;
 }
 
-.channel-page > .header > .center > .joined-channel {
+.channel-page > .header > .center > .joined-sign {
   position: absolute;
   left: -125px;
   top: 5px;
-  background-color: var(--secondary-color-6);
-  padding: 3px 1rem 3px 3px;
-  border-radius: 10px;
-  gap: 1rem;
 }
 
 .channel-page > .header > .center > .leave-group-button {
