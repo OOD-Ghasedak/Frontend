@@ -4,12 +4,14 @@ import Wallet, { concreteWallet } from './wallet'
 import Ghased, { concreteGhased } from './ghased'
 import Subscriber, { concreteSubscriber } from './subscriber'
 import ChannelManager, { concreteChannelManager } from './channelManager'
+import ChannelOwner, { concreteChannelOwner } from './channelOwner'
 interface Facades {
   visitingUser: VisitingUser,
   ghased: Ghased,
   wallet: Wallet,
   subscriber: Subscriber,
-  channelManager: ChannelManager
+  channelManager: ChannelManager,
+  channelOwner: ChannelOwner
 }
 
 const concreteFacades: Facades = {
@@ -17,7 +19,8 @@ const concreteFacades: Facades = {
   ghased: concreteGhased,
   wallet: concreteWallet,
   subscriber: concreteSubscriber,
-  channelManager: concreteChannelManager
+  channelManager: concreteChannelManager,
+  channelOwner: concreteChannelOwner
 }
 
 declare module '@nuxt/types' {
