@@ -1,5 +1,5 @@
 <template>
-  <edit-section ref="editSection" @click="edit">
+  <edit-section id="edit-email-or-phone-number" ref="editSection" @click="edit">
     <div class="edit-profile-body">
       <h5>{{ '.ایمیل/شماره‌تلفن جدید را وارد کنید' }}</h5>
       <input v-model="editedEmailOrPhoneNumber">

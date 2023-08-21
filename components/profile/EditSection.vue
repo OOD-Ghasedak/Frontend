@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="editSection">
+  <b-modal :id="id">
     <template #default>
       <slot name="default" />
     </template>
@@ -16,11 +16,14 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import Vue from 'vue'
+import { Prop } from 'vue-property-decorator'
 
 @Component
 export default class EditSection extends Vue {
+  @Prop() readonly id: string
+
   show () {
-    this.$bvModal.show('editSection')
+    this.$bvModal.show(this.id)
   }
 }
 </script>

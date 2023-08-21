@@ -1,5 +1,5 @@
 <template>
-  <edit-section ref="editSection" @click="edit">
+  <edit-section id="change-password" ref="editSection" @click="edit">
     <div class="edit-profile-body">
       <h5>{{ '.رمز عبور قدیمی را وارد کنید' }}</h5>
       <input v-model="oldPassword">
