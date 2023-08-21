@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { Channel } from '~/models'
+import { Channel, ChannelRole } from '~/models'
 import ChannelRow from '~/components/ChannelRow.vue'
 import RootComponent from '~/utils/rootComponent'
 
@@ -24,8 +24,20 @@ import RootComponent from '~/utils/rootComponent'
 })
 export default class SearchChannelPage extends RootComponent {
   channels: Channel[] = [
-    { id: '1', name: 'goods', description: 'چرا؟' },
-    { id: '2', name: 'bads', description: 'چطور؟' }
+    {
+      id: '2',
+      name: 'mofo',
+      description: 'this channel is about mofos',
+      role: ChannelRole.MEMBER,
+      has_subscription: true
+    },
+    {
+      id: '2',
+      name: 'mofo',
+      description: 'this channel is about mofos',
+      role: ChannelRole.MEMBER,
+      has_subscription: true
+    }
   ]
 
   searchInput: string = ''

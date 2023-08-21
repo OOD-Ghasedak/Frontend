@@ -51,14 +51,22 @@ import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ChannelPage extends RootComponent {
-  // todo
-  channelRole: ChannelRole = ChannelRole.OWNER
+  get channelRole () {
+    return this.channel.role
+  }
 
   get channelRoleProps () {
     return ChannelRolesProps[this.channelRole]
   }
 
-  channel: Channel = { id: '2', name: 'mofo', description: 'this channel is about mofos' }
+  channel: Channel = {
+    id: '2',
+    name: 'mofo',
+    description: 'this channel is about mofos',
+    role: ChannelRole.MEMBER,
+    has_subscription: true
+  }
+
   contents: ChannelContent[] = [
     {
       id: '0',
@@ -94,18 +102,24 @@ export default class ChannelPage extends RootComponent {
   ]
 
   get channelId (): string {
-    return this.$route.params.channel_id || '4568'
+    return this.$route.params.channel_id
+  }
+
+  joinChannel () {
+    this.mainConfig.$facades.ghased.joinChannel(this.channelId)
   }
 
   leaveChannel () {
-    // todo
+    this.mainConfig.$facades.subscriber.leaveChannel(this.channelId)
   }
 
   mounted () {
-    // todo
-    // enter channel
-    // get channel
-    // get contents
+    this.mainConfig.$facades.subscriber.getChannel(this.channelId).then((channel) => {
+      this.channel = channel
+    })
+    this.mainConfig.$facades.subscriber.getChannelContents(this.channelId).then((contents) => {
+      this.contents = contents
+    })
   }
 }
 </script>

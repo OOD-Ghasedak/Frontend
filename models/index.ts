@@ -1,10 +1,13 @@
 import { ChannelContentType } from './channelContentTypes'
+import { ChannelRole } from './channelRoles'
 export type Money = number;
 
 export interface Channel {
     id: string;
     name: string;
     description: string;
+    role: ChannelRole;
+    has_subscription: boolean;
 }
 
 export interface JoinedChannel extends Channel {
@@ -12,9 +15,9 @@ export interface JoinedChannel extends Channel {
 }
 
 export interface OwnedOrManagedChannel extends Channel {
-    role;
 }
-export * from './channelContentTypes'
+export * from './channelRoles'
+
 export interface ChannelCompleteContent {
     text: string;
     file?: string;
@@ -28,8 +31,7 @@ export interface ChannelContent {
     content_type: ChannelContentType;
     complete_content?: ChannelCompleteContent;
 }
-
-export * from './channelRoles'
+export * from './channelContentTypes'
 
 export interface UserProfile {
     phone_number: string;
