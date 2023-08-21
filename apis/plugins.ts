@@ -3,7 +3,7 @@ import concreteBackendAPI from './backend/axiosRequest'
 import { BackendAPI } from './backend'
 
 interface APIs {
-    backend: BackendAPI
+  backend: BackendAPI
 }
 
 const concreteAPIs: APIs = {
@@ -11,9 +11,9 @@ const concreteAPIs: APIs = {
 }
 
 declare module '@nuxt/types' {
-    interface Context {
-        $apis: APIs
-    }
+  interface Context {
+    $apis: APIs
+  }
 }
 
 const apisPlugin: Plugin = (context) => {

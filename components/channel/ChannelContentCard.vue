@@ -79,6 +79,7 @@ export default class ChannelContentCard extends Vue {
   gap: 25px;
   border-bottom: 1px solid var(--top-color-1);
   z-index: 1;
+  max-width: 500px;
 }
 
 .channel-content::before {

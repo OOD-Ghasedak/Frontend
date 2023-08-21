@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <button class="secondary-button horizontally-centered">
+      <button class="secondary-button horizontally-centered" @click="addContent">
         <h2>{{ 'انتشار' }}</h2>
       </button>
     </div>
@@ -106,9 +106,17 @@ export default class ChannelAddContentPage extends Mixins(RootComponent, FileAPI
   }
 
   addFile (event: InputEvent) {
-    this.inputFileOnChange(event).then((response) => {
-      this.content.file = response
-    })
+    // @ts-ignore
+    this.content.file = (event.target as HTMLInputElement).files[0]
+  }
+
+  get channelId () {
+    return this.$route.params.channel_id
+  }
+
+  addContent () {
+    // @ts-ignore
+    this.mainConfig.$facades.channelManager.addContent(this.channelId, this.toFormData(this.content))
   }
 }
 </script>
