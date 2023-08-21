@@ -24,8 +24,9 @@ export interface ChannelContentModel {
     price: Money;
 }
 
-export interface SentChannelContent {
-    complete_content: ChannelCompleteContent;
+export interface SentChannelContent extends ChannelContentModel {
+    text: string;
+    file: string | null;
 }
 
 export interface ChannelContent extends ChannelContentModel {
