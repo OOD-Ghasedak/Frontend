@@ -16,12 +16,20 @@ export interface ChannelCompleteContent {
     text: string;
     file?: string;
 }
-export interface ChannelContent {
-    id: string;
+
+export interface ChannelContentModel {
     title: string;
     summary: string;
     is_premium: boolean;
     price: Money;
+}
+
+export interface SentChannelContent {
+    complete_content: ChannelCompleteContent;
+}
+
+export interface ChannelContent extends ChannelContentModel {
+    id: string;
     content_type: ChannelContentType;
     complete_content?: ChannelCompleteContent;
 }
