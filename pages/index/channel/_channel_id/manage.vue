@@ -38,7 +38,7 @@
         </div>
         <div class="content">
           <div v-for="(admin, i) in admins" :key="`admin-${i}`" class="admin row">
-            <div class="content row">
+            <div class="content row" @click="$refs[refIds.adminReport].show(admin)">
               <img src="@/static/images/ghased.svg" class="image-sized-1">
               <div class="names">
                 <h5>{{ admin.ghased.full_name }}</h5>
@@ -152,11 +152,13 @@
     <change-name :ref="refIds.changeName" />
     <change-bio :ref="refIds.changeBiography" />
     <change-admin-profit :ref="refIds.changeAdminProfit" />
+    <admin-report :ref="refIds.adminReport" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import AdminReport from '~/components/channelManage/AdminReport.vue'
 import ChangeAdminProfit from '~/components/channelManage/ChangeAdminProfit.vue'
 import ChangeBio from '~/components/channelManage/ChangeBio.vue'
 import ChangeName from '~/components/channelManage/ChangeName.vue'
@@ -167,14 +169,16 @@ import RootComponent from '~/utils/rootComponent'
   components: {
     ChangeName,
     ChangeBio,
-    ChangeAdminProfit
+    ChangeAdminProfit,
+    AdminReport
   }
 })
 export default class ChannelManagePage extends RootComponent {
   readonly refIds: {[key: string]: string} = {
     changeName: 'changeName',
     changeBiography: 'changeBiography',
-    changeAdminProfit: 'changeAdminProfit'
+    changeAdminProfit: 'changeAdminProfit',
+    adminReport: 'adminReport'
   }
 
   channel: Channel = {
@@ -325,6 +329,7 @@ export default class ChannelManagePage extends RootComponent {
 .admin > .content {
   gap: 0.5rem;
   align-items: center;
+  cursor: pointer;
 }
 
 .channel-manage-page .subscriptions > .content {

@@ -1,12 +1,12 @@
 <template>
-  <b-modal centered hide-footer visible size="lg" class="buy-sub">
+  <b-modal :id="modalId" centered hide-footer size="lg" class="buy-sub">
     <template #default>
       <div class="modal-main promote-to-admin-main">
         <div class="content row">
           <img src="@/static/images/ghased.svg" class="image-sized-1">
           <div class="names">
-            <h5>hi</h5>
-            <h6>@hello</h6>
+            <h5>{{ admin.ghased.full_name }}</h5>
+            <h6>{{ `@${admin.ghased.username}` }}</h6>
           </div>
         </div>
 
@@ -35,9 +35,22 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import Vue from 'vue'
+import { ChannelAdmin } from '~/models'
 
 @Component
 export default class AdminReport extends Vue {
+  readonly modalId: string = 'admin-report'
+  show (admin: ChannelAdmin) {
+    this.admin = admin
+    this.$bvModal.show(this.modalId)
+  }
+
+  get channelId () {
+    return this.$route.params.channel_id
+  }
+
+  admin: ChannelAdmin
+  report
 }
 </script>
 
