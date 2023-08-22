@@ -10,9 +10,9 @@
       <img class="circular image-sized-3">
       <div class="channel-name row">
         <h2 class="see">
-          {{ 'channel-name' }}
+          {{ channel.name }}
         </h2>
-        <button class="edit">
+        <button class="edit" @click="$refs[changeNameRefId].show()">
           <img class="image-sized--1" src="@/static/images/edit.svg">
         </button>
       </div>
@@ -23,12 +23,12 @@
           <img src="@/static/images/info-purple.svg">
           <h4>{{ 'بیوگرافی کانال' }}</h4>
         </div>
-        <button class="edit">
+        <button class="edit" @click="$refs[changeBiographyRefId].show()">
           <h6>{{ 'ویرایش' }}</h6>
           <img class="image-sized--1" src="@/static/images/edit.svg">
         </button>
         <h5 class="content">
-          {{ 'biography' }}
+          {{ channel.description }}
         </h5>
       </div>
       <div class="admins manage-section">
@@ -149,16 +149,36 @@
         </div>
       </div>
     </div>
+    <change-name :ref="changeNameRefId" />
+    <change-bio :ref="changeBiographyRefId" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { ChannelAdmin, ChannelMember, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
+import ChangeBio from '~/components/channelManage/ChangeBio.vue'
+import ChangeName from '~/components/channelManage/ChangeName.vue'
+import { Channel, ChannelAdmin, ChannelMember, ChannelRole, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component
+@Component({
+  components: {
+    ChangeName,
+    ChangeBio
+  }
+})
 export default class ChannelManagePage extends RootComponent {
+  changeNameRefId: string = 'changeName'
+  changeBiographyRefId: string = 'changeBiography'
+
+  channel: Channel = {
+    id: '2',
+    name: 'mofo',
+    description: 'this channel is about mofos',
+    role: ChannelRole.MEMBER,
+    has_subscription: true
+  }
+
   admins: ChannelAdmin[] = [
     { id: '0', ghased: { id: '0', full_name: 'sepehr kianian', username: 'sepehrkianian09' }, share: 34 },
     { id: '1', ghased: { id: '0', full_name: 'sepehr kianian', username: 'sepehrkianian09' }, share: 22 },
@@ -187,6 +207,9 @@ export default class ChannelManagePage extends RootComponent {
   }
 
   mounted () {
+    this.mainConfig.$facades.subscriber.getChannel(this.channelId).then((response) => {
+      this.channel = response
+    })
     this.mainConfig.$facades.channelOwner.getChannelAdmins(this.channelId).then((response) => {
       this.admins = response
     })

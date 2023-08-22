@@ -4,23 +4,23 @@
       <div class="modal-main">
         <div class="modal-body-title">
           <h1 class="modal-title-text">
-            <center>بیوگرافی کانال</center>
+            <center>نام کانال</center>
           </h1>
           <h6 class="title-description">
-            بیوگرافی جدید را وارد کنید.
+            نام جدید را وارد کنید.
           </h6>
         </div>
 
         <div class="modal-body-change-bio">
           <img src="@/static/images/paragraph.svg" alt="" class="paragraph-icon">
-          <textarea v-model="editedDescription" placeholder="بیوگرافی" class="bio-input" />
+          <textarea v-model="editedName" placeholder="نام" class="bio-input" />
         </div>
       </div>
     </template>
     <template #modal-footer>
       <div class="ok-button">
         <button class="primary-button" @click="changeBiography">
-          <h5>{{ 'تغییر بیوگرافی' }}</h5>
+          <h5>{{ 'تغییر نام' }}</h5>
           <img src="@/static/images/change-bio.svg" class="image-sized--2">
         </button>
       </div>
@@ -41,9 +41,9 @@ import Component from 'vue-class-component'
 import { Channel } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component
-export default class ChangeBio extends RootComponent {
-  readonly modalId: string = 'change-bio'
+  @Component
+export default class ChangeName extends RootComponent {
+  readonly modalId: string = 'change-name'
   show () {
     this.$bvModal.show(this.modalId)
   }
@@ -52,14 +52,14 @@ export default class ChangeBio extends RootComponent {
     return this.$route.params.channel_id
   }
 
-  editedDescription: Channel['description'] = ''
+  editedName: Channel['name'] = ''
   changeBiography () {
-    this.mainConfig.$facades.channelOwner.editChannelInfo(this.channelId, { description: this.editedDescription }).then(() => {
+    this.mainConfig.$facades.channelOwner.editChannelInfo(this.channelId, { name: this.editedName }).then(() => {
       this.$router.go(0)
     })
   }
 }
 </script>
 
-<style>
-</style>
+  <style>
+  </style>
