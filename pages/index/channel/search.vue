@@ -3,7 +3,7 @@
     <button class="close-button" @click="close">
       <img class="image-sized--1" src="@/static/images/cross.svg">
     </button>
-    <div class="icon-input">
+    <div class="search-input icon-input">
       <input v-model="searchInput">
       <img src="@/static/images/magnifier.svg" @click="searchChannels">
     </div>
@@ -75,5 +75,9 @@ export default class SearchChannelPage extends RootComponent {
   z-index: 1;
   right: 5%;
   top: 20px;
+}
+
+.search-channel-page > .search-input > img {
+  cursor: pointer;
 }
 </style>

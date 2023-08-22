@@ -7,8 +7,9 @@ interface ChannelRoleProps {
   canManageAdmins: boolean,
   canAddContent: boolean,
   canManageContents: boolean,
-  canLeaveChannel: boolean,
   canJoinChannel: boolean,
+  canBuySubscription: boolean,
+  canLeaveChannel: boolean,
 }
 
 export const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonly<ChannelRoleProps>> }> = {
@@ -25,6 +26,6 @@ export const ChannelRolesProps: Readonly<{ [key in ChannelRole]: Partial<Readonl
   [ChannelRole.SPECIAL_MEMBER]: {
     canLeaveChannel: true
   },
-  [ChannelRole.MEMBER]: { canLeaveChannel: true },
+  [ChannelRole.MEMBER]: { canBuySubscription: true, canLeaveChannel: true },
   [ChannelRole.VISITOR]: { canJoinChannel: true }
 }

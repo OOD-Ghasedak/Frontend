@@ -23,6 +23,10 @@
       <div class="center">
         <h1>{{ channel.name }}</h1>
         <channel-role-component :role="channelRole" />
+        <button v-if="channelRoleProps.canBuySubscription" class="edit secondary-button-2">
+          <h6>{{ 'خرید اشتراک' }}</h6>
+          <img class="image-sized--1" src="@/static/images/paper-money.svg">
+        </button>
         <button v-if="channelRoleProps.canLeaveChannel" class="leave-group-button error-button" @click="leaveChannel">
           <h6>{{ 'خروج از کانال...' }}</h6>
           <img class="image-sized--1" src="@/static/images/leave-group.svg">
@@ -157,7 +161,7 @@ export default class ChannelPage extends RootComponent {
 
 .channel-page > .header > .center > .subscription-sign {
   position: absolute;
-  right: -85px;
+  right: -95px;
   top: 4px;
 }
 

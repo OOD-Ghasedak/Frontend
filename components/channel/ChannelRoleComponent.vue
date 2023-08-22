@@ -43,5 +43,6 @@ export default class ChannelRoleComponent extends Vue {
 <style>
 .role {
   gap: 5px;
+  align-items: center;
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="channel-manage-page">
     <div class="header">
       <back-button />
-      <button class="remove-channel-button error-button">
+      <button class="remove-channel-button error-button" @click="removeChannel">
         <h5>{{ 'حذف کانال...' }}</h5>
         <img class="image-sized--1" src="@/static/images/cross-red.svg">
       </button>
@@ -241,6 +241,11 @@ export default class ChannelManagePage extends RootComponent {
     this.mainConfig.$facades.subscriber.getChannelSubscriptions(this.channelId).then((response) => {
       this.subscriptions = response
     })
+  }
+
+  removeChannel () {
+    this.mainConfig.$facades.channelOwner.removeChannel(this.channelId)
+    // .then(() => { this.$router.push({ name: 'HomePage' }) })
   }
 }
 </script>
