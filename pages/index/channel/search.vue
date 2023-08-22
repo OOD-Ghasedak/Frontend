@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { Channel, ChannelRole } from '~/models'
+import { Channel } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
