@@ -13,9 +13,10 @@ export default interface ChannelManager {
 
 class ConcreteChannelManager extends OutsideVueComponent implements ChannelManager {
   addContent (channelId: string, content: SentChannelContent) {
+    const data = content.file == null ? content : this.mainConfig.$apis.file.toFormData(content)
     return this.mainConfig.$apis.backend.send(new RequestParams(GET_CHANNEL_CONTENTS_URL(GET_CHANNEL_URL(channelId)), REQUEST_METHODS.POST, {
       withAuth: true,
-      data: this.mainConfig.$apis.file.toFormData(content)
+      data
     }))
   }
 

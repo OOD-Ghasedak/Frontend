@@ -21,27 +21,27 @@ import RootComponent from '~/utils/rootComponent'
 @Component
 export default class SearchChannelPage extends RootComponent {
   channels: Channel[] = [
-    {
-      id: '2',
-      name: 'mofo',
-      description: 'this channel is about mofos',
-      role: ChannelRole.SPECIAL_MEMBER,
-      has_subscription: true
-    },
-    {
-      id: '2',
-      name: 'mofo',
-      description: 'this channel is about mofos',
-      role: ChannelRole.VISITOR,
-      has_subscription: true
-    },
-    {
-      id: '2',
-      name: 'mofo',
-      description: 'this channel is about mofos',
-      role: ChannelRole.ADMIN,
-      has_subscription: false
-    }
+    // {
+    //   id: '2',
+    //   name: 'mofo',
+    //   description: 'this channel is about mofos',
+    //   role: ChannelRole.SPECIAL_MEMBER,
+    //   has_subscription: true
+    // },
+    // {
+    //   id: '2',
+    //   name: 'mofo',
+    //   description: 'this channel is about mofos',
+    //   role: ChannelRole.VISITOR,
+    //   has_subscription: true
+    // },
+    // {
+    //   id: '2',
+    //   name: 'mofo',
+    //   description: 'this channel is about mofos',
+    //   role: ChannelRole.ADMIN,
+    //   has_subscription: false
+    // }
   ]
 
   searchInput: string = ''
