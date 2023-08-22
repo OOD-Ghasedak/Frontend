@@ -79,8 +79,8 @@
             </div>
           </div>
         </div>
-        <button class="edit secondary-button-2">
-          <h6>{{ 'ویرایش اشتراک' }}</h6>
+        <button class="edit secondary-button-2" @click="$refs[refIds.editSubscription].show(subscriptions)">
+          <h6>{{ `${channel.has_subscription ? 'ویرایش' : 'تعریف'} اشتراک` }}</h6>
           <img class="image-sized--1" src="@/static/images/paper-money.svg">
         </button>
       </div>
@@ -155,6 +155,7 @@
     <admin-report :ref="refIds.adminReport" />
     <discharge-admin :ref="refIds.dischargeAdmin" />
     <promote-to-admin :ref="refIds.promoteToAdmin" />
+    <edit-subscription :ref="refIds.editSubscription" />
   </div>
 </template>
 
@@ -165,6 +166,7 @@ import ChangeAdminProfit from '~/components/channelManage/ChangeAdminProfit.vue'
 import ChangeBio from '~/components/channelManage/ChangeBio.vue'
 import ChangeName from '~/components/channelManage/ChangeName.vue'
 import DischargeAdmin from '~/components/channelManage/DischargeAdmin.vue'
+import EditSubscription from '~/components/channelManage/EditSubscription.vue'
 import PromoteToAdmin from '~/components/channelManage/PromoteToAdmin.vue'
 import { Channel, ChannelAdmin, ChannelMember, ChannelRole, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
 import RootComponent from '~/utils/rootComponent'
@@ -176,7 +178,8 @@ import RootComponent from '~/utils/rootComponent'
     ChangeAdminProfit,
     AdminReport,
     DischargeAdmin,
-    PromoteToAdmin
+    PromoteToAdmin,
+    EditSubscription
   }
 })
 export default class ChannelManagePage extends RootComponent {
@@ -186,7 +189,8 @@ export default class ChannelManagePage extends RootComponent {
     changeAdminProfit: 'changeAdminProfit',
     adminReport: 'adminReport',
     dischargeAdmin: 'dischargeAdmin',
-    promoteToAdmin: 'promoteToAdmin'
+    promoteToAdmin: 'promoteToAdmin',
+    editSubscription: 'editSubscription'
   }
 
   channel: Channel = {
