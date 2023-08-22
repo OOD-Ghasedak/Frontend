@@ -141,7 +141,7 @@
             </div>
           </div>
           <div class="actions row">
-            <button class="primary-button">
+            <button class="primary-button" @click="$refs[refIds.promoteToAdmin].show(member)">
               <p>{{ 'ارتقا به مدیر کانال' }}</p>
               <img class="image-sized--2" src="@/static/images/channel-roles/admin.svg">
             </button>
@@ -154,6 +154,7 @@
     <change-admin-profit :ref="refIds.changeAdminProfit" />
     <admin-report :ref="refIds.adminReport" />
     <discharge-admin :ref="refIds.dischargeAdmin" />
+    <promote-to-admin :ref="refIds.promoteToAdmin" />
   </div>
 </template>
 
@@ -164,6 +165,7 @@ import ChangeAdminProfit from '~/components/channelManage/ChangeAdminProfit.vue'
 import ChangeBio from '~/components/channelManage/ChangeBio.vue'
 import ChangeName from '~/components/channelManage/ChangeName.vue'
 import DischargeAdmin from '~/components/channelManage/DischargeAdmin.vue'
+import PromoteToAdmin from '~/components/channelManage/PromoteToAdmin.vue'
 import { Channel, ChannelAdmin, ChannelMember, ChannelRole, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
@@ -173,7 +175,8 @@ import RootComponent from '~/utils/rootComponent'
     ChangeBio,
     ChangeAdminProfit,
     AdminReport,
-    DischargeAdmin
+    DischargeAdmin,
+    PromoteToAdmin
   }
 })
 export default class ChannelManagePage extends RootComponent {
@@ -182,7 +185,8 @@ export default class ChannelManagePage extends RootComponent {
     changeBiography: 'changeBiography',
     changeAdminProfit: 'changeAdminProfit',
     adminReport: 'adminReport',
-    dischargeAdmin: 'dischargeAdmin'
+    dischargeAdmin: 'dischargeAdmin',
+    promoteToAdmin: 'promoteToAdmin'
   }
 
   channel: Channel = {
