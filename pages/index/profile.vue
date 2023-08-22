@@ -36,7 +36,7 @@
           </div>
           <div class="edit row">
             <h6>{{ 'رمزعبور' }}</h6>
-            <button v-if="false" style="margin-right: 5px;" @click="$refs['changePassword'].show()">
+            <button style="margin-right: 5px;" @click="$refs['changePassword'].show()">
               <img class="image-sized--2" src="@/static/images/edit.svg" alt="verified">
             </button>
           </div>
