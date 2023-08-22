@@ -1,67 +1,29 @@
 <template>
-  <b-modal centered visible size="lg" class="buy-sub">
+  <b-modal :id="modalId" centered size="lg" class="buy-sub">
     <template #default>
       <div class="modal-main">
         <div class="modal-body-title">
           <h1 class="modal-title-text">
             <center>خرید محتوا</center>
           </h1>
-          <h6>صدای هنرمندان فاخر</h6>
+          <h6>{{ content.title }}</h6>
         </div>
 
         <div class="modal-body-buy-content">
           <div class="price-content">
-            <h4>۴۰۰۰۰۰۰</h4>
+            <h4>{{ content.price }}</h4>
             <p class="sub-item-months">
               تومان
             </p>
           </div>
 
-          <div class="wallet-pane">
-            <div class="wallet-pane-header">
-              <h6 class="wallet-text">
-                کیف<br>پول
-              </h6>
-              <div class="wallet-balance">
-                <h4 class="balance-text">
-                  موجودی
-                </h4>
-                <p>۲۰۰۰۰۰۰تومان</p>
-              </div>
-              <img src="@/static/images/wallet.svg" alt="" class="wallet-icon">
-            </div>
-            <div class="wallet-pane-note">
-              <p>موجودی کافی</p>
-
-              <h4 class="trans-text">
-                عملیات
-              </h4>
-              <a href="" />
-              <b-button v-b-toggle.collapse-wallet class="expand-button" style="padding: 5px;">
-                <img src="@/static/images/double-arrow-down.svg" alt="" class="down-icon">
-              </b-button>
-            </div>
-            <b-collapse id="collapse-wallet">
-              <div class="input-div">
-                <input type="number" placeholder="مقدار" class="deposit-input">
-              </div>
-
-              <div class="depost-button-div">
-                <button class="deposit-button">
-                  <h3 class="secondary">
-                    {{ 'واریز' }}
-                  </h3>
-                  <img src="@/static/images/arrow-down.svg">
-                </button>
-              </div>
-            </b-collapse>
-          </div>
+          <inline-wallet :has-enough-balance-outside="hasBalance" />
         </div>
       </div>
     </template>
     <template #modal-footer>
       <div class="ok-button">
-        <button class="edit secondary-button-2">
+        <button class="edit secondary-button-2" @click="buy">
           <h6>{{ ' خرید محتوا' }}</h6>
           <img class="image-sized--1" src="@/static/images/paper-money.svg">
         </button>
@@ -80,10 +42,40 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import Vue from 'vue'
+import { Prop } from 'vue-property-decorator'
+import InlineWallet from '../InlineWallet.vue'
+import { ChannelContent, Money } from '~/models'
+import RootComponent from '~/utils/rootComponent'
 
-  @Component
-export default class BuyContent extends Vue {
+@Component({
+  components: {
+    InlineWallet
+  }
+})
+export default class BuyContent extends RootComponent {
+  readonly modalId: string = 'buy-content'
+  show () {
+    this.$bvModal.show(this.modalId)
+  }
+
+  get channelId () {
+    return this.$route.params.channel_id
+  }
+
+  get contentId (): string {
+    return this.content.id
+  }
+
+  @Prop() readonly content: ChannelContent
+  hasBalance (walletBalance: Money) {
+    return this.content.price <= walletBalance
+  }
+
+  buy () {
+    this.mainConfig.$facades.subscriber.buyContent(this.contentId).then(() => {
+      this.$router.go(0)
+    })
+  }
 }
 </script>
 

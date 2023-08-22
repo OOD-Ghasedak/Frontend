@@ -39,22 +39,32 @@
           {{ content.complete_content.text }}
         </h6>
         <img v-else src="@/static/images/defaults/channel-default-content.svg" class="default-file-content">
-        <button v-if="!content.complete_content" class="buy-button secondary-button-2 horizontally-centered">
+        <button v-if="!content.complete_content" class="buy-button secondary-button-2 horizontally-centered" @click="$refs[buyContentRefId].show()">
           <h6>{{ 'خرید محتوا' }}</h6>
           <img class="image-sized--1" src="@/static/images/paper-money.svg">
         </button>
       </div>
     </div>
+    <buy-content :ref="buyContentRefId" :content="content" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import BuyContent from '~/components/content/BuyContent.vue'
+import PremiumSign from '~/components/content/PremiumSign.vue'
 import { ChannelContent, ChannelContentType, ChannelContentTypeProps } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
-@Component
+@Component({
+  components: {
+    PremiumSign,
+    BuyContent
+  }
+})
 export default class ChannelContentPage extends RootComponent {
+  buyContentRefId: string = 'buyContent'
+
   channelName: string = 'آخرین اثر وینسنت ون‌گاک'
   contentWriter: string = 'ahmad'
   contentDate: string = '1402/02/22'
@@ -88,8 +98,9 @@ export default class ChannelContentPage extends RootComponent {
   }
 
   mounted () {
-    // get channel
-    // get contents
+    this.mainConfig.$facades.subscriber.getChannelContent(this.contentId).then((response) => {
+      this.content = response
+    })
   }
 }
 </script>

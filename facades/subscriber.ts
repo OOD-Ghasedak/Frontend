@@ -1,6 +1,6 @@
 import { REQUEST_METHODS, RequestParams } from '~/apis/backend'
 import { Channel, ChannelContent, Subscription } from '~/models'
-import { GET_CHANNEL_URL, GET_CHANNEL_CONTENTS_URL, GET_CONTENT_URL, GET_LEAVE_CHANNEL_URL, GET_CHANNEL_SUBSCRIPTION_URL, PURCHASED_SUBSCRIPTIONS_URL } from '~/urls/channel'
+import { GET_CHANNEL_URL, GET_CHANNEL_CONTENTS_URL, GET_CONTENT_URL, GET_LEAVE_CHANNEL_URL, GET_CHANNEL_SUBSCRIPTION_URL, PURCHASED_SUBSCRIPTIONS_URL, PURCHASED_CONTENTS_URL } from '~/urls/channel'
 import { OutsideVueComponent } from '~/utils/connectToNuxt'
 
 export default interface Subscriber {
@@ -13,6 +13,8 @@ export default interface Subscriber {
   getChannelSubscriptions(channelId: string): Promise<Subscription[]>;
 
   buySubscription(subscriptionId: string): Promise<any>;
+
+  buyContent(contentId: string): Promise<any>;
 
   leaveChannel(channelId: string): Promise<any>;
 }
@@ -48,6 +50,13 @@ class ConcreteSubscriber extends OutsideVueComponent implements Subscriber {
     return this.mainConfig.$apis.backend.send(new RequestParams(PURCHASED_SUBSCRIPTIONS_URL, REQUEST_METHODS.POST, {
       withAuth: true,
       data: { subscription: subscriptionId }
+    }))
+  }
+
+  buyContent (contentId: string): Promise<any> {
+    return this.mainConfig.$apis.backend.send(new RequestParams(PURCHASED_CONTENTS_URL, REQUEST_METHODS.POST, {
+      withAuth: true,
+      data: { content: contentId }
     }))
   }
 

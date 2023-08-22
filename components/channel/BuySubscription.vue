@@ -9,47 +9,7 @@
         </div>
 
         <div class="modal-body-me">
-          <div class="wallet-pane">
-            <div class="wallet-pane-header">
-              <h6 class="wallet-text">
-                کیف<br>پول
-              </h6>
-              <div class="wallet-balance">
-                <h4 class="balance-text">
-                  موجودی
-                </h4>
-                <p>{{ `${walletBalance} تومان` }}</p>
-              </div>
-              <img src="@/static/images/wallet.svg" alt="" class="wallet-icon">
-            </div>
-            <div class="wallet-pane-note">
-              <p>
-                {{ `موجودی ${hasEnoughBalance ? '' : 'نا'}کافی` }}
-              </p>
-
-              <h4 class="trans-text">
-                عملیات
-              </h4>
-              <a href="" />
-              <b-button v-b-toggle.collapse-wallet class="expand-button" style="padding: 5px;">
-                <img src="@/static/images/double-arrow-down.svg" alt="" class="down-icon">
-              </b-button>
-            </div>
-            <b-collapse id="collapse-wallet">
-              <div class="input-div">
-                <input v-model="depositAmount" type="number" placeholder="مقدار" class="deposit-input">
-              </div>
-
-              <div class="depost-button-div">
-                <button class="deposit-button" @click="deposit">
-                  <h3 class="secondary">
-                    {{ 'واریز' }}
-                  </h3>
-                  <img src="@/static/images/arrow-down.svg">
-                </button>
-              </div>
-            </b-collapse>
-          </div>
+          <inline-wallet :ref="inlineWalletRefId" :has-enough-balance-outside="hasEnoughBalance" />
 
           <div class="subs">
             <div v-for="(subscription, i) in subscriptions" :key="`subscription-${i}`" class="sub-item-box" :active="i === selectedSubscriptionIndex ? 'true' : 'false'" @click="selectedSubscriptionIndex = i">
@@ -95,16 +55,25 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import InlineWallet from '../InlineWallet.vue'
 import RootComponent from '~/utils/rootComponent'
 import { Money, Subscription, subscriptionLengthNumbers, SubscriptionModel } from '~/models'
 
-  @Component
+  @Component({
+    components: {
+      InlineWallet
+    }
+  })
 export default class BuySubscription extends RootComponent {
   readonly modalId: string = 'change-bio'
+  readonly inlineWalletRefId: string = 'inline-wallet'
+
   show () {
     this.selectedSubscriptionIndex = 0
-    this.depositAmount = 0
     this.$bvModal.show(this.modalId)
+    // console.log(this.$refs[this.inlineWalletRefId])
+    // // @ts-ignore
+    // this.$refs[this.inlineWalletRefId].init()
   }
 
   get channelId () {
@@ -125,8 +94,8 @@ export default class BuySubscription extends RootComponent {
     return this.subscriptions[this.selectedSubscriptionIndex].id
   }
 
-  get hasEnoughBalance () {
-    return !this.hasSelectedASubscription || this.subscriptions[this.selectedSubscriptionIndex].price <= this.walletBalance
+  hasEnoughBalance (walletBalance: Money) {
+    return !this.hasSelectedASubscription || this.subscriptions[this.selectedSubscriptionIndex].price <= walletBalance
   }
 
   buySubscription () {
@@ -138,18 +107,6 @@ export default class BuySubscription extends RootComponent {
   mounted () {
     this.mainConfig.$facades.subscriber.getChannelSubscriptions(this.channelId).then((response) => {
       this.subscriptions = response
-    })
-    this.mainConfig.$facades.wallet.getWallet().then((response) => {
-      this.walletBalance = response.balance
-    })
-  }
-
-  walletBalance: Money = 0
-  depositAmount: Money = 0
-  deposit () {
-    this.mainConfig.$facades.wallet.deposit(this.depositAmount).then(() => {
-      this.walletBalance += this.depositAmount
-      this.depositAmount = 0
     })
   }
 }
