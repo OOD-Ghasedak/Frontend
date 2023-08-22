@@ -34,12 +34,21 @@
     </div>
     <div class="content manage-section">
       <div class="content">
-        <component :is="contentProps.content.fileTag" v-if="contentProps.content && content.complete_content" class="file-content" :src="content.complete_content.file" />
+        <component
+          :is="contentProps.content.fileTag"
+          v-if="contentProps.content && content.complete_content"
+          class="file-content"
+          :src="content.complete_content.file"
+        />
         <h6 v-else-if="content.complete_content" class="text-content">
           {{ content.complete_content.text }}
         </h6>
         <img v-else src="@/static/images/defaults/channel-default-content.svg" class="default-file-content">
-        <button v-if="!content.complete_content" class="buy-button secondary-button-2 horizontally-centered" @click="$refs[buyContentRefId].show()">
+        <button
+          v-if="!content.complete_content"
+          class="buy-button secondary-button-2 horizontally-centered"
+          @click="$refs[buyContentRefId].show()"
+        >
           <h6>{{ 'خرید محتوا' }}</h6>
           <img class="image-sized--1" src="@/static/images/paper-money.svg">
         </button>
@@ -71,13 +80,13 @@ export default class ChannelContentPage extends RootComponent {
 
   content: ChannelContent = {
     id: '1',
-    title: 'متن آهنگ ساسی',
-    price: 10000,
-    summary: 'متن آهنگ ساسی',
+    title: '',
+    price: 0,
+    summary: '',
     content_type: ChannelContentType.TEXT,
-    complete_content: {
-      text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
-    },
+    // complete_content: {
+    //   text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+    // },
     is_premium: false
   }
 
@@ -109,20 +118,19 @@ export default class ChannelContentPage extends RootComponent {
 </router>
 
 <style>
-
 .channel-content-page {
   height: 100%;
   margin: 30px 4%;
   gap: 1rem;
 }
 
-.channel-content-page > .header {
+.channel-content-page>.header {
   position: relative;
   min-height: 100px;
   gap: 1rem;
 }
 
-.channel-content-page > .header > .channel {
+.channel-content-page>.header>.channel {
   position: absolute;
   right: 0;
   top: 0;
@@ -131,43 +139,47 @@ export default class ChannelContentPage extends RootComponent {
   width: 240px;
   flex-wrap: nowrap;
 }
-.channel-content-page > .header > .channel > h5 {
+
+.channel-content-page>.header>.channel>h5 {
   text-align: center;
 }
 
-.channel-content-page > .header > .center {
+.channel-content-page>.header>.center {
   margin: auto;
   gap: 1rem;
 }
 
-.channel-content-page > .header > .center .type-image {
+.channel-content-page>.header>.center .type-image {
   padding: 10px;
   background-color: var(--top-color-7);
   border-radius: 10px;
 }
 
-.channel-content-page > .header > .center > .top {
+.channel-content-page>.header>.center>.top {
   align-items: center;
   gap: 1rem;
 }
 
-.channel-content-page > .header > .center > .bottom {
+.channel-content-page>.header>.center>.bottom {
   /* gap: 5rem; */
 }
-.bottom-item + .bottom-item::before {
+
+.bottom-item+.bottom-item::before {
   content: '';
   border: 1px solid;
   width: 0;
   margin: 0 3vw;
 }
-.bottom > .bottom-item {
+
+.bottom>.bottom-item {
   gap: 1rem;
 }
-.bottom > .bottom-item > h5 {
+
+.bottom>.bottom-item>h5 {
   align-self: center;
 }
 
-.channel-content-page > .header > .premium-sign {
+.channel-content-page>.header>.premium-sign {
   align-self: center;
 }
 
@@ -180,6 +192,7 @@ export default class ChannelContentPage extends RootComponent {
   padding-bottom: 10px;
   z-index: 0;
 }
+
 .channel-content-page .manage-section::before {
   content: "";
   position: absolute;
@@ -196,11 +209,12 @@ export default class ChannelContentPage extends RootComponent {
 .channel-content-page .manage-section {
   margin: 0 4%;
 }
+
 .channel-content-page .manage-section::before {
   border-radius: 0;
 }
 
-.channel-content-page .manage-section > .header {
+.channel-content-page .manage-section>.header {
   flex-direction: row;
   gap: 1rem;
   border-bottom: 1px solid var(--top-color-1);
@@ -209,14 +223,13 @@ export default class ChannelContentPage extends RootComponent {
   width: fit-content;
 }
 
-.channel-content-page .manage-section > .content {
+.channel-content-page .manage-section>.content {
   margin-right: var(--right-padding);
   margin-top: 10px;
   margin-left: var(--left-padding);
 }
 
-.channel-content-page > .content > .content {
+.channel-content-page>.content>.content {
   gap: 1rem;
   margin: 20px 5%;
-}
-</style>
+}</style>

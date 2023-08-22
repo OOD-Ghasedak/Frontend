@@ -132,7 +132,7 @@
     <div class="members">
       <h2>{{ 'اعضای کانال' }}</h2>
       <div class="content">
-        <div v-for="(member, i) in members" :key="`member-${i}`" :class="`member row ${i % 2 == 0 ? 'odd': 'even'}`">
+        <div v-for="(member, i) in members" :key="`member-${i}`" :class="`member row ${i % 2 == 0 ? 'odd' : 'even'}`">
           <div class="content row">
             <img class="image-sized-1 circular" src="@/static/images/ghased.svg">
             <div class="names">
@@ -183,7 +183,7 @@ import RootComponent from '~/utils/rootComponent'
   }
 })
 export default class ChannelManagePage extends RootComponent {
-  readonly refIds: {[key: string]: string} = {
+  readonly refIds: { [key: string]: string } = {
     changeName: 'changeName',
     changeBiography: 'changeBiography',
     changeAdminProfit: 'changeAdminProfit',
@@ -195,8 +195,8 @@ export default class ChannelManagePage extends RootComponent {
 
   channel: Channel = {
     id: '2',
-    name: 'mofo',
-    description: 'this channel is about mofos',
+    name: '',
+    description: '',
     role: ChannelRole.MEMBER,
     has_subscription: true
   }
@@ -260,28 +260,29 @@ export default class ChannelManagePage extends RootComponent {
   padding: 40px 5% 0 9%;
   gap: 1rem;
 }
-.channel-manage-page > * {
+
+.channel-manage-page>* {
   height: fit-content;
 }
 
-.channel-manage-page > .header {
+.channel-manage-page>.header {
   position: relative;
   align-items: center;
 }
 
-.channel-manage-page > .header > .back-button {
+.channel-manage-page>.header>.back-button {
   top: 0;
   left: 0;
 }
 
-.channel-manage-page > .header > .remove-channel-button {
+.channel-manage-page>.header>.remove-channel-button {
   padding: 7px;
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.channel-manage-page > .row {
+.channel-manage-page>.row {
   flex-wrap: nowrap;
   gap: 1rem;
 }
@@ -295,6 +296,7 @@ export default class ChannelManagePage extends RootComponent {
   padding-bottom: 10px;
   z-index: 0;
 }
+
 .channel-manage-page .manage-section::before {
   content: "";
   position: absolute;
@@ -308,7 +310,7 @@ export default class ChannelManagePage extends RootComponent {
   border-radius: 10px;
 }
 
-.channel-manage-page .manage-section > .header {
+.channel-manage-page .manage-section>.header {
   flex-direction: row;
   gap: 1rem;
   border-bottom: 1px solid var(--top-color-1);
@@ -316,43 +318,48 @@ export default class ChannelManagePage extends RootComponent {
   width: -moz-fit-content;
   width: fit-content;
 }
-.channel-manage-page .manage-section > .header > img {
+
+.channel-manage-page .manage-section>.header>img {
   background-color: var(--top-color-7);
   border-radius: 10px;
   padding: 5px 6px;
   width: 36px;
   height: 34px;
 }
-.channel-manage-page .manage-section > .content {
+
+.channel-manage-page .manage-section>.content {
   margin-right: var(--right-padding);
   margin-top: 10px;
   margin-left: var(--left-padding);
 }
 
-.channel-manage-page .biography > .edit {
+.channel-manage-page .biography>.edit {
   position: absolute;
   top: var(--top-padding);
   left: var(--left-padding);
   align-items: center;
 }
 
-.channel-manage-page .admins > .content > .admin {
+.channel-manage-page .admins>.content>.admin {
   justify-content: space-between;
   align-items: center;
 }
-.admin > .actions {
+
+.admin>.actions {
   gap: 0.5rem;
 }
-.admin > .content {
+
+.admin>.content {
   gap: 0.5rem;
   align-items: center;
   cursor: pointer;
 }
 
-.channel-manage-page .subscriptions > .content {
+.channel-manage-page .subscriptions>.content {
   gap: 1rem;
 }
-.channel-manage-page .subscriptions > .content > .edit {
+
+.channel-manage-page .subscriptions>.content>.edit {
   align-self: center;
 }
 
@@ -360,73 +367,83 @@ export default class ChannelManagePage extends RootComponent {
   margin-top: 10px;
   justify-content: space-around;
 }
-.subscriptions-content > .subscription {
+
+.subscriptions-content>.subscription {
   background-color: var(--secondary-color-6);
-    border-radius: 10px;
-    padding: 2px 10px;
-    gap:10px;
+  border-radius: 10px;
+  padding: 2px 10px;
+  gap: 10px;
 }
-.subscriptions-content > .subscription > .length {
+
+.subscriptions-content>.subscription>.length {
   align-items: flex-end;
   margin-top: 20px;
   margin-right: -8px;
 }
-.subscriptions-content > .subscription > .length > h1 {
+
+.subscriptions-content>.subscription>.length>h1 {
   line-height: 0.6;
 }
-.subscriptions-content > .subscription > .price {
+
+.subscriptions-content>.subscription>.price {
   align-items: flex-end;
   margin-bottom: 10px;
   margin-right: 25px;
 }
-.subscriptions-content > .subscription > .price > h2{
+
+.subscriptions-content>.subscription>.price>h2 {
   line-height: 0.6;
 }
 
-.channel-manage-page .sales-report > .content {
+.channel-manage-page .sales-report>.content {
   justify-content: space-around;
 }
-.channel-manage-page .sales-report > .content > .sales-report-item {
+
+.channel-manage-page .sales-report>.content>.sales-report-item {
   align-items: center;
   gap: 1rem;
 }
-.channel-manage-page .sales-report > .content > .sales-report-item > h5 {
+
+.channel-manage-page .sales-report>.content>.sales-report-item>h5 {
   width: min-content;
   text-align: center;
 }
-.channel-manage-page .sales-report > .content > .sales-report-item > .numbers {
-  align-items: center;
-}
-.channel-manage-page .sales-report > .content > .sales-report-item > .numbers > .number {
+
+.channel-manage-page .sales-report>.content>.sales-report-item>.numbers {
   align-items: center;
 }
 
-.channel-manage-page > .members {
+.channel-manage-page .sales-report>.content>.sales-report-item>.numbers>.number {
+  align-items: center;
+}
+
+.channel-manage-page>.members {
   gap: 1rem;
   border: 1px solid var(--top-color-1);
   border-radius: 10px;
   padding: 20px 0 0;
 }
 
-.channel-manage-page > .members > h2 {
+.channel-manage-page>.members>h2 {
   text-align: center;
 }
 
-.channel-manage-page > .members > .content {
+.channel-manage-page>.members>.content {
   /* gap: 1rem; */
 }
 
-.channel-manage-page > .members .member {
+.channel-manage-page>.members .member {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 3%;
 }
 
-.channel-manage-page > .members .member.odd {
+.channel-manage-page>.members .member.odd {
   position: relative;
   z-index: 0;
 }
-.channel-manage-page > .members .member.odd::before {
+
+.channel-manage-page>.members .member.odd::before {
   content: "";
   position: absolute;
   top: 0;
@@ -438,7 +455,6 @@ export default class ChannelManagePage extends RootComponent {
   background-color: var(--top-color-7);
 }
 
-.channel-manage-page > .members .member > div {
+.channel-manage-page>.members .member>div {
   gap: 1rem;
-}
-</style>
+}</style>

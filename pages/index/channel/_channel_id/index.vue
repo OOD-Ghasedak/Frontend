@@ -3,7 +3,11 @@
     <div class="header row">
       <div class="right row">
         <img class="circular image-sized-3" src="@/static/images/ghased.svg">
-        <nuxt-link v-if="channelRoleProps.canAddContent" :to="{name: 'ChannelAddContentPage', params: {...$route.params}}" custom>
+        <nuxt-link
+          v-if="channelRoleProps.canAddContent"
+          :to="{ name: 'ChannelAddContentPage', params: { ...$route.params } }"
+          custom
+        >
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/plus.svg">
@@ -11,7 +15,11 @@
             <h6>{{ 'افزودن محتوا' }}</h6>
           </div>
         </nuxt-link>
-        <nuxt-link v-if="channelRoleProps.canManageChannel" :to="{name: 'ChannelManagePage', params: {...$route.params}}" custom>
+        <nuxt-link
+          v-if="channelRoleProps.canManageChannel"
+          :to="{ name: 'ChannelManagePage', params: { ...$route.params } }"
+          custom
+        >
           <div class="the-link">
             <button class="horizontally-centered circular image-sized-1">
               <img class="image-sized--1" src="@/static/images/info.svg">
@@ -23,7 +31,11 @@
       <div class="center">
         <h1>{{ channel.name }}</h1>
         <channel-role-component :role="channelRole" />
-        <button v-if="channelRoleProps.canBuySubscription" class="edit secondary-button-2" @click="$refs[buySubscriptionRefId].show()">
+        <button
+          v-if="channelRoleProps.canBuySubscription"
+          class="edit secondary-button-2"
+          @click="$refs[buySubscriptionRefId].show()"
+        >
           <h6>{{ 'خرید اشتراک' }}</h6>
           <img class="image-sized--1" src="@/static/images/paper-money.svg">
         </button>
@@ -50,7 +62,7 @@ import BuySubscription from '~/components/channel/BuySubscription.vue'
 import JoinSign from '~/components/channel/JoinSign.vue'
 import JoinedSign from '~/components/channel/JoinedSign.vue'
 import SubscriptionSign from '~/components/channel/SubscriptionSign.vue'
-import { Channel, ChannelContent, ChannelContentType, ChannelRole, ChannelRolesProps } from '~/models'
+import { Channel, ChannelContent, ChannelRole, ChannelRolesProps } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component({
@@ -74,44 +86,44 @@ export default class ChannelPage extends RootComponent {
 
   channel: Channel = {
     id: '2',
-    name: 'mofo',
-    description: 'this channel is about mofos',
+    name: '',
+    description: '',
     role: ChannelRole.MEMBER,
     has_subscription: true
   }
 
   contents: ChannelContent[] = [
-    {
-      id: '0',
-      title: 'متن آهنگ ساسی',
-      summary: 'متن آهنگ ساسی',
-      price: 10000,
-      content_type: ChannelContentType.IMAGE,
-      is_premium: true
-    },
-    {
-      id: '1',
-      title: 'متن آهنگ ساسی',
-      price: 10000,
-      summary: 'متن آهنگ ساسی',
-      content_type: ChannelContentType.TEXT,
-      complete_content: {
-        text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
-      },
-      is_premium: false
-    },
-    {
-      id: '2',
-      title: 'متن آهنگ ساسی',
-      price: 10000,
-      summary: 'متن آهنگ ساسی',
-      content_type: ChannelContentType.IMAGE,
-      complete_content: {
-        text: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
-        file: 'https://cc-prod.scene7.com/is/image/CCProdAuthor/how_to_cut_out_images_photoshop_P1_mobile_360x270?$pjpeg$&jpegSize=200&wid=720'
-      },
-      is_premium: true
-    }
+    // {
+    //   id: '0',
+    //   title: 'متن آهنگ ساسی',
+    //   summary: 'متن آهنگ ساسی',
+    //   price: 10000,
+    //   content_type: ChannelContentType.IMAGE,
+    //   is_premium: true
+    // },
+    // {
+    //   id: '1',
+    //   title: 'متن آهنگ ساسی',
+    //   price: 10000,
+    //   summary: 'متن آهنگ ساسی',
+    //   content_type: ChannelContentType.TEXT,
+    //   complete_content: {
+    //     text: 'صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا صدای من رو میشنوید از کالیفرنیا آمریکا'
+    //   },
+    //   is_premium: false
+    // },
+    // {
+    //   id: '2',
+    //   title: 'متن آهنگ ساسی',
+    //   price: 10000,
+    //   summary: 'متن آهنگ ساسی',
+    //   content_type: ChannelContentType.IMAGE,
+    //   complete_content: {
+    //     text: 'صدای من رو میشنوید از کالیفرنیا آمریکا',
+    //     file: 'https://cc-prod.scene7.com/is/image/CCProdAuthor/how_to_cut_out_images_photoshop_P1_mobile_360x270?$pjpeg$&jpegSize=200&wid=720'
+    //   },
+    //   is_premium: true
+    // }
   ]
 
   get channelId (): string {
@@ -149,70 +161,71 @@ export default class ChannelPage extends RootComponent {
   gap: 20px;
 }
 
-.channel-page > .header {
+.channel-page>.header {
   justify-content: space-between;
   align-items: center;
 }
 
-.channel-page > .header > .back-button {
+.channel-page>.header>.back-button {
   position: initial;
   height: fit-content;
 }
 
-.channel-page > .header > .center {
+.channel-page>.header>.center {
   position: relative;
   align-items: center;
 }
 
-.channel-page > .header > .center > .subscription-sign {
+.channel-page>.header>.center>.subscription-sign {
   position: absolute;
   right: -95px;
   top: 4px;
 }
 
-.channel-page > .header > .center > .joined-sign {
-  position: absolute;
-  left: -125px;
-  top: 5px;
-}
-.channel-page > .header > .center > .join-sign {
+.channel-page>.header>.center>.joined-sign {
   position: absolute;
   left: -125px;
   top: 5px;
 }
 
-.channel-page > .header > .center > .leave-group-button {
+.channel-page>.header>.center>.join-sign {
+  position: absolute;
+  left: -125px;
+  top: 5px;
+}
+
+.channel-page>.header>.center>.leave-group-button {
   padding: 5px 1rem;
   align-items: center;
   gap: 0.8rem;
   margin-top: 10px;
 }
 
-.channel-page > .header > .right {
+.channel-page>.header>.right {
   gap: 10px;
 }
 
-.channel-page > .header > .right > a {
+.channel-page>.header>.right>a {
   display: flex;
   justify-content: center;
 }
 
-.channel-page > .header > .right .the-link {
+.channel-page>.header>.right .the-link {
   justify-content: center;
 }
 
-.channel-page > .header > .right .the-link > button {
+.channel-page>.header>.right .the-link>button {
   justify-content: center;
   margin-bottom: 5px;
   background-color: var(--top-color-3);
   padding: 0;
 }
-.channel-page > .header > .right .the-link > button > img {
+
+.channel-page>.header>.right .the-link>button>img {
   margin: auto;
 }
 
-.channel-page > .contents {
+.channel-page>.contents {
   --item-min-width: 300px;
 }
-
 </style>
