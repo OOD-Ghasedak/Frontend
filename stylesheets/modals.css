@@ -63,10 +63,13 @@
   }
   
   .sub-item-box {
-    border: solid;
     border-radius: 8px;
-    border-color: var(--top-color-1);
     background-color: var(--pale-secondary-color-6);
+    cursor: pointer;
+  }
+  .sub-item-box[active=true] {
+    border: solid;
+    border-color: var(--top-color-1);
   }
   
   .sub-item-title {

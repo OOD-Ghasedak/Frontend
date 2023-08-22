@@ -23,7 +23,7 @@
       <div class="center">
         <h1>{{ channel.name }}</h1>
         <channel-role-component :role="channelRole" />
-        <button v-if="channelRoleProps.canBuySubscription" class="edit secondary-button-2">
+        <button v-if="channelRoleProps.canBuySubscription" class="edit secondary-button-2" @click="$refs[buySubscriptionRefId].show()">
           <h6>{{ 'خرید اشتراک' }}</h6>
           <img class="image-sized--1" src="@/static/images/paper-money.svg">
         </button>
@@ -40,11 +40,13 @@
     <div class="contents responsive-grid">
       <channel-content-card v-for="(content, i) in contents" :key="`content-${i}`" :content="content" />
     </div>
+    <buy-subscription :ref="buySubscriptionRefId" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import BuySubscription from '~/components/channel/BuySubscription.vue'
 import JoinSign from '~/components/channel/JoinSign.vue'
 import JoinedSign from '~/components/channel/JoinedSign.vue'
 import SubscriptionSign from '~/components/channel/SubscriptionSign.vue'
@@ -55,10 +57,13 @@ import RootComponent from '~/utils/rootComponent'
   components: {
     SubscriptionSign,
     JoinedSign,
-    JoinSign
+    JoinSign,
+    BuySubscription
   }
 })
 export default class ChannelPage extends RootComponent {
+  buySubscriptionRefId: string = 'buy-subscription'
+
   get channelRole () {
     return this.channel.role
   }

@@ -2,6 +2,7 @@ import { ROOT_URL } from '.'
 import { Url } from '~/apis/backend'
 
 export const SUBSCRIBE_URL = new Url('subscribe', ROOT_URL)
+export const PURCHASED_SUBSCRIPTIONS_URL = new Url('purchased-subscriptions', SUBSCRIBE_URL)
 
 export const JOINED_CHANNELS_URL = new Url('joined-channels', SUBSCRIBE_URL)
 
