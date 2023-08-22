@@ -12,7 +12,7 @@
         <h2 class="see">
           {{ channel.name }}
         </h2>
-        <button class="edit" @click="$refs[changeNameRefId].show()">
+        <button class="edit" @click="$refs[refIds.changeName].show()">
           <img class="image-sized--1" src="@/static/images/edit.svg">
         </button>
       </div>
@@ -23,7 +23,7 @@
           <img src="@/static/images/info-purple.svg">
           <h4>{{ 'بیوگرافی کانال' }}</h4>
         </div>
-        <button class="edit" @click="$refs[changeBiographyRefId].show()">
+        <button class="edit" @click="$refs[refIds.changeBiography].show()">
           <h6>{{ 'ویرایش' }}</h6>
           <img class="image-sized--1" src="@/static/images/edit.svg">
         </button>
@@ -149,8 +149,8 @@
         </div>
       </div>
     </div>
-    <change-name :ref="changeNameRefId" />
-    <change-bio :ref="changeBiographyRefId" />
+    <change-name :ref="refIds.changeName" />
+    <change-bio :ref="refIds.changeBiography" />
   </div>
 </template>
 
@@ -168,8 +168,10 @@ import RootComponent from '~/utils/rootComponent'
   }
 })
 export default class ChannelManagePage extends RootComponent {
-  changeNameRefId: string = 'changeName'
-  changeBiographyRefId: string = 'changeBiography'
+  readonly refIds: {[key: string]: string} = {
+    changeName: 'changeName',
+    changeBiography: 'changeBiography'
+  }
 
   channel: Channel = {
     id: '2',
