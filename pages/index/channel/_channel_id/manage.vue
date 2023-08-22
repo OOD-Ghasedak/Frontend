@@ -50,7 +50,7 @@
                 <p>{{ 'تغییر درصد' }}</p>
                 <img src="@/static/images/exchange.svg" class="image-sized--2">
               </button>
-              <button class="error-button">
+              <button class="error-button" @click="$refs[refIds.dischargeAdmin].show(admin)">
                 <p>{{ 'عزل' }}</p>
                 <img class="image-sized--2" src="@/static/images/leave-red.svg">
               </button>
@@ -153,6 +153,7 @@
     <change-bio :ref="refIds.changeBiography" />
     <change-admin-profit :ref="refIds.changeAdminProfit" />
     <admin-report :ref="refIds.adminReport" />
+    <discharge-admin :ref="refIds.dischargeAdmin" />
   </div>
 </template>
 
@@ -162,6 +163,7 @@ import AdminReport from '~/components/channelManage/AdminReport.vue'
 import ChangeAdminProfit from '~/components/channelManage/ChangeAdminProfit.vue'
 import ChangeBio from '~/components/channelManage/ChangeBio.vue'
 import ChangeName from '~/components/channelManage/ChangeName.vue'
+import DischargeAdmin from '~/components/channelManage/DischargeAdmin.vue'
 import { Channel, ChannelAdmin, ChannelMember, ChannelRole, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
@@ -170,7 +172,8 @@ import RootComponent from '~/utils/rootComponent'
     ChangeName,
     ChangeBio,
     ChangeAdminProfit,
-    AdminReport
+    AdminReport,
+    DischargeAdmin
   }
 })
 export default class ChannelManagePage extends RootComponent {
@@ -178,7 +181,8 @@ export default class ChannelManagePage extends RootComponent {
     changeName: 'changeName',
     changeBiography: 'changeBiography',
     changeAdminProfit: 'changeAdminProfit',
-    adminReport: 'adminReport'
+    adminReport: 'adminReport',
+    dischargeAdmin: 'dischargeAdmin'
   }
 
   channel: Channel = {

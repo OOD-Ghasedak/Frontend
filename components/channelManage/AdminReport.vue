@@ -45,10 +45,6 @@ export default class AdminReport extends Vue {
     this.$bvModal.show(this.modalId)
   }
 
-  get channelId () {
-    return this.$route.params.channel_id
-  }
-
   admin: ChannelAdmin
   report
 }
