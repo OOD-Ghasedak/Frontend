@@ -20,7 +20,7 @@ export default interface ChannelOwner {
 
     dischargeAdmin(admin: ChannelAdmin): Promise<any>;
 
-    setSharePercent(admin: ChannelAdmin): Promise<any>;
+    setSharePercent(admin: ChannelAdmin, newShare: number): Promise<any>;
 
     removeChannel(channelId: string);
 }
@@ -74,10 +74,10 @@ class ConcreteChannelManager extends OutsideVueComponent implements ChannelOwner
         }))
     }
 
-    setSharePercent(admin: ChannelAdmin): Promise<any> {
+    setSharePercent(admin: ChannelAdmin, newShare: number): Promise<any> {
         return this.mainConfig.$apis.backend.send(new RequestParams(GET_CHANNEL_ADMIN_MANAGEMENT_URL(admin.id), REQUEST_METHODS.PUT, {
             withAuth: true,
-            data: { share: admin.share }
+            data: { share: newShare }
         }))
     }
 

@@ -46,7 +46,7 @@
               </div>
             </div>
             <div class="actions row">
-              <button class="primary-button">
+              <button class="primary-button" @click="$refs[refIds.changeAdminProfit].show(admin)">
                 <p>{{ 'تغییر درصد' }}</p>
                 <img src="@/static/images/exchange.svg" class="image-sized--2">
               </button>
@@ -151,11 +151,13 @@
     </div>
     <change-name :ref="refIds.changeName" />
     <change-bio :ref="refIds.changeBiography" />
+    <change-admin-profit :ref="refIds.changeAdminProfit" />
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import ChangeAdminProfit from '~/components/channelManage/ChangeAdminProfit.vue'
 import ChangeBio from '~/components/channelManage/ChangeBio.vue'
 import ChangeName from '~/components/channelManage/ChangeName.vue'
 import { Channel, ChannelAdmin, ChannelMember, ChannelRole, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
@@ -164,13 +166,15 @@ import RootComponent from '~/utils/rootComponent'
 @Component({
   components: {
     ChangeName,
-    ChangeBio
+    ChangeBio,
+    ChangeAdminProfit
   }
 })
 export default class ChannelManagePage extends RootComponent {
   readonly refIds: {[key: string]: string} = {
     changeName: 'changeName',
-    changeBiography: 'changeBiography'
+    changeBiography: 'changeBiography',
+    changeAdminProfit: 'changeAdminProfit'
   }
 
   channel: Channel = {
