@@ -41,8 +41,8 @@
             <div class="content row">
               <img src="@/static/images/ghased.svg" class="image-sized-1">
               <div class="names">
-                <h5>{{ admin.name }}</h5>
-                <h6>{{ `@${admin.username}` }}</h6>
+                <h5>{{ admin.ghased.full_name }}</h5>
+                <h6>{{ `@${admin.ghased.username}` }}</h6>
               </div>
             </div>
             <div class="actions row">
@@ -70,7 +70,7 @@
         <div class="subscriptions-content row">
           <div v-for="(subscription, i) in subscriptions" :key="`subscription-${i}`" class="subscription">
             <div class="length row">
-              <h1>{{ subscription.length }}</h1>
+              <h1>{{ subscriptionLengthRepresentation(subscription) }}</h1>
               <h5>{{ 'ماهه' }}</h5>
             </div>
             <div class="price row">
@@ -136,18 +136,14 @@
           <div class="content row">
             <img class="image-sized-1 circular" src="@/static/images/ghased.svg">
             <div class="names">
-              <h3>{{ member.name }}</h3>
-              <h5>{{ `@${member.username}` }}</h5>
+              <h3>{{ member.ghased.full_name }}</h3>
+              <h5>{{ `@${member.ghased.username}` }}</h5>
             </div>
           </div>
           <div class="actions row">
             <button class="primary-button">
               <p>{{ 'ارتقا به مدیر کانال' }}</p>
               <img class="image-sized--2" src="@/static/images/channel-roles/admin.svg">
-            </button>
-            <button class="error-button">
-              <p>{{ 'اخراج' }}</p>
-              <img class="image-sized--2" src="@/static/images/leave-red.svg">
             </button>
           </div>
         </div>
@@ -158,30 +154,49 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
+import { ChannelAdmin, ChannelMember, Subscription, SubscriptionDuration, subscriptionLengthNumbers } from '~/models'
 import RootComponent from '~/utils/rootComponent'
 
 @Component
 export default class ChannelManagePage extends RootComponent {
-  admins = [
-    { name: 'احمد', username: 'ahmad001' },
-    { name: 'احمد', username: 'ahmad001' },
-    { name: 'احمد', username: 'ahmad001' },
-    { name: 'احمد', username: 'ahmad001' }
+  admins: ChannelAdmin[] = [
+    { id: '0', ghased: { id: '0', full_name: 'sepehr kianian', username: 'sepehrkianian09' }, share: 34 },
+    { id: '1', ghased: { id: '0', full_name: 'sepehr kianian', username: 'sepehrkianian09' }, share: 22 },
+    { id: '2', ghased: { id: '0', full_name: 'sepehr kianian', username: 'sepehrkianian09' }, share: 11 }
   ]
 
-  subscriptions = [
-    { length: 1, price: 20000 },
-    { length: 1, price: 20000 },
-    { length: 1, price: 20000 },
-    { length: 1, price: 20000 }
+  subscriptions: Subscription[] = [
+    { id: '0', price: 20000, duration_choice: SubscriptionDuration.ONE_MONTH },
+    { id: '0', price: 40000, duration_choice: SubscriptionDuration.THREE_MONTH },
+    { id: '0', price: 60000, duration_choice: SubscriptionDuration.SIX_MONTH },
+    { id: '0', price: 80000, duration_choice: SubscriptionDuration.TWELVE_MONTH }
   ]
 
-  members = [
-    { name: 'sepehr', username: 'sep' },
-    { name: 'ashkan', username: 'ashk' },
-    { name: 'sadra', username: 'sad' },
-    { name: 'mohammad', username: 'abol' }
+  members: ChannelMember[] = [
+    { id: '0', ghased: { id: '0', full_name: 'ashkan khademian', username: 'ashkan.khd.q' } },
+    { id: '0', ghased: { id: '0', full_name: 'ashkan khademian', username: 'ashkan.khd.q' } },
+    { id: '0', ghased: { id: '0', full_name: 'ashkan khademian', username: 'ashkan.khd.q' } }
   ]
+
+  subscriptionLengthRepresentation (subscription: Subscription) {
+    return subscriptionLengthNumbers[subscription.duration_choice]
+  }
+
+  get channelId () {
+    return this.$route.params.channel_id
+  }
+
+  mounted () {
+    this.mainConfig.$facades.channelOwner.getChannelAdmins(this.channelId).then((response) => {
+      this.admins = response
+    })
+    this.mainConfig.$facades.channelOwner.getChannelMembers(this.channelId).then((response) => {
+      this.members = response
+    })
+    this.mainConfig.$facades.subscriber.getChannelSubscriptions(this.channelId).then((response) => {
+      this.subscriptions = response
+    })
+  }
 }
 </script>
 <router>

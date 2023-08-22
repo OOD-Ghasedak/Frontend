@@ -54,8 +54,14 @@ export enum SubscriptionDuration {
     SIX_MONTH = 'six month',
     TWELVE_MONTH = 'twelve month'
 }
+export const subscriptionLengthNumbers: { [key in SubscriptionDuration]: string } = {
+  [SubscriptionDuration.ONE_MONTH]: '1',
+  [SubscriptionDuration.THREE_MONTH]: '3',
+  [SubscriptionDuration.SIX_MONTH]: '6',
+  [SubscriptionDuration.TWELVE_MONTH]: '12'
+}
 export interface SubscriptionModel {
-    price: Int16Array;
+    price: number;
     duration_choice: SubscriptionDuration;
 }
 
